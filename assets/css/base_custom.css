@@ -1,0 +1,23 @@
+.titre-custom{
+	font-size: 90px;
+	text-align: right;
+	color: red;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+.thumbnail {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+
+    img {
+        width:920px
+        max-width: 920px; //only set this if using Twitter Bootstrap
+        position: absolute;
+        left:50%;
+        margin-left: -460px; //half of the image size
+    }
+}

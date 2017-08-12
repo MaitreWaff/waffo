@@ -1,0 +1,33 @@
+{% load static %}
+
+{% for rea in slider %}
+    <div class="item {% if forloop.first %}active{% endif %}">
+      <img src="/waffo/media/{{ rea.photo }}" class="img-responsive" alt="{{ rea.titre }}" width=80% heigth=auto />
+      <div class="carousel-caption">
+          <h3>{{ rea.titre }}</h3>
+          <p>{{ rea.description|safe|truncatewords:"150"  }}</p>
+      </div>
+    </div>
+{% empty %}
+    <div class="item active">
+      <img src="{% static 'assets/img/serv.jpeg' %}" class="img-responsive" alt="Chaina" width="297" heigth="170" />
+      <div class="carousel-caption">
+          <h3>{% block header-img1 %}{% endblock %}</h3>
+          <p>{% block caption-img1 %}{% endblock %}</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="{% static 'assets/img/service1.jpeg' %}" class="img-responsive" alt="Europa" width="297" heigth="170" />
+      <div class="carousel-caption">
+          <h3>{% block header-img2 %}{% endblock %}</h3>
+          <p>{% block caption-img2 %}{% endblock %}</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="{% static 'assets/img/service2.jpeg' %}" class="img-responsive" alt="Russia" width="297" heigth="170" />
+      <div class="carousel-caption">
+          <h3>{% block header-img3 %}{% endblock %}</h3>
+          <p>{% block caption-img3 %}{% endblock %}</p>
+      </div>
+    </div>
+{% endfor %}

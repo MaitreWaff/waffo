@@ -1,0 +1,85 @@
+{% extends 'waffo/base.html' %}
+{% load static %}
+
+
+
+{% block page-title %} Home {% endblock %}
+
+
+{% block nav_acceuil %}
+    class="active"
+{% endblock %}
+
+
+{% block contenu %}
+    <div class="alert alert-info" role="alert">
+      <a href="/waffo/" class="#"><h1>WAFFO Home</h1></a>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Home</h3>
+      </div>
+      <div class="panel-body">
+          {% if list_cat_service %}
+              {% for cat_serv in list_cat_service %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div class="well">
+                            <div class="media">
+                          <div class="media-left media-middle">
+                            <a href="{{ cat_serv.get_absolute_url }}">
+                                {% if cat_serv.photo %}
+                                        <img class="media-object" src="/waffo/media/{{ cat_serv.photo }}" alt="Image {{ cat_serv.titre|safe|title }}" width="200" height="200">
+                                {% else %}
+                                    <img class="media-object" src="{% static 'assets/img/no_pix.jpeg' %}" alt="Image {{ cat_serv.titre|safe|title }}" width="200" height="200">
+                                {% endif %}
+                            </a>
+                          </div>
+                          <div class="media-body">
+                            <h4 class="media-heading"><a href="{{ cat_serv.get_absolute_url }}">{{ cat_serv.titre|safe|title }}</a></h4>
+                            <p>{{ cat_serv.desc|safe|capfirst|truncatewords:150 }}</p>
+                          </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="well">
+                        <div class="media">
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="{{ cat_serv.get_absolute_url }}">{{ cat_serv.titre|safe|title }}</a></h4>
+                        <p>{{ cat_serv.desc|safe|capfirst|truncatewords:150 }}</p>
+                      </div>
+                      <div class="media-right media-middle">
+                        <a href="/waffo/services/category/{{ cat_serv.get_absolute_url }}">
+                          {% if cat_serv.photo %}
+                                <img class="media-object" src="/waffo/media/{{ cat_serv.photo }}" alt="Image Categorie Service" width="200" height="200">
+                            {% else %}
+                                <img class="media-object" src="{% static 'assets/img/no_pix.jpeg' %}" alt="Image Categorie Service" width="200" height="200">
+                            {% endif %}
+                        </a>
+                      </div>
+                    </div>
+                    </div>
+                {% endif %}
+                <br />
+            {% endfor %}
+
+          {% else %}
+            <h1>Aucun Service Disponible!</h1>
+          {% endif %}
+      </div>
+    </div>
+{% endblock contenu %} <!-- Block Contenu -->
+
+
+
+
+{% block bc_acceuil %}
+    class="active"
+{% endblock %}
+
+{% block bc_href_acceuil %}<span class="glyphicon glyphicon-home"></span> Acceuil{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" language="JavaScript" src="{% static 'assets/js/waffo_maj.js' %}"></script>
+{% endblock %}
+
+{%block pagination %}{%endblock%}
