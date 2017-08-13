@@ -7,6 +7,7 @@
 	    <script src="http://github.com/aFarkas/html5shiv/blob/master/dist/html5shiv.js"></script>
 	<![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		{% block meta %}{% endblock %}
 
 
         <!-- Latest compiled and minified CSS -->
@@ -17,7 +18,7 @@
 
 		<link rel="stylesheet" href="{% static 'assets/css/base_custom.css' %}">
 
-        <title>WAFFO | {% block page-title %}{% endblock %}</title>
+        <title>WAFFO | {% block title %}{% endblock %}</title>
 
     </head>
 
@@ -27,10 +28,10 @@
 				<div class="row">
 					<div class="column">
 						<div class="col-md-2">
-							<img src="{% static 'assets/img/dyvix-logo.jpeg' %}" class="img-thumbnail img-responsive" alt="DYvixIT Logo" width="280" heigth="200" />
+							<img src="{% static 'assets/img/waffo-logo.jpeg' %}" class="img-thumbnail img-responsive" alt="WAFFO Logo" width="280" heigth="200" />
 						</div>
 						<div class="col-md-10">
-							<h1 class="text-center titre-custom"><span>WAFFO </span><small>Solutions</small></h1>
+							<h1 class="text-center titre-custom"><span>Web App </span><small>FFO</small></h1>
 						</div>
 					</div><!--column-->
 				</div><!--row-->
@@ -55,37 +56,45 @@
 			<div class="jumbotron">
 				<div class="container">
 
-				<div class="row" align="center"> <span><h3>Welcome to Web App FFO</h3>{% block special-content %}{% endblock %}</span></div>
+				<div class="row" align="center"> <span><h2>Welcome to Web App FFO</h2>{% block special-content %}{% endblock %}</span></div>
 
 				<div class="row">
 
 					<div class="col-lg-12"><!--Carousel_Area-->
 
-						<div id="mycarousel" class="carousel slide" data-ride="carousel" style="width: 1000px; height:600px; margin: 0 auto">
+						<!--<h1>Django Simple Login</h1>-->
+						{% if user.is_authenticated %}
+						  Hi <span>{{ user.username }}</span>!
+						  <a href="{% url 'auth_logout' %}">logout</a>
+						{% else %}
+						  <a href="{% url 'auth_login' %}">login</a>
+						{% endif %}
+
+						<!--<div id="mycarousel" class="carousel slide" data-ride="carousel" style="width: 1000px; height:600px; margin: 0 auto">-->
 						  <!-- Indicators -->
-						  <ol class="carousel-indicators">
-							<li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#mycarousel" data-slide-to="1"></li>
-							<li data-target="#mycarousel" data-slide-to="2"></li>
-							<li data-target="#mycarousel" data-slide-to="3"></li>
-						  </ol>
+						  <!--<ol class="carousel-indicators">-->
+							<!--<li data-target="#mycarousel" data-slide-to="0" class="active"></li>-->
+							<!--<li data-target="#mycarousel" data-slide-to="1"></li>-->
+							<!--<li data-target="#mycarousel" data-slide-to="2"></li>-->
+							<!--<li data-target="#mycarousel" data-slide-to="3"></li>-->
+						  <!--</ol>-->
 
 						  <!-- Wrapper for slides -->
-						  <div class="carousel-inner" role="listbox">
-							  {% block carousel %}
-							  	{% include 'waffo/carousel.html' with slider=slider %}
-							  {% endblock %}
-						  </div>
+						  <!--<div class="carousel-inner" role="listbox">-->
+							  <!--{% block carousel %}-->
+							  	<!--{% include 'waffo/carousel.html' with slider=slider %}-->
+							  <!--{% endblock %}-->
+						  <!--</div>-->
 
 						  <!-- Controls -->
-						  <a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						  </a>
-						  <a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						  </a>
+						  <!--<a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">-->
+							<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
+							<!--<span class="sr-only">Previous</span>-->
+						  <!--</a>-->
+						  <!--<a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">-->
+							<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
+							<!--<span class="sr-only">Next</span>-->
+						  <!--</a>-->
 						</div>
 
 					</div><!--col-lg-5--><!--Carousel_Area-->
@@ -94,10 +103,11 @@
 
 					<div class="row">
 						<div class="col-md-5 col-md-pull-7">
+							<p><a href="{% url 'auth_login' %}">Log in</a> again.</p>
 
 						</div>
 						<div class="col-md-7 col-md-push-5">
-							<p><a class="btn btn-info btn-lg" href="/waffo/assistant/" role="button">Assistant</a></p>
+							<p><a class="btn btn-info btn-lg" href="{% url 'auth_login' %}" role="button">Log in here.</a></p>
 						</div>
 
 					</div>
@@ -118,6 +128,7 @@
 					{% endblock %}
 				</div><!-- Sidebar -->
 				<div class="col-lg-9"><!-- Page Content -->
+					{% block content %}{% endblock %}
 					{% block contenu %}{% endblock %}
 					<div class="row">
 						<div class="col-md-4">

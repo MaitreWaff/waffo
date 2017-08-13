@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     # 'django.contrib.flatpages',
     'django.contrib.sites',
+    # 'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -78,6 +79,26 @@ DATABASES = {
     }
 }
 
+
+# Password validation
+# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -108,5 +129,20 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
-LOGIN_URL='/waffo/login/'
+LOGIN_URL='/waffo/accounts/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Add this to tell Django where to redirect after
+# successful login
+
+LOGIN_REDIRECT_URL = '/waffo/home/'
+
+ROOT_URLCONF = 'waffo.urls'
+
+
+# Settings for django-regitration-redux
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+# REGISTRATION_DEFAULT_FROM_EMAIL =
+# REGISTRATION_EMAIL_HTML = True # Email will be send in html
+REGISTRATION_AUTO_LOGIN = True # Users automatically log in when they click on the activation link in their email.
