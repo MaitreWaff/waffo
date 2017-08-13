@@ -41,6 +41,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'blog',
     'waff',
     'django.contrib.admin',
     'django.contrib.admindocs',
