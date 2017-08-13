@@ -129,7 +129,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
-LOGIN_URL='/waffo/accounts/login/'
+LOGIN_URL='/accounts/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Add this to tell Django where to redirect after
@@ -140,7 +140,7 @@ LOGIN_REDIRECT_URL = '/waffo/home/'
 ROOT_URLCONF = 'waffo.urls'
 
 
-# Settings for django-regitration-redux
+# Settings for django-regitration
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 # REGISTRATION_DEFAULT_FROM_EMAIL =

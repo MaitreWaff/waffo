@@ -1,6 +1,7 @@
 {% extends 'waffo/base.html' %}
 
 {% block contenu %}
-    <h1>Registration Complete</h1>
-    <p>You are now logged out.</p>
+
+    <p><h1>You are now logged out.</h1></p>
+    <p><a href="{% url 'auth_login' %}">Log in</a> again.</p>
 {% endblock %}

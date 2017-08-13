@@ -63,39 +63,9 @@
 					<div class="col-lg-12"><!--Carousel_Area-->
 
 						<!--<h1>Django Simple Login</h1>-->
-						{% if user.is_authenticated %}
-						  Hi <span>{{ user.username }}</span>!
-						  <a href="{% url 'auth_logout' %}">logout</a>
-						{% else %}
-						  <a href="{% url 'auth_login' %}">login</a>
-						{% endif %}
 
-						<!--<div id="mycarousel" class="carousel slide" data-ride="carousel" style="width: 1000px; height:600px; margin: 0 auto">-->
-						  <!-- Indicators -->
-						  <!--<ol class="carousel-indicators">-->
-							<!--<li data-target="#mycarousel" data-slide-to="0" class="active"></li>-->
-							<!--<li data-target="#mycarousel" data-slide-to="1"></li>-->
-							<!--<li data-target="#mycarousel" data-slide-to="2"></li>-->
-							<!--<li data-target="#mycarousel" data-slide-to="3"></li>-->
-						  <!--</ol>-->
 
-						  <!-- Wrapper for slides -->
-						  <!--<div class="carousel-inner" role="listbox">-->
-							  <!--{% block carousel %}-->
-							  	<!--{% include 'waffo/carousel.html' with slider=slider %}-->
-							  <!--{% endblock %}-->
-						  <!--</div>-->
-
-						  <!-- Controls -->
-						  <!--<a class="left carousel-control" href="#mycarousel" role="button" data-slide="prev">-->
-							<!--<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>-->
-							<!--<span class="sr-only">Previous</span>-->
-						  <!--</a>-->
-						  <!--<a class="right carousel-control" href="#mycarousel" role="button" data-slide="next">-->
-							<!--<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>-->
-							<!--<span class="sr-only">Next</span>-->
-						  <!--</a>-->
-						</div>
+					</div>
 
 					</div><!--col-lg-5--><!--Carousel_Area-->
 
@@ -103,11 +73,18 @@
 
 					<div class="row">
 						<div class="col-md-5 col-md-pull-7">
-							<p><a href="{% url 'auth_login' %}">Log in</a> again.</p>
+							<!--<p><a href="{% url 'auth_login' %}">Log in</a> again.</p>-->
 
 						</div>
 						<div class="col-md-7 col-md-push-5">
-							<p><a class="btn btn-info btn-lg" href="{% url 'auth_login' %}" role="button">Log in here.</a></p>
+							{% if user.is_authenticated %}
+							  Hi <span>{{ user.username }}</span>!
+							  <a href="{% url 'auth_logout' %}">logout</a>
+							{% else %}
+								<!--<a href="{% url 'auth_login' %}">login</a>-->
+								<p><a class="btn btn-info btn-lg" href="{% url 'auth_login' %}" role="button">Log in here.</a></p>
+							{% endif %}
+
 						</div>
 
 					</div>
