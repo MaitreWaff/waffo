@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', views.archive, name='archive'),
+    url(r'^blogslist/$', views.blogs, name='blogs'),
     # url(r'^home/$', views.home, name='home'),
 
     # url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}, name='login'),

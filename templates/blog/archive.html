@@ -4,8 +4,8 @@
 
 {% block content %}
     {% for post in posts %}
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.timestamp|date:"l, F jS" }}</p>
-        <p>{{ post.body }}</p>
+        <h2>{{ post.titre }}</h2>
+        <p>{{ post.date_post|date:"l, F jS" }}</p>
+        <p>{{ post.contenu }}</p>
     {% endfor %}
 {% endblock %}

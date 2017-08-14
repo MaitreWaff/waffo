@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+{% block title %} Blogs List {% endblock %}
+
+{% block content %}
+    {% for blog in blogslist %}
+        <h2>{{ blog.auteur }}</h2>
+    {% endfor %}
+{% endblock %}
