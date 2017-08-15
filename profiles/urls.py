@@ -3,7 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 # admin.autodiscover()
-from profile import views
+from profiles import views
 
 #import django.views.defaults
 
@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^$', views.archive, name='archive'),
-    url(r'^profile/$', views.blogs, name='profile'),
+    url(r'^profile/$', views.update_profile, name='profile'),
     # url(r'^home/$', views.home, name='home'),
 
     # url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}, name='login'),

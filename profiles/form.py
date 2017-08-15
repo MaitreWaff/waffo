@@ -10,4 +10,4 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields  = ('url', 'location', 'company')
+        # fields  = ('url', 'location', 'company')
