@@ -5,22 +5,27 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.shortcuts import render, redirect
 
-from profiles.form import ProfileForm, UserForm
+from profiles.form import ProfileForm, UserForm, SignUpForm
 
 # Create your views here.
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            form.save()
-            username        = form.cleaned_data.get('username')
+            user = form.save()
+            user.refresh_from_db()  # load the profil instance created by the signal
+            user.profile.bio        = form.cleaned_data.get('bio')
+            user.profile.location   = form.cleaned_data.get('location')
+            user.profile.date_naiss = form.cleaned_data.get('date_naiss')
+            user.save()
+            # username        = form.cleaned_data.get('username')
             raw_password    = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
+            user = authenticate(username=user.username, password=raw_password)
             login(request, user)
             return redirect('home')
     else:
-        form    = UserCreationForm()
+        form    = SignUpForm()
         return render(request, 'profiles/signup.html', {'form': form})
 
 @login_required
