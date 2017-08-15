@@ -15,6 +15,9 @@ class Profile(models.Model):
     location    = models.CharField(max_length=CF_LOC_MAX, blank=True)
     date_naiss  = models.DateField(null=True, blank=True)
 
+    def __unicode__(self):
+        return "%s" % self.user
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
