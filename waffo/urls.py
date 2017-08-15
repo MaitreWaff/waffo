@@ -3,6 +3,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from profiles import views as profile_views
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
@@ -12,6 +14,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/', include('blog.urls')),
     url(r'^profile/', include('profiles.urls')),
+    url(r'^signup/', profile_views.signup, name='signup'),
     url(r'^waffo/', include('waff.urls')),
 
 )

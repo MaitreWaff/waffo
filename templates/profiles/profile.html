@@ -1,3 +1,11 @@
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 <form action="." method="post">
     {% csrf_token %}
 
