@@ -26,4 +26,13 @@ def blogs(request):
     context = RequestContext(request)
     context_dict = {'blogslist': bloglist}
 
-    return render_to_response('blog/blogslist.html', context_dict, context)
+    return render_to_response('blog/blog-home-base.html', context_dict, context)
+
+
+def home(request):
+    blogslist = BlogPost.objects.all()
+
+    context = RequestContext(request)
+    context_dict = {'posts': blogslist}
+
+    return render_to_response('blog/blog-home.html', context_dict, context)

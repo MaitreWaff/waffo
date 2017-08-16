@@ -44,5 +44,5 @@ $(document).ready(function(){
 //    $(function () {
 //      $('[data-toggle="popover"]').popover()
 //    })
-	setInterval("update_articles()", 30000); // On rafraichit le contenu toutes les minutes (60.000 millisecondes).
+	setInterval("update_articles()", 3000000); // On rafraichit le contenu toutes les minutes (60.000 millisecondes).
 });
