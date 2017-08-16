@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 
     # url(r'^$', views.archive, name='archive'),
     url(r'^profile/$', views.update_profile, name='profile'),
+    url(r'^userprofile/$', views.profile, name='userprofile'),
     # url(r'^home/$', views.home, name='home'),
 
     # url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}, name='login'),

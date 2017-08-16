@@ -48,6 +48,25 @@ def update_profile(request):
     context_dict = {'user_form': user_form, 'profile_form': profile_form}
     return render(request, 'profiles/profile.html', context_dict)
 
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form       = UserForm(request.POST, instance=request.user)
+        profile_form    = ProfileForm(request.POST, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!', extra_tags='alert')
+            return redirect('/waffo/home/')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        user_form       = UserForm(instance=request.user)
+        profile_form    = ProfileForm(instance=request.user.profile)
+    context_dict = {'user_form': user_form, 'profile_form': profile_form}
+    return render(request, 'profiles/viewprofile.html', context_dict)
+
 
 
 
