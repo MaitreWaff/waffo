@@ -7,7 +7,13 @@ from django.dispatch import receiver
 
 # CONSTANTES
 CF_LOC_MAX      = 30
+SEXE_MAX_L      = 5
 TF_BIO_MAX_L    = 500.
+
+SEXE_CHOICES    = (
+    (1, 'Masc'),
+    (2, 'Femm'),
+            )
 
 # Retourne le Nom De l'Image telechargee.
 def get_upload_file_name(instance, filename):
@@ -18,6 +24,7 @@ def get_upload_file_name(instance, filename):
 class Profile(models.Model):
     user        = models.OneToOneField(User, on_delete=models.CASCADE)
     photo       = models.FileField(upload_to=get_upload_file_name, blank=True)
+    sexe        = models.IntegerField(choices=SEXE_CHOICES, default=1, help_text="Homme ou Femme?")
     bio         = models.TextField(max_length=TF_BIO_MAX_L, blank=True)
     location    = models.CharField(max_length=CF_LOC_MAX, blank=True)
     date_naiss  = models.DateField(null=True, blank=True)

@@ -14,24 +14,41 @@ class UserForm(forms.ModelForm):
         model = User
         fields  = ('first_name', 'last_name', 'email')
 
-class ProfileForm(forms.ModelForm):
+class ProfileForm(UserCreationForm):
     class Meta:
         model = Profile
+        # exclude = ('photo',)
         # fields  = ('url', 'location', 'company')
 
 class SignUpForm(UserCreationForm):
-    first_name  = forms.CharField(max_length=FN_MAX_L, required=False, help_text='Optional.')
-    last_name   = forms.CharField(max_length=LN_MAX_L, required=False, help_text='Optional.')
-    email       = forms.EmailField(max_length=EMAIL_MAX_L, help_text='Required. Inform a valid email address.')
+    # first_name  = forms.CharField(max_length=FN_MAX_L, required=False, help_text='Optionel.')
+    # last_name   = forms.CharField(max_length=LN_MAX_L, required=False, help_text='Optionel.')
+    email       = forms.EmailField(max_length=EMAIL_MAX_L, help_text='Requis. Entrez une adresse email valide.')
 
     # Profile
-    bio         = forms.TextInput()
-    location    = forms.CharField(max_length=LOC_MAX_L, required=False, help_text='Ville Actuelle.')
-    date_naiss  = forms.DateField()
+    # bio         = forms.TextInput()
+    # location    = forms.CharField(max_length=LOC_MAX_L, required=False, help_text='Ville Actuelle.')
+    # date_naiss  = forms.DateField()
+
+    class Meta:
+        model   = User
+        fields  = ('username', 'email', 'password1', 'password2')
+
+
+
+class UpdateProfileForm(UserCreationForm):
+    # first_name  = forms.CharField(max_length=FN_MAX_L, required=False, help_text='Optionel.')
+    # last_name   = forms.CharField(max_length=LN_MAX_L, required=False, help_text='Optionel.')
+    email       = forms.EmailField(max_length=EMAIL_MAX_L, help_text='Requis. Entrez une adresse email valide.')
+
+    # Profile
+    # bio         = forms.TextInput()
+    # location    = forms.CharField(max_length=LOC_MAX_L, required=False, help_text='Ville Actuelle.')
+    # date_naiss  = forms.DateField()
 
     class Meta:
         model   = Profile
-        fields  = ('username', 'first_name', 'last_name', 'email', 'location', 'date_naiss', 'password1', 'password2', 'bio')
+        fields  = ('username', 'email', 'password1', 'password2')
 
 
 

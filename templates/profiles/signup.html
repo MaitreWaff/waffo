@@ -15,9 +15,10 @@
 					<label for="name" class="cols-sm-2 control-label">{{ field.label_tag }}</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa {% cycle 'fa-users' 'fa-user' 'fa-user' 'fa-envelope' 'fa-lock' %} fa" aria-hidden="true"></i></span>
+							<span class="input-group-addon"><i class="fa {% cycle 'fa-users' 'fa-envelope' 'fa-lock' 'fa-lock' %} fa" aria-hidden="true"></i></span>
 
-							<input class="form-control" name="fieldname" id="fieldid"  placeholder="{{ field.help_text }}"/>
+							<!--<input class="form-control" name="fieldname" id="fieldid"  placeholder="{{ field.help_text }}"/>-->
+							{{ field }}
 
 						</div>
 						<!--<br />-->
