@@ -1,5 +1,7 @@
 appdirs==1.4.3
 Django==1.6.6
+django-bootstrap3==9.0.0
+django-forms-bootstrap==3.1.0
 django-mysql==1.1.0
 django-registration==2.2
 ez-setup==0.9
