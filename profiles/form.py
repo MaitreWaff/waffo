@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from profiles.models import Profile
 
@@ -8,6 +8,8 @@ FN_MAX_L    = 30
 LN_MAX_L    = 30
 LOC_MAX_L   = 50
 EMAIL_MAX_L = 254
+UN_MAX_L    = 30
+PWD_MAX_L   = 30
 
 class UserForm(forms.ModelForm):
     class Meta:
@@ -34,7 +36,16 @@ class SignUpForm(UserCreationForm):
         model   = User
         fields  = ('username', 'email', 'password1', 'password2')
 
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label="Username", max_length=UN_MAX_L, widget=forms.TextInput(attrs={'class': 'form-control', 'name': 'username'}))
+    password = forms.CharField(label="Password", max_length=PWD_MAX_L, widget=forms.PasswordInput(attrs={'class': 'form-control', 'name': 'username'}))
 
+class SignInForm(AuthenticationForm):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+    class Meta:
+        model = User
+        fields = ('username', 'password',)
 
 class UpdateProfileForm(UserCreationForm):
     # first_name  = forms.CharField(max_length=FN_MAX_L, required=False, help_text='Optionel.')

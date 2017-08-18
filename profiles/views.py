@@ -5,7 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.shortcuts import render, redirect
 
-from profiles.form import ProfileForm, UserForm, SignUpForm
+from django.http import HttpResponse, HttpResponseRedirect
+
+from waffo import settings
+
+from profiles.form import ProfileForm, UserForm, SignUpForm, SignInForm
 
 # Create your views here.
 #
@@ -85,7 +89,46 @@ def profile(request):
     return render(request, 'profiles/viewprofile.html', context_dict)
 
 
+def login(request):
+    next = request.GET.get('next', '/home/')
+    # form = UserForm(request.POST)
+    if request.method == 'POST':
 
+        form = SignInForm(request.POST, instance=request.user)
+        if form.is_valid():
+            print "Valid Form"
+            username = form.cleaned_data['username']
+            password = request.POST['password']
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                print "User is not None"
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect(next)
+                else:
+                    return HttpResponse("Inactive User.")
+            else:
+                print "User is None"
+                return HttpResponseRedirect(settings.LOGIN_URL)
+        else:
+            print "Form is not valid."
+            print form
+            # form = SignInForm()
+            return render(request, "registration/login.html", {'form':form, 'redirect_to': next})
+
+    else:
+        form = SignInForm()
+
+        return render(request, "registration/login.html", {'form': form, 'redirect_to': next})
+        # return render(request, "registration/login.html", {'redirect_to': next})
+
+
+@login_required
+def logout(request):
+    logout(request)
+    return HttpResponseRedirect(settings.LOGIN_URL)
 
 
 

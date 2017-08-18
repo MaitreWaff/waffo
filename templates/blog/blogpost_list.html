@@ -1,0 +1,11 @@
+<h1>Blog Posts</h1>
+
+<ul>
+
+    {% for post in object_list %}
+        <li>{{ post.date }} - {{ post.titre }}</li>
+    {% empty %}
+        <li>No Post Yet.</li>
+    {% endfor %}
+</ul>
+
