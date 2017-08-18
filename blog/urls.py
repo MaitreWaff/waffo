@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^$', views.archive, name='archive'),
-    url(r'^(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(), name='blogpost-detail'),
+    # url(r'^(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(), name='blogpost-detail'),
     url(r'^list/$', views.BlogPostDetailView.as_view(), name='blogpost-list'),
     url(r'^actualite/$', views.home, name='actu'),
     url(r'^blogslist/$', views.blogs, name='blogs'),

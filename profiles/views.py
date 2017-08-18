@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
@@ -89,7 +89,7 @@ def profile(request):
     return render(request, 'profiles/viewprofile.html', context_dict)
 
 
-def login(request):
+def userlogin(request):
     next = request.GET.get('next', '/home/')
     # form = UserForm(request.POST)
     if request.method == 'POST':
@@ -126,12 +126,19 @@ def login(request):
 
 
 @login_required
-def logout(request):
+def userlogout(request):
     logout(request)
     return HttpResponseRedirect(settings.LOGIN_URL)
 
 
+def userhome(request):
+    pass
 
+def userregister(request):
+    return signup(request)
+
+def userregister_success(request):
+    pass
 
 
 

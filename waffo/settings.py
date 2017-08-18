@@ -133,13 +133,13 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
-LOGIN_URL='/login/'
+LOGIN_URL='/account/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Add this to tell Django where to redirect after
 # successful login
 
-# LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/blog/actualite/'
 
 ROOT_URLCONF = 'waffo.urls'
 
