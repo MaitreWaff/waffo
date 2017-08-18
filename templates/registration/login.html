@@ -16,16 +16,31 @@
                   <div class="col-xs-6">
                       <div class="well">
                           <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
-                              <div class="form-group">
-                                  <label for="username" class="control-label">Username</label>
-                                  <input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div class="form-group">
-                                  <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">
-                                  <span class="help-block"></span>
-                              </div>
+                              {% csrf_token %}
+
+                              {% for field in form %}
+                                  <div class="form-group">
+                                      <label for="{{ field.id_for_label }}" class="control-label">{{ field.label }}</label>
+
+                                      <div class="input-group">
+                                          <span class="input-group-addon"><i class="fa {% cycle 'fa-users' 'fa-lock' %} fa" aria-hidden="true"></i></span>
+
+                                          <input type="{% cycle 'text' 'password' %}" class="form-control" id="{{ field.id_for_label }}" name="{{ field.id_for_label }}" value="" required="" title="Please enter you username" placeholder="example@gmail.com">
+                                          <span class="help-block"></span>
+                                      </div>
+
+                                  </div>
+                              {% endfor %}
+                              <!--<div class="form-group">-->
+                                  <!--<label for="username" class="control-label">Username</label>-->
+                                  <!--<input type="text" class="form-control" id="username" name="username" value="" required="" title="Please enter you username" placeholder="example@gmail.com">-->
+                                  <!--<span class="help-block"></span>-->
+                              <!--</div>-->
+                              <!--<div class="form-group">-->
+                                  <!--<label for="password" class="control-label">Password</label>-->
+                                  <!--<input type="password" class="form-control" id="password" name="password" value="" required="" title="Please enter your password">-->
+                                  <!--<span class="help-block"></span>-->
+                              <!--</div>-->
                               <div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
                               <div class="checkbox">
                                   <label>
@@ -48,7 +63,7 @@
                           <li><span class="fa fa-check text-success"></span> Get a gift <small>(only new customers)</small></li>
                           <li><a href="/read-more/"><u>Read more</u></a></li>
                       </ul>
-                      <p><a href="/new-customer/" class="btn btn-info btn-block">Yes please, register now!</a></p>
+                      <p><a href="#" class="btn btn-info btn-block">Yes please, register now!</a></p>
                   </div>
               </div>
           </div>
@@ -63,24 +78,24 @@
 
 
 
-    <div class="container-fluid alert alert-dark" role="alert">
-      <div class="row justify-content-md-center jumbotron">
-        <div class="col-lg-3">
-        </div>
-        <div class="col-lg-6 container-fluid">
-            <h2>Login</h2>
-            <form method="post" action=".">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Log in" />
-                <input type="hidden" name="next" value="{{ next }}" />
-            </form>
-            <p>Not  a member? <a href="{% url 'registration_register' %}">Register</a>!</p>
-        </div>
-        <div class="col-lg-3">
-        </div>
-      </div>
-    </div>
+    <!--<div class="container-fluid alert alert-dark" role="alert">-->
+      <!--<div class="row justify-content-md-center jumbotron">-->
+        <!--<div class="col-lg-3">-->
+        <!--</div>-->
+        <!--<div class="col-lg-6 container-fluid">-->
+            <!--<h2>Login</h2>-->
+            <!--<form method="post" action=".">-->
+                <!--{% csrf_token %}-->
+                <!--{{ form.as_p }}-->
+                <!--<input type="submit" value="Log in" />-->
+                <!--<input type="hidden" name="next" value="{{ next }}" />-->
+            <!--</form>-->
+            <!--<p>Not  a member? <a href="#">Register</a>!</p>-->
+        <!--</div>-->
+        <!--<div class="col-lg-3">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
 {% endblock %}
 

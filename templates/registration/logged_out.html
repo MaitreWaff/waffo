@@ -5,5 +5,14 @@
 {% block contenu %}
   <h2>Logged out</h2>
   <p>You have been successfully logged out.</p>
-  <p><a href="{% url 'auth_login' %}">Log in</a> again.</p>
+  <p><a href="{% url 'login' %}">Log in</a> again.</p>
+
+<!--<script>-->
+    <!--function redirect(){-->
+       <!--window.location.href = "/admin/";-->
+    <!--}-->
+<!---->
+    <!--setTimeout(redirect, 2000); //2000 is equivalent to 2 seconds-->
+<!--</script>-->
+
 {% endblock %}

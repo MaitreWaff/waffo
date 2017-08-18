@@ -4,27 +4,27 @@
 
 
     <h2>Sign Up</h2>
-    <form class="form-horizontal" method="post">
+    <form role="form" class="form-horizontal" method="post">
         {% csrf_token %}
 		<div class="form-group">
 			{% for field in form %}
 				{% for error in field.errors %}
-					<p style="color: red">{{ error }}</p>
+					<p style="color: red"><small>{{ error }}</small></p>
 				{% endfor %}
 
-					<label for="name" class="cols-sm-2 control-label">{{ field.label_tag }}</label>
+					<label for="{{ field.id_for_label }}" class="cols-sm-2 control-label">{{ field.label }}{% if field.field.required %}<span class="asteriskField"> *</span>{% endif %}</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa {% cycle 'fa-users' 'fa-envelope' 'fa-lock' 'fa-lock' %} fa" aria-hidden="true"></i></span>
 
-							<!--<input class="form-control" name="fieldname" id="fieldid"  placeholder="{{ field.help_text }}"/>-->
-							{{ field }}
+							<input type="{% cycle 'text' 'text' 'password' 'password' %}" class="form-control" name="{{ field.html_name }}" id="{{ field.id_for_label }}" placeholder="{{ field.help_text }}"/>
+							<!--<div class="input-group-addon">{{ field }}</div>-->
 
 						</div>
 						<!--<br />-->
 							{% if field.help_text %}
-								<!--<small style="color: grey">{{ field.help_text }}</small>-->
-								{{ field.help_text }}
+								<small style="color: grey">{{ field.help_text }}</small>
+								<!--{{ field.help_text }}-->
 							{% endif %}
 					</div>
 

@@ -1,7 +1,7 @@
 {% extends "admin/base.html" %}
 {% load i18n %}
 
-{% block title %}{{ title }} | {% trans 'WAFFO site admin' %}{% endblock %}
+{% block title %}{{ title|escape }} | {% trans 'WAFFO site admin' %}{% endblock %}
 
 {% block branding %}
 <h1 id="site-name">{% trans 'Web App FFO administration' %}</h1>

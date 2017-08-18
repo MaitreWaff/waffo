@@ -73,7 +73,7 @@
 
 					<div class="row">
 						<div class="col-md-5 col-md-pull-7">
-							<!--<p><a href="{% url 'auth_login' %}">Log in</a> again.</p>-->
+							<!--<p><a href="#">Log in</a> again.</p>-->
 
 						</div>
 						<div class="col-md-7 col-md-push-5">
@@ -81,8 +81,8 @@
 							  Hi <span>{{ user.username }}</span>!
 							  <a href="{% url 'auth_logout' %}">logout</a>
 							{% else %}
-								<!--<a href="{% url 'auth_login' %}">login</a>-->
-								<p><a class="btn btn-info btn-lg" href="{% url 'auth_login' %}" role="button">Log in here.</a></p>
+								<!--<a href="#">login</a>-->
+								<p><a class="btn btn-info btn-lg" href="#" role="button">Log in here.</a></p>
 							{% endif %}
 
 						</div>
