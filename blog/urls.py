@@ -9,6 +9,8 @@ from blog import views
 
 # handler404 = 'path.to.views.custom404'
 
+app_name = 'blog'
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
@@ -16,7 +18,10 @@ urlpatterns = patterns('',
 
     url(r'^$', views.archive, name='archive'),
     # url(r'^(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(), name='blogpost-detail'),
-    url(r'^list/$', views.BlogPostDetailView.as_view(), name='blogpost-list'),
+    # url(r'^list/$', views.BlogPostDetailView.as_view(), name='blogpost-list'),
+    url(r'^post/details/(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(), name='blogpost-details'),
+    url(r'^post/list/$', views.BlogPostListView.as_view(), name='blogpost-list'),
+    url(r'^list/$', views.BlogListView.as_view(), name='blog-list'),
     url(r'^actualite/$', views.home, name='actu'),
     url(r'^blogslist/$', views.blogs, name='blogs'),
     # url(r'^home/$', views.home, name='home'),

@@ -9,13 +9,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home | {% block title %}{% endblock %}</title>
+    <title>Blog Post - Start Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
-
-    <!-- Optional theme -->
-    <!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap-theme.css' %}">-->
 
     <!-- Custom styles for this template -->
     <link href="{% static 'assets/css/blog-home.css' %}" rel="stylesheet">
@@ -26,7 +23,7 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Start BlogPost</a>
+        <a class="navbar-brand" href="#">Start Bootstrap</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,24 +36,11 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Categories</a>
+                    <a class="nav-link" href="#">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
-                </li>
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Login</a>
-                </li>
-                {% endif %}
-
             </ul>
         </div>
     </nav>
@@ -74,7 +58,7 @@
 
                 <!-- Search Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Rechercher</h5>
+                    <h5 class="card-header">Search</h5>
                     <div class="card-body">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">
@@ -127,7 +111,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; WAFFO Website 2017</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
         </div>
         <!-- /.container -->
     </footer>

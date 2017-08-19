@@ -37,16 +37,20 @@
 <body>
 <ul class="sidebar-nav">
 
-    ...
-
-   {% if user.is_authenticated %}
+<div class="row">
+    <div class="col-sm-5">
+        {% if user.is_authenticated %}
      <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'logout'%}?next={{ request.path }}">Logout</a></li>
+     <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
    {% else %}
-     <li><a href="{% url 'login'%}?next={{ request.path }}">Login</a></li>
+     <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
    {% endif %}
+    </div>
+
   </ul>
 {% block contenu %}
 {% endblock %}
+</div>
+
 </body>
 </html>

@@ -45,6 +45,8 @@ def home(request):
 class BlogPostDetailView(generic.detail.DetailView):
 
     model = BlogPost
+    template_name = 'blog/blog-detail.html'
+    context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostDetailView, self).get_context_data(**kwargs)
@@ -53,6 +55,8 @@ class BlogPostDetailView(generic.detail.DetailView):
 
 class BlogPostListView(generic.list.ListView):
     model = BlogPost
+    template_name = 'blog/index.html'
+    context_object_name = 'all_blog_posts'
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
@@ -60,6 +64,13 @@ class BlogPostListView(generic.list.ListView):
         return context
 
 
+class BlogListView(generic.ListView):
+    model = Blog
+    template_name = 'blog/blog-list.html'
+    context_object_name = 'all_blog'
+
+    def get_queryset(self):
+        return Blog.objects.all()
 
 
 

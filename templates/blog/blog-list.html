@@ -9,19 +9,19 @@
 
         <h1 class="my-4">Welcome To <small>Blog App</small></h1>
 
-        {% for post in all_blog_posts %}
+        {% for blog in all_blog %}
 
 
                 <!-- Blog Post -->
                 <div class="card mb-4">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
-                        <h2 class="card-title">{{ post.titre }}</h2>
-                        <p class="card-text">{{ post.contenu }}</p>
-                        <a href="#" class="btn btn-info">Read More &rarr;</a>
+                        <h2 class="card-title">{{ blog.auteur }}</h2>
+                        <p class="card-text">{{ blog.theme }}</p>
+                        <a href="#" class="btn btn-info">View Wall &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on {{ post.date_post }} by <a href="#">Start Bootstrap</a>
+                        Posted on {{ blog.date_post }} by <a href="#">Start Bootstrap</a>
                     </div>
                 </div>
 

@@ -9,7 +9,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 
 from waffo import settings
 
-from profiles.form import ProfileForm, UserForm, SignUpForm, SignInForm
+from profiles.form import *
+#ProfileForm, UserForm, SignUpForm, SignInForm
 
 # Create your views here.
 #
@@ -48,6 +49,106 @@ def signup(request):
     else:
         form    = SignUpForm()
         return render(request, 'profiles/signup.html', {'form': form})
+
+@login_required
+def signin(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        username = request.POST['username']
+        password = request.POST['password']
+
+        print username, password
+        return HttpResponseRedirect(settings.LOGIN_URL)
+        # return redirect('/blog/actualite/')#render(request, 'registration/login.html')
+    form = LoginForm()
+    return render(request, 'registration/login.html', {'form': form})
+
+
+
+
+
+
+#
+#
+#
+#
+# from django.utils.http import is_safe_url
+# from django.contrib.auth.forms import AuthenticationForm
+# from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout as auth_logout
+# from django.utils.decorators import method_decorator
+# from django.views.decorators.cache import never_cache
+# from django.views.decorators.csrf import csrf_protect
+# from django.views.decorators.debug import sensitive_post_parameters
+# from django.views.generic import FormView, RedirectView
+#
+#
+# class LoginView(FormView):
+#     """
+#     Provides the ability to login as a user with a username and password
+#     """
+#     success_url = '/blog/actualite/'
+#     form_class = AuthenticationForm
+#     redirect_field_name = REDIRECT_FIELD_NAME
+#
+#     template_name = 'registration/login.html'
+#
+#     @method_decorator(sensitive_post_parameters('password'))
+#     @method_decorator(csrf_protect)
+#     @method_decorator(never_cache)
+#     def dispatch(self, request, *args, **kwargs):
+#         # Sets a test cookie to make sure the user has cookies enabled
+#         request.session.set_test_cookie()
+#
+#         return super(LoginView, self).dispatch(request, *args, **kwargs)
+#
+#     def form_valid(self, form):
+#         auth_login(self.request, form.get_user())
+#
+#         # If the test cookie worked, go ahead and
+#         # delete it since its no longer needed
+#         if self.request.session.test_cookie_worked():
+#             self.request.session.delete_test_cookie()
+#
+#         return super(LoginView, self).form_valid(form)
+#
+#     def get_success_url(self):
+#         redirect_to = self.request.REQUEST.get(self.redirect_field_name)
+#         if not is_safe_url(url=redirect_to, host=self.request.get_host()):
+#             redirect_to = self.success_url
+#         return redirect_to
+#
+#
+# class LogoutView(RedirectView):
+#     """
+#     Provides users the ability to logout
+#     """
+#     url = '/blog/actualite/'
+#
+#     def get(self, request, *args, **kwargs):
+#         auth_logout(request)
+#         return super(LogoutView, self).get(request, *args, **kwargs)
+#
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @login_required
 @transaction.atomic
@@ -89,41 +190,41 @@ def profile(request):
     return render(request, 'profiles/viewprofile.html', context_dict)
 
 
-def userlogin(request):
-    next = request.GET.get('next', '/home/')
-    # form = UserForm(request.POST)
-    if request.method == 'POST':
-
-        form = SignInForm(request.POST, instance=request.user)
-        if form.is_valid():
-            print "Valid Form"
-            username = form.cleaned_data['username']
-            password = request.POST['password']
-
-            user = authenticate(username=username, password=password)
-
-            if user is not None:
-                print "User is not None"
-                if user.is_active:
-                    login(request, user)
-                    return HttpResponseRedirect(next)
-                else:
-                    return HttpResponse("Inactive User.")
-            else:
-                print "User is None"
-                return HttpResponseRedirect(settings.LOGIN_URL)
-        else:
-            print "Form is not valid."
-            print form
-            # form = SignInForm()
-            return render(request, "registration/login.html", {'form':form, 'redirect_to': next})
-
-    else:
-        form = SignInForm()
-
-        return render(request, "registration/login.html", {'form': form, 'redirect_to': next})
-        # return render(request, "registration/login.html", {'redirect_to': next})
-
+# def userlogin(request):
+#     next = request.GET.get('next', '/home/')
+#     # form = UserForm(request.POST)
+#     if request.method == 'POST':
+#
+#         form = SignInForm(request.POST, instance=request.user)
+#         if form.is_valid():
+#             print "Valid Form"
+#             username = form.cleaned_data['username']
+#             password = request.POST['password']
+#
+#             user = authenticate(username=username, password=password)
+#
+#             if user is not None:
+#                 print "User is not None"
+#                 if user.is_active:
+#                     login(request, user)
+#                     return HttpResponseRedirect(next)
+#                 else:
+#                     return HttpResponse("Inactive User.")
+#             else:
+#                 print "User is None"
+#                 return HttpResponseRedirect(settings.LOGIN_URL)
+#         else:
+#             print "Form is not valid."
+#             print form
+#             # form = SignInForm()
+#             return render(request, "registration/login.html", {'form':form, 'redirect_to': next})
+#
+#     else:
+#         form = SignInForm()
+#
+#         return render(request, "registration/login.html", {'form': form, 'redirect_to': next})
+#         # return render(request, "registration/login.html", {'redirect_to': next})
+#
 
 @login_required
 def userlogout(request):
