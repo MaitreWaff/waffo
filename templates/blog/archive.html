@@ -1,8 +1,8 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/blog-home-base.html' %}
 
 {% block title %} Archives {% endblock %}
 
-{% block content %}
+{% block blogentries %}
     {% for post in posts %}
         <h2>{{ post.titre }}</h2>
         <p>{{ post.date_post|date:"l, F jS" }}</p>

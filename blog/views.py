@@ -21,7 +21,7 @@ def archive(request):
     context = RequestContext(request)
     context_dict = {'posts': posts}
 
-    return render_to_response('blog/archive.html', context_dict, context)
+    return render_to_response('blog/blog-home.html', context_dict, context)
 
 def blogs(request):
     bloglist = Blog.objects.all()

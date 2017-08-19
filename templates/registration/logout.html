@@ -1,7 +1,7 @@
-{% extends 'registration/base.html' %}
+{% extends 'registration/blog-home-base.html' %}
 
-{% block contenu %}
+{% block blogentries %}
 
     <p><h1>You are now logged out.</h1></p>
-    <p><a href="{% url 'auth_login' %}">Log in</a> again.</p>
+    <p><a href="{% url 'login' %}">Log in</a> again.</p>
 {% endblock %}
