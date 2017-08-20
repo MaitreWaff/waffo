@@ -56,7 +56,8 @@ class BlogPostDetailView(generic.detail.DetailView):
 
 class BlogPostListView(generic.list.ListView):
     model = BlogPost
-    template_name = 'blog/index.html'
+    template_name = 'blog/blog-list.html'
+    # template_name = 'blog/index.html'
     context_object_name = 'all_blog_posts'
 
     def get_context_data(self, **kwargs):

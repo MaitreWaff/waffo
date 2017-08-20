@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Blog Home | {% block title %}{% endblock %}</title>
+    <title>Blog | {% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'blog-list' %}">Hi, {{ user.username|title }}!</a>
+                <a class="navbar-brand" href="{% block hrefbrandnavbar %}{% url 'blog-list' %}{% endblock%}">Hi, {{ user.username|title }}!</a>
 
             {% else %}
                 <a class="navbar-brand" href="{% url 'register' %}">Register Here.</a>
@@ -44,10 +44,17 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog-list' %}">Blogs</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Categories</a>
                 </li>
                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'actu' %}">Feed</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
@@ -92,7 +99,7 @@
 
                 <!-- Categories Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Categories</h5>
+                    <h5 class="card-header">Top Categories</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -115,7 +122,7 @@
 
                 <!-- Side Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Side Widget</h5>
+                    <h5 class="card-header">Related</h5>
                     <div class="card-body">
                         You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
                     </div>
@@ -141,6 +148,9 @@
     <script src="{% static 'assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'assets/js/popper.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+
+    {% block javascript %}
+    {% endblock %}
 
 </body>
 
