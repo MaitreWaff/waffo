@@ -8,7 +8,7 @@ from django.template import RequestContext
 from django.template import loader, Context
 from django.http import HttpResponse
 
-from blog.models import Blog, BlogPost
+from blog.models import Blog, BlogPost, BlogSection, SectionSection
 
 # Create your views here.
 
@@ -74,8 +74,23 @@ class BlogListView(generic.ListView):
 
 
 
+def getUserBlog(request):
+    return Blog.objects.get_or_create(auteur=request.user.profile)[0]
 
 
 
 
 
+
+
+# Create vues
+
+class CreatePost(generic.edit.CreateView):
+    model = BlogPost
+    fields = ['titre', 'text']
+
+    def form_valid(self, form):
+        form.instance.auteur = self.request.user
+        blg = getUserBlog(self.request)
+        form.instance.blog = blg
+        return super(CreatePost, self).form_valid(form)
