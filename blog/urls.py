@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^blogslist/$', views.blogs, name='blogs'),
     # url(r'^home/$', views.home, name='home'),
     url(r'^post/create/$', views.CreatePost.as_view(), name='create-post'),
+    url(r'^post/create/comment/(?P<blogid>\d+)/$', views.CreateComment.as_view(), name='create-post-comment'),
 
     # url(r'^login/$', auth_views.login, {'template_name': 'registration/login.html', 'authentication_form': LoginForm}, name='login'),
     # url(r'^logout/$', auth_views.logout, {'template_name': 'registration/logged_out.html'}, name='logout'),

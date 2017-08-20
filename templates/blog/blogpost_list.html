@@ -2,7 +2,7 @@
 
 <ul>
 
-    {% for post in object_list %}
+    {% for post in all_blog_posts %}
         <li>{{ post.date }} - {{ post.titre }}</li>
     {% empty %}
         <li>No Post Yet.</li>

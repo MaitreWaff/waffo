@@ -8,7 +8,8 @@ from django.template import RequestContext
 from django.template import loader, Context
 from django.http import HttpResponse
 
-from blog.models import Blog, BlogPost, BlogSection, SectionSection
+from blog.models import *
+#Blog, BlogPost, BlogSection, SectionSection
 
 # Create your views here.
 
@@ -50,7 +51,7 @@ class BlogPostDetailView(generic.detail.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostDetailView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
+        context['now'] = timezone.now() #
         return context
 
 class BlogPostListView(generic.list.ListView):
@@ -60,7 +61,7 @@ class BlogPostListView(generic.list.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now()
+        context['now'] = timezone.now() #
         return context
 
 
@@ -72,12 +73,13 @@ class BlogListView(generic.ListView):
     def get_queryset(self):
         return Blog.objects.all()
 
-
+# Fonction accessoires.
 
 def getUserBlog(request):
     return Blog.objects.get_or_create(auteur=request.user.profile)[0]
 
-
+def getPost(blogid):
+    return BlogPost.objects.get(pk=blogid)
 
 
 
@@ -94,3 +96,31 @@ class CreatePost(generic.edit.CreateView):
         blg = getUserBlog(self.request)
         form.instance.blog = blg
         return super(CreatePost, self).form_valid(form)
+
+
+class CreateComment(generic.edit.CreateView):
+    model = CommentBlogPost
+    fields = ['commentaire']
+    success_url = '/blog/post/list/'
+    # success_url = '/blog/post/details/'
+
+    def form_valid(self, form):
+        form.instance.auteur = self.request.user
+        post = getPost(self.kwargs['blogid'])
+        form.instance.blogpost = post
+        return super(CreateComment, self).form_valid(form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
