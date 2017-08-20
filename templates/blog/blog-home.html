@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ post.titre }}</h2>
                         <p class="card-text">{{ post.contenu }}</p>
-                        <a href="#" class="btn btn-info">Read Post &rarr;</a>
+                        <a href="{% url 'blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
                         Posted on {{ post.date_post }} by <a href="#">{{ post.blog.auteur }}</a>
@@ -46,19 +46,6 @@
                     </div>
                 </div>
 
-
-                <!-- Blog Post -->
-                <div class="card mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title">Nothing to show.</h2>
-                        <p class="card-text">Revenez prochainement.</p>
-                        <a href="#" class="btn btn-primary">Read More &rarr;</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
-                    </div>
-                </div>
 
 
         {% endfor %}

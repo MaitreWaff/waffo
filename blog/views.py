@@ -75,8 +75,10 @@ class BlogListView(generic.ListView):
 
 # Fonction accessoires.
 
-def getUserBlog(request):
-    return Blog.objects.get_or_create(auteur=request.user.profile)[0]
+def getUserBlog(blogid):
+    # return Blog.objects.get_or_create(auteur=request.user.profile)[0]
+    # return Blog.objects.get_or_create(auteur=profile)[0]
+    return Blog.objects.get_or_create(blog=blogid)[0]
 
 def getPost(blogid):
     return BlogPost.objects.get(pk=blogid)
@@ -87,14 +89,22 @@ def getPost(blogid):
 
 # Create vues
 
+class CreateBlog(generic.edit.CreateView):
+    model = Blog
+    fields = ['theme']
+
+    def form_valid(self, form):
+        form.instance.auteur = self.request.user.profile
+        return super(CreateBlog, self).form_valid(form)
+
+
 class CreatePost(generic.edit.CreateView):
     model = BlogPost
     fields = ['titre', 'text']
 
     def form_valid(self, form):
-        form.instance.auteur = self.request.user
-        blg = getUserBlog(self.request)
-        form.instance.blog = blg
+        form.instance.auteur = self.request.user.profile
+        form.instance.blog = getUserBlog(self.kwargs['blogid'])
         return super(CreatePost, self).form_valid(form)
 
 
@@ -106,8 +116,7 @@ class CreateComment(generic.edit.CreateView):
 
     def form_valid(self, form):
         form.instance.auteur = self.request.user.profile
-        post = getPost(self.kwargs['postid'])
-        form.instance.blogpost = post
+        form.instance.blogpost = getPost(self.kwargs['postid'])
         return super(CreateComment, self).form_valid(form)
 
 
