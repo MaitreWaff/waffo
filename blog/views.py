@@ -100,13 +100,13 @@ class CreatePost(generic.edit.CreateView):
 
 class CreateComment(generic.edit.CreateView):
     model = CommentBlogPost
-    fields = ['commentaire']
+    fields = ['commentaire',]
     success_url = '/blog/post/list/'
     # success_url = '/blog/post/details/'
 
     def form_valid(self, form):
-        form.instance.auteur = self.request.user
-        post = getPost(self.kwargs['blogid'])
+        form.instance.auteur = self.request.user.profile
+        post = getPost(self.kwargs['postid'])
         form.instance.blogpost = post
         return super(CreateComment, self).form_valid(form)
 
