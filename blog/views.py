@@ -64,6 +64,13 @@ class BlogPostListView(generic.list.ListView):
         context['now'] = timezone.now() #
         return context
 
+class BlogDetailView(generic.DetailView):
+    model = Blog
+    template_name = 'blog/blog-detail.html'
+    context_object_name = 'blog'
+
+    def get_queryset(self):
+        return Blog.objects.filter(pk=self.kwargs['pk'])
 
 class BlogListView(generic.ListView):
     model = Blog
@@ -72,6 +79,10 @@ class BlogListView(generic.ListView):
 
     def get_queryset(self):
         return Blog.objects.all()
+
+
+
+
 
 # Fonction accessoires.
 
