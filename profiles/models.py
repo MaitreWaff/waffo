@@ -40,7 +40,8 @@ class Profile(models.Model):
         return "%s" % self.user
 
     def get_absolute_url(self):
-        return reverse('viewuserprofile', kwargs={'pk': self.pk})
+        return ('viewuserprofile',(), {'pk':self.pk})
+        # return reverse('viewuserprofile', kwargs={'pk': self.pk})
         # return "/profile/view/%s" % self.pk
 
 @receiver(post_save, sender=User)
