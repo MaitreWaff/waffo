@@ -15,8 +15,8 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^$', views.archive, name='archive'),
-    url(r'^profile/$', views.update_profile, name='profile'),
-    url(r'^userprofile/$', views.profile, name='userprofile'),
+    url(r'^update/$', views.update_profile, name='profile'),
+    url(r'^user/$', views.profile, name='userprofile'),
     # url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^home/$', views.home, name='home'),
 

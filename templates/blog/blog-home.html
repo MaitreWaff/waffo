@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ post.titre }}</h2>
                         <p class="card-text">{{ post.contenu }}</p>
-                        <a href="{% url 'blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
+                        <a href="{% url 'blogpost-details' post.blog.slug %}" class="btn btn-info">Read Post &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
                         Posted on {{ post.date_post }} by <a href="#">{{ post.blog.auteur }}</a>

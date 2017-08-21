@@ -38,6 +38,9 @@ class Profile(models.Model):
     def __unicode__(self):
         return "%s" % self.user
 
+    def get_absolute_url(self):
+        return "/blog/profile/%s" % self.user
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:

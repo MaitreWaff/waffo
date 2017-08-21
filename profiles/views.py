@@ -171,7 +171,7 @@ def update_profile(request):
     return render(request, 'profiles/profile.html', context_dict)
 
 @login_required
-def profile(request):
+def viewprofile(request):
     if request.method == 'POST':
         user_form       = UserForm(request.POST, instance=request.user)
         profile_form    = ProfileForm(request.POST, instance=request.user.profile)
@@ -186,6 +186,17 @@ def profile(request):
     else:
         user_form       = UserForm(instance=request.user)
         profile_form    = ProfileForm(instance=request.user.profile)
+    context_dict = {'user_form': user_form, 'profile_form': profile_form}
+    return render(request, 'profiles/viewprofile.html', context_dict)
+
+
+@login_required
+def profile(request):
+    # Fonction de test a supprimer plutard.
+
+    user_form   = UserForm(instance=request.user)
+    profile_form= ProfileForm(instance=request.user)
+
     context_dict = {'user_form': user_form, 'profile_form': profile_form}
     return render(request, 'profiles/viewprofile.html', context_dict)
 
