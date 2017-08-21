@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from django.core.urlresolvers import reverse
 # CONSTANTES
 CF_LOC_MAX      = 30
 SEXE_MAX_L      = 5
@@ -39,7 +40,8 @@ class Profile(models.Model):
         return "%s" % self.user
 
     def get_absolute_url(self):
-        return "/profile/view/%s" % self.pk
+        return reverse('viewuserprofile', kwargs={'pk': self.pk})
+        # return "/profile/view/%s" % self.pk
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

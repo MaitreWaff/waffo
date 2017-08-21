@@ -216,7 +216,7 @@ def profile(request):
 def viewuserprofile(request, pk):
     prof = Profile.objects.get(pk=pk)
 
-    print prof
+    # print prof
 
     context_dict    = {'profile': prof}
 
