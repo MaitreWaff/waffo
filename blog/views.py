@@ -68,7 +68,7 @@ class BlogPostListView(generic.list.ListView):
 class BlogDetailView(generic.DetailView):
     model = Blog
     template_name = 'blog/blog-detail.html'
-    context_object_name = 'blog'
+    # context_object_name = 'blog'
 
     def get_queryset(self):
         return Blog.objects.filter(pk=self.kwargs['pk'])
@@ -87,10 +87,10 @@ class BlogListView(generic.ListView):
 
 # Fonction accessoires.
 
-def getUserBlog(blogid):
+def getUserBlog(blog_id):
     # return Blog.objects.get_or_create(auteur=request.user.profile)[0]
     # return Blog.objects.get_or_create(auteur=profile)[0]
-    return Blog.objects.get_or_create(blog=blogid)[0]
+    return Blog.objects.get_or_create(blog=blog_id)[0]
 
 def getPost(blogid):
     return BlogPost.objects.get(pk=blogid)
@@ -116,7 +116,7 @@ class CreatePost(generic.edit.CreateView):
 
     def form_valid(self, form):
         form.instance.auteur = self.request.user.profile
-        form.instance.blog = getUserBlog(self.kwargs['blogid'])
+        form.instance.blog = getUserBlog(self.kwargs['blog_id'])
         return super(CreatePost, self).form_valid(form)
 
 

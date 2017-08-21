@@ -26,7 +26,7 @@
         <!--<a class="navbar-brand" href="#">-->
 
             {% if user.is_authenticated %}
-                <a class="navbar-brand" href="{% url 'blog-list' %}">Hi, {{ user.username|title }}!</a>
+                <a class="navbar-brand" href="{% block hrefbrandnavbar %}{% url 'blog-list' %}{% endblock%}">Hi, {{ user.username|title }}!</a>
                 <!---->
             {% else %}
                 <a class="navbar-brand" href="{% url 'register' %}">Register Here.</a>
@@ -45,10 +45,16 @@
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog-list' %}">Blogs</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'actu' %}">Feed</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Profile</a>
@@ -80,7 +86,7 @@
 
                 <!-- Search Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Search</h5>
+                    <h5 class="card-header">Rechercher</h5>
                     <div class="card-body">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">
@@ -93,7 +99,7 @@
 
                 <!-- Categories Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Categories</h5>
+                    <h5 class="card-header">Top Categories</h5>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
@@ -116,7 +122,7 @@
 
                 <!-- Side Widget -->
                 <div class="card my-4">
-                    <h5 class="card-header">Side Widget</h5>
+                    <h5 class="card-header">Related</h5>
                     <div class="card-body">
                         You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
                     </div>

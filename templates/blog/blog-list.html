@@ -16,14 +16,22 @@
 
                 <!-- Blog Post -->
                 <div class="card mb-4">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <a href="{% url 'blog-detail' blog.id %}">
+                        {% if blog.illustration %}
+                            <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" alt="Card image cap">
+
+                        {% else %}
+                            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+
+                        {% endif %}
+                    </a>
                     <div class="card-body">
                         <h2 class="card-title">{{ blog.auteur|title }}</h2>
-                        <p class="card-text">{{ blog.theme }}</p>
+                        <p class="card-text">{{ blog.theme|title }}</p>
                         <a href="{% url 'blog-detail' blog.id %}" class="btn btn-info">View On Wall &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on {{ blog.date_post }} by <a href="#">Start Bootstrap</a>
+                        Posted on {{ blog.date_blog }} by <a href="#">{{ blog.auteur|title }}</a>
                     </div>
                 </div>
 
@@ -34,12 +42,12 @@
                 <div class="card mb-4">
                     <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     <div class="card-body">
-                        <h2 class="card-title">Nothing to show.</h2>
-                        <p class="card-text">Revenez prochainement.</p>
+                        <h2 class="card-title">Aucun Blog Actuellement.</h2>
+                        <p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-blog' %}">ici</a>.</p>
                         <a href="#" class="btn btn-primary">Read More &rarr;</a>
                     </div>
                     <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by <a href="#">Start Bootstrap</a>
+                        Posted on January 1, 2017 by <a href="#">W@luc</a>
                     </div>
                 </div>
 
