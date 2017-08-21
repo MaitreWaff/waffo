@@ -39,7 +39,7 @@ class Profile(models.Model):
         return "%s" % self.user
 
     def get_absolute_url(self):
-        return "/blog/profile/%s" % self.user
+        return "/profile/view/%s" % self.pk
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

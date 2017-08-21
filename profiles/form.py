@@ -22,6 +22,13 @@ class ProfileForm(UserCreationForm):
         # exclude = ('photo',)
         # fields  = ('url', 'location', 'company')
 
+
+class ViewProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        # exclude = ('photo',)
+        fields  = ('mobile', 'sexe', 'bio', 'location', 'date_naiss')
+
 class SignUpForm(UserCreationForm):
     # first_name  = forms.CharField(max_length=FN_MAX_L, required=False, help_text='Optionel.')
     # last_name   = forms.CharField(max_length=LN_MAX_L, required=False, help_text='Optionel.')

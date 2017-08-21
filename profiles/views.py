@@ -7,6 +7,8 @@ from django.shortcuts import render, redirect
 
 from django.http import HttpResponse, HttpResponseRedirect
 
+from django.views import generic
+
 from waffo import settings
 
 from profiles.form import *
@@ -187,6 +189,7 @@ def viewprofile(request):
         user_form       = UserForm(instance=request.user)
         profile_form    = ProfileForm(instance=request.user.profile)
     context_dict = {'user_form': user_form, 'profile_form': profile_form}
+    # context_dict = {'user_form': user_form, 'profile_form': profile_form}
     return render(request, 'profiles/viewprofile.html', context_dict)
 
 
@@ -194,11 +197,44 @@ def viewprofile(request):
 def profile(request):
     # Fonction de test a supprimer plutard.
 
-    user_form   = UserForm(instance=request.user)
+    user_form   = ViewProfileForm(instance=request.user)
     profile_form= ProfileForm(instance=request.user)
 
-    context_dict = {'user_form': user_form, 'profile_form': profile_form}
+    context_dict = {'user_form': user_form}
     return render(request, 'profiles/viewprofile.html', context_dict)
+
+
+
+
+
+
+
+
+
+
+@login_required
+def viewuserprofile(request, pk):
+    user = Profile.objects.get(pk=pk)
+
+    print user
+    for obj in dir(user):
+        print obj
+
+    context_dict    = {'profile': user}
+
+    return render(request, 'profiles/viewuserprofile.html')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # def userlogin(request):
