@@ -2,7 +2,7 @@
 
 {% block title %} News Feed {% endblock %}
 
-{% block hrefbrandnavbar %}{% url 'create-post' blog_id=post.blog.id %}{% endblock%}
+{% block hrefbrandnavbar %}{% url 'create-post' post.slug %}{% endblock%}
 
 {% block blogentries %}
     <!-- Blog Entries Column -->

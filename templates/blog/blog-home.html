@@ -56,11 +56,38 @@
             <li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>
         </ul>
 
-
+        <a href="#" id="wawaluc">JQuery</a>
 
     </div>
 {% endblock %}
 
 
+{% block javascript %}
 
-{% block centre-page %}{% endblock %}
+<script language="text/javascript">
+  $(document).ready(function() {
+   /* Try to dis-comment this: */
+   $('#wawaluc').click(function () {
+    alert('jQuery.click()');
+    return true;
+   });
+
+  });
+  function button_onClick() {
+   $('#wawaluc').click();
+  }
+  function a_onClick() {
+   alert('wawaluc_onClick');
+  }
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
