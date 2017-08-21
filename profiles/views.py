@@ -214,15 +214,13 @@ def profile(request):
 
 @login_required
 def viewuserprofile(request, pk):
-    user = Profile.objects.get(pk=pk)
+    prof = Profile.objects.get(pk=pk)
 
-    print user
-    for obj in dir(user):
-        print obj
+    print prof
 
-    context_dict    = {'profile': user}
+    context_dict    = {'profile': prof}
 
-    return render(request, 'profiles/viewuserprofile.html')
+    return render(request, 'profiles/viewuserprofile.html', context_dict)
 
 
 
