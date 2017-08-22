@@ -122,35 +122,35 @@
                         </div>
                         <div class="media-body">
                             <hr>
-                            <h3><strong>Bio</strong></h3>
+                            <h3><i class="fa fa-user-circle" aria-hidden="true"></i> <strong>Bio</strong></h3>
                             {% if profile.bio %}
                                 <p>{{ profile.bio }}</p>
                             {% else %}
                                 <p>Ask</p>
                             {% endif %}
                             <hr>
-                            <h3><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Location</strong></h3>
+                            <h4><i class="fa fa-map-marker" aria-hidden="true"></i> <strong>Location</strong></h4>
                             {% if profile.location %}
                                 <p>{{ profile.location }}</p>
                             {% else %}
                                 <p>Ask</p>
                             {% endif %}
                             <hr>
-                            <h3><strong>Gender</strong></h3>
+                            <h4><i class="fa fa-transgender-alt" aria-hidden="true"></i> <strong>Gender</strong></h4>
                             {% if profile.sexe %}
-                                <p>{{ profile.sexe }}</p>
+                                <p>{{ profile.sexe|yesno:"Male,Female" }}</p>
                             {% else %}
                                 <p>Unknown</p>
                             {% endif %}
                             <hr>
-                            <h3><i class="fa fa-birthday-cake" aria-hidden="true"></i> <strong>Birthday</strong></h3>
+                            <h4><i class="fa fa-birthday-cake" aria-hidden="true"></i> <strong>Birthday</strong></h4>
                             {% if profile.date_naiss %}
                                 <p>{{ profile.date_naiss }}</p>
                             {% else %}
                                 <p>Ask</p>
                             {% endif %}
                             <hr>
-                            <h3><i class="fa fa-globe" aria-hidden="true"></i><strong>Joined On</strong></h3>
+                            <h5><i class="fa fa-globe" aria-hidden="true"></i> <strong>Joined On</strong></h5>
                             {% if profile.joined_on %}
                                 <p>{{ profile.joined_on }}</p>
                             {% else %}
@@ -176,7 +176,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <span>
-                        <h1 class="panel-title pull-left" style="font-size:30px;">{{ profile.user }} <small>{{ profile.user.email }}</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
+                        <h1 class="panel-title pull-left" style="font-size:30px;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ profile.user }} <small>{{ profile.user.email }}</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
                         <div class="dropdown pull-right">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Friends
