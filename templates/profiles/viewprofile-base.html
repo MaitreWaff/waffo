@@ -115,9 +115,12 @@
                         </div>
                         <div class="media-body">
                             <hr>
-                            {% if profile.bio %}{% endif %}
                             <h3><strong>Bio</strong></h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
+                            {% if profile.bio %}
+                                <p>{{ profile.bio }}</p>
+                            {% else %}
+                                <p>Ask</p>
+                            {% endif %}
                             <hr>
                             <h3><strong>Location</strong></h3>
                             {% if profile.location %}
@@ -186,6 +189,9 @@
                 </div>
             </div>
             <hr>
+
+            <strong>Simple Post</strong>
+
             <!-- Simple post content example. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -243,6 +249,11 @@
                     </div>
                 </div>
             </div>
+
+
+            <strong>Simple Reshare Post</strong>
+
+
             <!-- Reshare Example -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -314,6 +325,12 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <strong>Simple Post With Picture</strong>
+
+
             <!-- Sample post content with picture. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -372,6 +389,32 @@
                     </div>
                 </div>
             </div>
+
+
+            <strong>Simple Post With Comments</strong>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!-- Sample post content with comments. -->
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -491,6 +534,17 @@
                     </div>
                 </div>
             </div>
+
+
+
+
+<strong>EndPost</strong>
+
+
+
+
+
+
         </div>
     </div>
 </div>
