@@ -43,7 +43,7 @@
                             <a class="navbar-brand" href="./ORqmj" style="margin-right:-8px; margin-top:-5px;">
                                 <img alt="Brand" src="https://lut.im/7trApsDX08/GeilMRp1FIm4f2p7.png" width="30px" height="30px">
                             </a>
-                            <a class="navbar-brand" href="./ORqmj">Project*</a>
+                            <a class="navbar-brand" href="./ORqmj">WafBlog*</a>
                             <i class="brand_network"><small><small>diaspora* Network</small></small></i>
                         </div>
                         <div class="navbar-collapse collapse">
@@ -59,7 +59,7 @@
                                         <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
                                     </span>
                                     <span class="user-name">
-                                        John Doe
+                                        {{ profile.user }}
                                     </span>
                                     <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -72,9 +72,9 @@
                                                             <a href="./3X6zm">Change Photo</a></p>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <span>John Doe</span>
+                                                        <span>{{ profile.user }}</span>
                                                         <p class="text-muted small">
-                                                            example@pods.tld</p>
+                                                            {{ profile.user.email }}</p>
                                                         <div class="divider">
                                                         </div>
                                                         <a href="./56ExR" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
@@ -88,7 +88,7 @@
                                                 <div class="navbar-footer-content">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Passowrd</a>
+                                                            <a href="#" class="btn btn-default btn-sm"><i class="fa fa-unlock-alt" aria-hidden="true"></i> Change Password</a>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <a href="#" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a>
@@ -115,17 +115,37 @@
                         </div>
                         <div class="media-body">
                             <hr>
+                            {% if profile.bio %}{% endif %}
                             <h3><strong>Bio</strong></h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel gravida metus, non ultrices sapien. Morbi odio metus, dapibus non nibh id amet.</p>
                             <hr>
                             <h3><strong>Location</strong></h3>
-                            <p>Earth</p>
+                            {% if profile.location %}
+                                <p>{{ profile.location }}</p>
+                            {% else %}
+                                <p>Ask</p>
+                            {% endif %}
                             <hr>
                             <h3><strong>Gender</strong></h3>
-                            <p>Unknown</p>
+                            {% if profile.sexe %}
+                                <p>{{ profile.sexe }}</p>
+                            {% else %}
+                                <p>Unknown</p>
+                            {% endif %}
                             <hr>
                             <h3><strong>Birthday</strong></h3>
-                            <p>January 01 1901</p>
+                            {% if profile.date_naiss %}
+                                <p>{{ profile.date_naiss }}</p>
+                            {% else %}
+                                <p>Ask</p>
+                            {% endif %}
+                            <hr>
+                            <h3><strong>Joined On</strong></h3>
+                            {% if profile.joined_on %}
+                                <p>{{ profile.joined_on }}</p>
+                            {% else %}
+                                <p>Unknown</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -135,7 +155,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <span>
-                        <h1 class="panel-title pull-left" style="font-size:30px;">John Doe <small>example@pods.tld</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
+                        <h1 class="panel-title pull-left" style="font-size:30px;">{{ profile.user }} <small>{{ profile.user.email }}</small> <i class="fa fa-check text-success" aria-hidden="true" data-toggle="tooltip" data-placement="bottom" title="John Doe is sharing with you"></i></h1>
                         <div class="dropdown pull-right">
                             <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Friends

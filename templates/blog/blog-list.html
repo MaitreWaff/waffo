@@ -34,7 +34,7 @@
                             <a href="{% url 'blog-detail' blog.id %}" class="btn btn-info">View On Wall &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
-                            Posted on {{ blog.date_blog }} by <a href="#">{{ blog.auteur|title }}</a>
+                            Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.id %}">{{ blog.auteur|title }}</a>
                         </div>
                     </div>
 
