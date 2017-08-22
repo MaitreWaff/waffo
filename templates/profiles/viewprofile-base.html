@@ -216,18 +216,137 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+
+
+
+
+<!-- Utilisation du contexte dans une balise update-holder-->
+
             {% if profile.blog_set.all %}
                 <p>Il y a {{ profile.blog_set.all|length }} Blog(s) pour ce mec.</p>
 
 
-            {% for blog in profile.blog_set.all %}
-                <strong>Blog: {{ blog.theme }} </strong>
+                {% for blog in profile.blog_set.all %}
+                    <!--le profile a des blogs-->
+                    {% if blog.posts.all %}
+                        <!--le blog a des posts-->
+                        {% for post in blog.posts.all %}
+                            Titre: {{ post.titre }}
+
+
+
+
+
+                {% if post.blogsections.all %}
+                    <!--Le post a des Sections.-->
+                    {% for blogsec in post.blogsections.all %}
+
+                        Blog_Section: {{ blogsec.titre }}
                 <br />
-            {% endfor %}
+
+
+                {% if blogsec.secsections.all %}
+                    <!--La Section a des sous Sections.-->
+                    {% for sucsection in blogsec.secsections.all %}
+                        SubSection: {{ subsection.titre }}
+                <br />
+                    {% endfor %}
+                {% else %}
+                    <!--La Section de Blog n a aucune sous Section-->
+                    <p>No subSection on this Section</p>
+                {% endif %}
+
+
+
+
+
+                    {% endfor %}
+
+                {% else %}
+                <!--Le Blog n a aucune Section.-->
+                    <p>No Section on this Blog</p>
+                {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+                        {% endfor %}
+                    {% else %}
+                        <!--le profile n a aucun post-->
+                        No Post Yet
+                    {% endif %}
+                    <strong>Blog: {{ blog.theme }} </strong>
+                    <br />
+                {% endfor %}
 
             {% else %}
                 <p>Il y a 000 Blog pour ce mec.</p>
             {% endif %}
+
+
+<!-- Fin utilisation du contexte dans une balise update-holder-->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
