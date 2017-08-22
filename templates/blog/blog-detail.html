@@ -2,7 +2,7 @@
 
 {% block title %} News Feed {% endblock %}
 
-{% block hrefbrandnavbar %}{% url 'create-post' post.slug %}{% endblock%}
+{% block hrefbrandnavbar %}{% url 'create-post' blog.id %}{% endblock%}
 
 {% block blogentries %}
     <!-- Blog Entries Column -->
@@ -12,24 +12,36 @@
             <div class="col-lg-8">
 
                 <!-- Title -->
-                <h1 class="mt-4">Post Title: {{ post.titre }}</h1>
+                <h1 class="mt-4">Post Title: {{ blog.theme }}</h1>
+
+
+                <a href="{% url 'blog-detail' blog.slug %}">
+
+                <!-- Preview Image -->
+                    {% if blog.illustration %}
+                        <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" alt="Card image cap">
+
+                    {% else %}
+                        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+
+                    {% endif %}
+                </a>
+                <hr>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{ post.blog.auteur }}</a>
+                    by <a href="#">{{ blog.auteur }}</a>
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p>Posted on {{ post.date_post }}</p>
+                <p>Posted on {{ blog.date_blog }}</p>
 
                 <hr>
 
-                <!-- Preview Image -->
-                <img class="img-fluid rounded" src="/blog/media/{{ post.illustration }}/" alt="">
 
-                <hr>
+
 
                 <!-- Post Content -->
                 <p class="lead">{{ post.text|linebreaksbr }}</p>
