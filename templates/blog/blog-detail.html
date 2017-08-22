@@ -57,141 +57,55 @@
                         <div class="row">
 
 
+                                                    <!--Card Wider-->
+                        <div class="card card-cascade wider">
+
+                            <!--Card image-->
+                            <div class="view overlay hm-white-slight">
+                                <a href="{% url 'blogpost-details' post.slug %}">
+                                    {% if post.illustration %}
+                                        <img src="/blog/media/{{ post.illustration }}/" class="img-fluid">
+                                    {% else %}
+                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg" class="img-fluid">
+                                    {% endif %}
+                                </a>
 
 
+                                <a href="{% url 'blogpost-details' post.slug %}">
+                                    <div class="mask">Read Post &rarr;</div>
+                                </a>
+                            </div>
+                            <!--/Card image-->
+
+                            <!--Card content-->
+                            <div class="card-body text-center">
+                                <!--Title-->
+                                <h4 class="card-title"><strong>{{ post.titre }}</strong></h4>
+                                <h5 class="indigo-text"><strong>{{ post.date_post }}</strong></h5>
+
+                                <p class="card-text">{{ post.text }}</p>
 
 
+                                <!--Linkedin-->
+                                <a class="icons-sm li-ic"><i class="fa fa-linkedin">  </i></a>
+                                <!--Twitter-->
+                                <a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a>
+                                <!--Dribbble-->
+                                <a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a>
 
+                            </div>
+                            <!--/.Card content-->
 
+                        </div>
 
-
-                                        <!--Card Wider-->
-            <div class="card card-cascade wider">
-
-                <!--Card image-->
-                <div class="view overlay hm-white-slight">
-                    {% if post.illustration %}
-                        <img src="/blog/media/{{ post.illustration }}/" class="img-fluid">
-                    {% else %}
-                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg" class="img-fluid">
-                    {% endif %}
-
-
-                    <a href="{% url 'blogpost-details' post.slug %}">
-                        <div class="mask">Read Post &rarr;</div>
-                    </a>
-                </div>
-                <!--/Card image-->
-
-                <!--Card content-->
-                <div class="card-body text-center">
-                    <!--Title-->
-                    <h4 class="card-title"><strong>{{ post.titre }}</strong></h4>
-                    <h5 class="indigo-text"><strong>{{ post.date_post }}</strong></h5>
-
-                    <p class="card-text">{{ post.text }}</p>
-
-
-                    <!--Linkedin-->
-                    <a class="icons-sm li-ic"><i class="fa fa-linkedin">  </i></a>
-                    <!--Twitter-->
-                    <a class="icons-sm tw-ic"><i class="fa fa-twitter"> </i></a>
-                    <!--Dribbble-->
-                    <a class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a>
-
-                </div>
-                <!--/.Card content-->
-
-            </div>
-
-            <hr>
-
-
-
-
-
-
-
-
-
-
-            <!--/.Card Wider-->
-
-
-            <!--&lt;!&ndash;Card Narrower&ndash;&gt;-->
-            <!--<div class="card card-cascade narrower">-->
-
-                <!--&lt;!&ndash;Card image&ndash;&gt;-->
-                <!--<div class="view overlay hm-white-slight">-->
-                    <!--<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" class="img-fluid" alt="">-->
-                    <!--<a>-->
-                        <!--<div class="mask"></div>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;/.Card image&ndash;&gt;-->
-
-                <!--&lt;!&ndash;Card content&ndash;&gt;-->
-                <!--<div class="card-body">-->
-                    <!--<h5 class="pink-text"><i class="fa fa-cutlery"></i> Culinary</h5>-->
-                    <!--&lt;!&ndash;Title&ndash;&gt;-->
-                    <!--<h4 class="card-title">Cheat day inspirations</h4>-->
-                    <!--&lt;!&ndash;Text&ndash;&gt;-->
-                    <!--<p class="card-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>-->
-                    <!--<a class="btn btn-unique">Button</a>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;/.Card content&ndash;&gt;-->
-
-            <!--</div>-->
-            <!--&lt;!&ndash;/.Card Narrower&ndash;&gt;-->
-
-
-            <!--&lt;!&ndash;Card Regular&ndash;&gt;-->
-            <!--<div class="card card-cascade">-->
-
-                <!--&lt;!&ndash;Card image&ndash;&gt;-->
-                <!--<div class="view overlay hm-white-slight">-->
-                    <!--<img src="https://mdbootstrap.com/img/Photos/Others/men.jpg" class="img-fluid" alt="">-->
-                    <!--<a>-->
-                        <!--<div class="mask"></div>-->
-                    <!--</a>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;/.Card image&ndash;&gt;-->
-
-                <!--&lt;!&ndash;Card content&ndash;&gt;-->
-                <!--<div class="card-body text-center">-->
-                    <!--&lt;!&ndash;Title&ndash;&gt;-->
-                    <!--<h4 class="card-title"><strong>Billy Cullen</strong></h4>-->
-                    <!--<h5>Web developer</h5>-->
-
-                    <!--<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, ex, recusandae. Facere modi sunt, quod quibusdam.-->
-                    <!--</p>-->
-
-                    <!--&lt;!&ndash;Facebook&ndash;&gt;-->
-                    <!--<a type="button" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"></i></a>-->
-                    <!--&lt;!&ndash;Twitter&ndash;&gt;-->
-                    <!--<a type="button" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"></i></a>-->
-                    <!--&lt;!&ndash;Google +&ndash;&gt;-->
-                    <!--<a type="button" class="btn-floating btn-small btn-dribbble"><i class="fa fa-dribbble"></i></a>-->
-
-                <!--</div>-->
-                <!--&lt;!&ndash;/.Card content&ndash;&gt;-->
-
-            <!--</div>-->
-            <!--&lt;!&ndash;/.Card Regular&ndash;&gt;-->
-
-
-
-
-
-
-
-
-
-
+                        <hr>
 
 
 
                         </div>
+
+
+
 
                     {% endfor %}
 
