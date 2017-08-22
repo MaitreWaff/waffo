@@ -63,7 +63,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
-                                        <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
+                                        <img src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}" class="img-responsive img-circle" title="John Doe" alt="John Doe" width="30px" height="30px">
                                     </span>
                                     <span class="user-name">
                                         {{ profile.user }}
@@ -74,7 +74,7 @@
                                             <div class="navbar-content">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <img src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                        <img src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
                                                         <p class="text-center small">
                                                             <a href="./3X6zm">Change Photo</a></p>
                                                     </div>
@@ -118,7 +118,7 @@
                 <div class="panel-body">
                     <div class="media">
                         <div align="center">
-                            <img class="thumbnail img-responsive" src="https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png" width="300px" height="300px">
+                            <img class="thumbnail img-responsive" src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}" width="300px" height="300px">
                         </div>
                         <div class="media-body">
                             <hr>
@@ -129,7 +129,7 @@
                                 <p>Ask</p>
                             {% endif %}
                             <hr>
-                            <h3><strong>Location</strong></h3>
+                            <h3><i class="fa fa-map-marker" aria-hidden="true"></i><strong>Location</strong></h3>
                             {% if profile.location %}
                                 <p>{{ profile.location }}</p>
                             {% else %}
@@ -143,14 +143,14 @@
                                 <p>Unknown</p>
                             {% endif %}
                             <hr>
-                            <h3><strong>Birthday</strong></h3>
+                            <h3><i class="fa fa-birthday-cake" aria-hidden="true"></i> <strong>Birthday</strong></h3>
                             {% if profile.date_naiss %}
                                 <p>{{ profile.date_naiss }}</p>
                             {% else %}
                                 <p>Ask</p>
                             {% endif %}
                             <hr>
-                            <h3><strong>Joined On</strong></h3>
+                            <h3><i class="fa fa-globe" aria-hidden="true"></i><strong>Joined On</strong></h3>
                             {% if profile.joined_on %}
                                 <p>{{ profile.joined_on }}</p>
                             {% else %}
@@ -259,7 +259,7 @@
 
 
 
-            
+
 
 
 
@@ -275,41 +275,62 @@
                     {% if blog.posts.all %}
                         <!--le blog a des posts-->
                         {% for post in blog.posts.all %}
-                            Titre: {{ post.titre }}
+                            Post: {{ post.titre }}
 
 
 
 
 
-                {% if post.blogsections.all %}
-                    <!--Le post a des Sections.-->
-                    {% for blogsec in post.blogsections.all %}
-
-                        Blog_Section: {{ blogsec.titre }}
-                <br />
-
-
-                {% if blogsec.secsections.all %}
-                    <!--La Section a des sous Sections.-->
-                    {% for sucsection in blogsec.secsections.all %}
-                        SubSection: {{ subsection.titre }}
-                <br />
-                    {% endfor %}
-                {% else %}
-                    <!--La Section de Blog n a aucune sous Section-->
-                    <p>No subSection on this Section</p>
-                {% endif %}
 
 
 
 
 
-                    {% endfor %}
 
-                {% else %}
-                <!--Le Blog n a aucune Section.-->
-                    <p>No Section on this Blog</p>
-                {% endif %}
+                            {% if post.blogsections.all %}
+                                <!--Le post a des Sections.-->
+                                {% for blogsec in post.blogsections.all %}
+
+                                    Blog_Section: {{ blogsec.titre }}
+                            <br />
+
+
+                            {% if blogsec.secsections.all %}
+                                <!--La Section a des sous Sections.-->
+                                {% for sucsection in blogsec.secsections.all %}
+                                    SubSection: {{ subsection.titre }}
+                            <br />
+                                {% endfor %}
+                            {% else %}
+                                <!--La Section de Blog n a aucune sous Section-->
+                                <p>No subSection on this Section</p>
+                            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        {% endfor %}
+
+                    {% else %}
+                    <!--Le Blog n a aucune Section.-->
+                        <p>No Section on this Blog</p>
+                    {% endif %}
 
 
 
@@ -707,7 +728,7 @@
                                             <img class="media-object img-circle" src="https://diaspote.org/uploads/images/thumb_large_283df6397c4db3fe0344.png" width="35px" height="35px" style="margin-right:8px; margin-top:-5px;">
                                         </a>
                                     </div>
-                                    <h4><a href="#" style="text-decoration:none;"><strong>✪ SтeғOғғιcιel ✪ ツ</strong></a></h4>
+                                    <h4><a href="#" style="text-decoration:none;"><strong>✪ W@ғOғғιcιel ✪ ツ</strong></a></h4>
                                     <hr>
                                     <div class="post-content">
                                         Comment example.<br><br>
