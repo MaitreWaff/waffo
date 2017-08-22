@@ -1,15 +1,244 @@
-<h1>Profile Details</h1>
+{% extends 'blog/blog-home-base.html' %}
 
-{{ profile }}
-
-<h3>{{ profile.user }}</h3>
-<!--<h3>{{ profile.sexe }}</h3>-->
-<!--<h3>{{ profile.mobile }}</h3>-->
-<h3>{{ profile.bio }}</h3>
-<h3>{{ profile.location }}</h3>
+{% block blogentries %}
 
 
-<h3>{{ profile.pk }}</h3>
+
+<div class="row">
+
+    <!-- some CSS styling changes and overrides -->
+    <style type="text/css">
+    .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+    }
+    .kv-avatar .file-input {
+        display: table-cell;
+        max-width: 220px;
+    }
+    .kv-reqd {
+        color: red;
+        font-family: monospace;
+        font-weight: normal;
+    }
+    </style>
+
+    <!-- markup -->
+    <!-- note: your server code `avatar_upload.php` will receive `$_FILES['avatar']` on form submission -->
+    <!-- the avatar markup -->
+    <div id="kv-avatar-errors-2" class="center-block" style="width:800px;display:none"></div>
+    <form class="form form-vertical" action="/avatar_upload.php" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="kv-avatar center-block text-center" style="width:200px">
+                    <input id="avatar-2" name="avatar-2" type="file" class="file-loading" required>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                      <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="email">Email Address<span class="kv-reqd">*</span></label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="pwd">Password<span class="kv-reqd">*</span></label>
+                    <input type="password" class="form-control" id="pwd" name="pwd" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" class="form-control" id="fname" name="fname" required>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" class="form-control" id="lname" name="lname" required>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <hr>
+                <div class="text-right">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </form>
+    </div>
+
+    <!-- the fileinput plugin initialization -->
+    <script>
+    var btnCust = '<button type="button" class="btn btn-default" title="Add picture tags" ' +
+        'onclick="alert(\'Call your custom code here.\')">' +
+        '<i class="glyphicon glyphicon-tag"></i>' +
+        '</button>';
+    $("#avatar-2").fileinput({
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        showBrowse: false,
+        browseOnZoneClick: true,
+        removeLabel: '',
+        removeIcon: '<i class="glyphicon glyphicon-remove"></i>',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-2',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="/uploads/default_avatar_male.jpg" alt="Your Avatar" style="width:160px"><h6 class="text-muted">Click to select</h6>',
+        layoutTemplates: {main2: '{preview} ' +  btnCust + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
+    });
+    </script>
+
+
+
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>-->
+    <!--<script type="text/css">-->
+
+    <!--/* ==========================================================================-->
+       <!--Author's custom styles-->
+       <!--========================================================================== */-->
+
+    <!--body-->
+    <!--{-->
+        <!--font-family: 'Open Sans', sans-serif;-->
+    <!--}-->
+
+    <!--.fb-profile img.fb-image-lg{-->
+        <!--z-index: 0;-->
+        <!--width: 100%;-->
+        <!--margin-bottom: 10px;-->
+    <!--}-->
+
+    <!--.fb-image-profile-->
+    <!--{-->
+        <!--margin: -90px 10px 0px 50px;-->
+        <!--z-index: 9;-->
+        <!--width: 20%;-->
+    <!--}-->
+
+    <!--@media (max-width:768px)-->
+    <!--{-->
+
+    <!--.fb-profile-text>h1{-->
+        <!--font-weight: 700;-->
+        <!--font-size:16px;-->
+    <!--}-->
+
+    <!--.fb-image-profile-->
+    <!--{-->
+        <!--margin: -45px 10px 0px 25px;-->
+        <!--z-index: 9;-->
+        <!--width: 20%;-->
+    <!--}-->
+    <!--}-->
+
+    <!--</script>-->
+
+    <!--<div class="container">-->
+        <!--<div class="fb-profile">-->
+            <!--<img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example"/>-->
+            <!--<img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example"/>-->
+            <!--<div class="fb-profile-text">-->
+                <!--<h1>Eli Macy</h1>-->
+                <!--<p>Girls just wanna go fun.</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div> &lt;!&ndash; /container &ndash;&gt;-->
+
+    <div class="col-md-8">
+        <h1>Profile Details</h1>
+
+        {{ profile }}
+
+        <h3>{{ profile.user }}</h3>
+        <!--<h3>{{ profile.sexe }}</h3>-->
+        <!--<h3>{{ profile.mobile }}</h3>-->
+        <h3>{{ profile.photo }}</h3>
+        <h3>{{ profile.cover }}</h3>
+        <h3>{{ profile.bio }}</h3>
+        <h3>{{ profile.location }}</h3>
+        <h3>{{ profile.date_naiss }}</h3>
+
+
+        <h3>{{ profile.pk }}</h3>
+
+        <h1>BLog List</h1>
+        <h1>{{ profile.blog_set.all|length }} Blogs </h1><br />
+        {% if profile.blog_set.all|length %}
+            {% for blog in profile.blog_set.all %}
+                {{ blog.theme }}<br />
+            {% empty %}
+                <h1>Aucun Blog</h1>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block javascript %}
+<script type="text/javascript" language="JavaScript">
+    $(document).ready(function(){
+        alert("Hello Waff!");
+    })
+</script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
