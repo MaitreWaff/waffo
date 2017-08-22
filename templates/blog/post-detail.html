@@ -1,8 +1,8 @@
 {% extends 'blog/blog-detail-base.html' %}
 
-{% block title %} News Feed {% endblock %}
+{% block title %} POST Content {% endblock %}
 
-{% block hrefbrandnavbar %}{% url 'create-post' post.slug %}{% endblock%}
+{% block hrefbrandnavbar %}{% endblock%}
 
 {% block blogentries %}
     <!-- Blog Entries Column -->
@@ -27,7 +27,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="/blog/media/{{ blog.illustration }}/" alt="">
+                <img class="img-fluid rounded" src="/blog/media/{{ post.illustration }}/" alt="">
 
                 <hr>
 
