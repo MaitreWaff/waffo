@@ -26,6 +26,13 @@
 
 
 
+<!--<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">-->
+
+
+
+
+
 
 </head>
 
@@ -154,6 +161,17 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
+
+
+
+
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -177,8 +195,8 @@
                     <i class="fa fa-tags" aria-hidden="true"></i> <a href="/tags/diaspora" class="tag">#diaspora</a> <a href="/tags/hashtag" class="tag">#hashtag</a> <a href="/tags/caturday" class="tag">#caturday</a>
                     <br><br><hr>
                     <span class="pull-left">
-                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Posts</a>
-                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Photos <span class="badge">42</span></a>
+                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-files-o" aria-hidden="true"></i> Blogs <span class="badge">{{ profile.blog_set.all|length }}</span></a>
+                        <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-picture-o" aria-hidden="true"></i> Posts <span class="badge">42</span></a>
                         <a href="#" class="btn btn-link" style="text-decoration:none;"><i class="fa fa-fw fa-users" aria-hidden="true"></i> Contacts <span class="badge">42</span></a>
                     </span>
                     <span class="pull-right">
@@ -190,7 +208,49 @@
             </div>
             <hr>
 
+
+
+
+
+
+
+
+
+            {% if profile.blog_set.all %}
+                <p>Il y a {{ profile.blog_set.all|length }} Blog(s) pour ce mec.</p>
+
+
+            {% for blog in profile.blog_set.all %}
+                <strong>Blog: {{ blog.theme }} </strong>
+                <br />
+            {% endfor %}
+
+            {% else %}
+                <p>Il y a 000 Blog pour ce mec.</p>
+            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <strong>Simple Post</strong>
+
+
+
+
 
             <!-- Simple post content example. -->
             <div class="panel panel-default">
@@ -251,7 +311,38 @@
             </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <strong>Simple Reshare Post</strong>
+
+
+
+
+
+
+
 
 
             <!-- Reshare Example -->
@@ -328,7 +419,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <strong>Simple Post With Picture</strong>
+
+
+
+
+
+
+
 
 
             <!-- Sample post content with picture. -->
