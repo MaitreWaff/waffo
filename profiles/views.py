@@ -220,7 +220,8 @@ def viewuserprofile(request, pk):
 
     context_dict    = {'profile': prof}
 
-    return render(request, 'profiles/viewuserprofile.html', context_dict)
+    return render(request, 'profiles/viewprofile-base.html', context_dict)
+    # return render(request, 'profiles/viewuserprofile.html', context_dict)
 
 
 

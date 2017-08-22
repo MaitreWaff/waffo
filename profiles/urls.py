@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # url(r'^$', views.archive, name='archive'),
     url(r'^update/$', views.update_profile, name='profile'),
     url(r'^user/$', views.profile, name='userprofile'),
-    url(r'^view/(?P<pk>\d+)/$', views.viewuserprofile, name='viewuserprofile'),
+    url(r'^(?P<pk>\d+)/$', views.viewuserprofile, name='viewuserprofile'),
     # url(r'^accounts/', include('registration.backends.simple.urls')),
     # url(r'^home/$', views.home, name='home'),
 
