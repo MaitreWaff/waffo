@@ -46,7 +46,7 @@ def home(request):
 class BlogPostDetailView(generic.detail.DetailView):
 
     model = BlogPost
-    template_name = 'blog/blog-detail.html'
+    template_name = 'blog/post-detail.html'
     context_object_name = 'post'
 
     def get_context_data(self, **kwargs):
@@ -56,7 +56,7 @@ class BlogPostDetailView(generic.detail.DetailView):
 
 class BlogPostListView(generic.list.ListView):
     model = BlogPost
-    template_name = 'blog/blog-list.html'
+    template_name = 'blog/post-list.html'
     # template_name = 'blog/index.html'
     context_object_name = 'all_blog_posts'
 
@@ -82,7 +82,7 @@ class BlogDetailView(generic.DetailView):
 class BlogListView(generic.ListView):
     model = Blog
     template_name = 'blog/blog-list.html'
-    context_object_name = 'all_blog'
+    context_object_name = 'all_blogs'
 
     def get_queryset(self):
         return Blog.objects.all()
