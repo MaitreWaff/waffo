@@ -261,7 +261,7 @@
                                                 <img class="media-object img-circle" src="/blog/media/{{ profile.photo }}/" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>{{ profile.user }}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>{{ profile.user }}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date_post|naturaltime }}</i></a></small></small></h4>
                                         <span>
                                             <div class="navbar-right">
                                                 <div class="dropdown">
@@ -282,8 +282,8 @@
                                         </span>
                                         <hr>
                                         <div class="post-content">
-                                            <p>Sample post content with picture.</p>
-                                            <img class="img-responsive" src="/blog/media/{{ post.illustration }}/">
+                                            <img class="img-responsive" src="/blog/media/{{ post.illustration }}/"><br />
+                                            <p>{{ post.text|title }}</p>
                                             <p><br><a href="/tags/christmas" class="tag">#Christmas</a> <a href="/tags/caturday" class="tag">#Caturday</a></p>
                                         </div>
                                         <hr>
@@ -490,7 +490,7 @@
                                                 <img class="media-object img-circle" src="/blog/media/{{ profile.photo }}/" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
-                                        <h4><a href="#" style="text-decoration:none;"><strong>{{ profile.user }}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> 42 minutes ago</i></a></small></small></h4>
+                                        <h4><a href="#" style="text-decoration:none;"><strong>{{ profile.user }}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> {{ blog.date_blog|naturaltime }}</i></a></small></small></h4>
                                         <span>
                                             <div class="navbar-right">
                                                 <div class="dropdown">
