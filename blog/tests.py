@@ -4,6 +4,7 @@ from .models import Blog
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
+from profiles.tests import ProfileTest
 # Create your tests here.
 
 # models test
@@ -14,3 +15,7 @@ class BlogTest(TestCase):
         return blg
 
     def test_blog_creation(self, ):
+        # prof = ProfileTest.create_profile()
+        # blg = self.create_blog(prof)
+        # self.assertEqual(blg.theme, 'Premier Theme du Blog.')
+        pass
