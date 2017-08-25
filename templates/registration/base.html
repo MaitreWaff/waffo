@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +11,19 @@
 
     <title>Login form in modal - Bootsnipp.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="{% static 'assets/css/bootstrap-3.2.0.min.css' %}" rel="stylesheet" id="bootstrap-css">
+    <!--<link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+    <!--<link href="{% static 'assets/css/font-awesome-4.1.0.min.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'assets/css/font-awesome.min.css' %}" rel="stylesheet">-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
     <style type="text/css">
 
     </style>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="{% static 'assets/js/jquery-1.10.2.min.js' %}"></script>
+    <!--<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
+    <script src="{% static 'assets/js/boostrap-3.2.0.min.js' %}"></script>
+    <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -35,22 +43,22 @@
     <title>Blog | {% block title %}{% endblock %}</title>
 </head>
 <body>
-<ul class="sidebar-nav">
+<!--<ul class="sidebar-nav">-->
 
-<div class="row">
-    <div class="col-sm-5">
-        {% if user.is_authenticated %}
-     <li>User: {{ user.get_username }}</li>
-     <li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-   {% else %}
-     <li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
-   {% endif %}
-    </div>
+<!--<div class="row">-->
+    <!--<div class="col-sm-5">-->
+        <!--{% if user.is_authenticated %}-->
+     <!--<li>User: {{ user.get_username }}</li>-->
+     <!--<li><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>-->
+   <!--{% else %}-->
+     <!--<li><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>-->
+   <!--{% endif %}-->
+    <!--</div>-->
 
-  </ul>
+  <!--</ul>-->
+<!--</div>-->
+
 {% block contenu %}
 {% endblock %}
-</div>
-
 </body>
 </html>
