@@ -1,4 +1,6 @@
 {% extends 'blog/blog-home-base.html' %}
+{% load humanize %}
+
 
 {% block title %} News Feed {% endblock %}
 
@@ -19,14 +21,14 @@
                 <!-- Blog Post -->
                 <div class="card mb-4">
                     {% if post.illustration %}
-                        <img class="card-img-top" src="/blog/media/{{ post.illustration }}/" alt="{{ post.titre }}">
+                    <a href="{% url 'blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" alt="{{ post.titre|capfirst }}"></a>
                     {% else %}
                         <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                     {% endif %}
 
                     <div class="card-body">
-                        <h2 class="card-title">{{ post.titre|capfirst }}</h2>
-                        <h4>Blog: {{ post.blog.theme|capfirst }}</h4>
+                        <h4 class="card-title">{{ post.titre|capfirst }}</h4>
+                        <h6><small><small> - via &rarr; <a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
                         <p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>
                         <a href="{% url 'blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
                     </div>

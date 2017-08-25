@@ -18,18 +18,19 @@ urlpatterns = patterns('',
     url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^account/logout/$', 'django.contrib.auth.views.logout', name='logout'),
     url(r'^account/register/$', profile_views.signup, name='register'),
+
+    url(r'^admin/', include(admin.site.urls), name='admin'),
+    url(r'^home/$', profile_views.userhome), # Home => UserHome
+
+    url(r'^blog/', include('blog.urls')),
+    url(r'^profile/', include('profiles.urls', namespace='profile')),
+    url(r'^register/success/$', profile_views.userregister_success),
+
     # url(r'^signup/', profile_views.signup, name='signup'),
     # url(r'^account/', include('registration.backends.simple.urls')),
     # url(r'^accounts/', auth_views.LoginView.as_views()), # include('registration.backends.simple.urls')), # registration.backends.default.urls
     # url(r'^pages/', include('django.contrib.flatpages.urls')),
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    url(r'^admin/', include(admin.site.urls), name='admin'),
-    url(r'^home/$', profile_views.userhome),
-
-
-    url(r'^blog/', include('blog.urls')),
-    url(r'^profile/', include('profiles.urls', namespace='profile')),
-    url(r'^register/success/$', profile_views.userregister_success),
     # url(r'^account/login/$', LoginView.as_view(), name='login'),
     # url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
     # url(r'^logout/$', userlogout, name='logout'),
