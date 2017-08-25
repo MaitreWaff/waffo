@@ -139,7 +139,7 @@
                             <hr>
                             <h4><i class="fa fa-transgender-alt" aria-hidden="true"></i> <strong>Gender</strong></h4>
                             {% if profile.sexe %}
-                                <p>{{ profile.sexe|yesno:"Male,Female" }}</p>
+                                <p>{% if profile.sexe == 2 %}<i class="fa fa-male" aria-hidden="true"></i> Male{% else %}<i class="fa fa-female" aria-hidden="true"></i> Female{% endif %}</p>
                             {% else %}
                                 <p>Unknown</p>
                             {% endif %}
@@ -228,7 +228,7 @@
 <!-- Utilisation du contexte dans une balise update-holder-->
 
             {% if profile.blog_set.all %}
-                <p>Il y a {{ profile.blog_set.all|length }} Blog(s) pour ce mec.</p>
+                <p><small><i class="fa fa-user-circle-o" aria-hidden="true"></i> {{ profile.user|title }} a {{ profile.blog_set.all|length }} Blog(s) pour le moment.</small></p>
 
 
                 {% for blog in profile.blog_set.all %}
@@ -318,11 +318,12 @@
 
                                         {% if post.postcomments.all %}
                                             <!--<p><strong>Il y a les {{ post.postcomments.all|length }} commentaire(s) ... </strong></p>-->
+                                                <a class="btn btn-default btn-xs"><i class="fa fa-bars" aria-hidden="true"></i> Show {{ post.postcomments.all.count|add:-1 }} more comments</a>
+                                                <hr>
 
 
                                             {% for postcomm in post.postcomments.all %}
                                                 <!--Commentaire Blog:<strong>{{ postcomm.auteur }}</strong><br />-->
-
 
                                                         <!--Debut Commentaires-->
                                                         <div class="post-content">
@@ -352,7 +353,7 @@
                                             {% endfor %}
 
                                         {% else %}
-                                            <p><strong>Ce Blog n a aucun commentaire.</strong></p>
+                                            <p><strong><i class="fa fa-comments-o" aria-hidden="true"></i> Ce Post n'a aucun commentaire pour l'instant.</strong></p>
 
                                         {% endif %}
 
@@ -374,10 +375,10 @@
 
                     {% else %}
                         <!--le profile n a aucun post-->
-                        No Post Yet
+                        <!--<p>No Post Yet</p>-->
                     {% endif %}
-                    <strong>Blog: {{ blog.theme }} </strong>
-                    <br />
+                    <!--<strong>Blog: {{ blog.theme }} </strong>-->
+                    <!--<br />-->
                 {% endfor %}
 
             {% else %}
@@ -459,82 +460,13 @@
 
 
 
-            <strong>EndPost</strong>
+            <!--<strong>EndPost</strong>-->
 
 
         </div>
     </div>
 </div>
 
-
-
-
-{% block blogentries %}
-    <!-- Blog Entries Column -->
-
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-
-    <div class="col-md-8">
-        <h1>Profile Details</h1>
-
-        {{ profile }}
-
-        <h3>{{ profile.user }}</h3>
-        <!--<h3>{{ profile.sexe }}</h3>-->
-        <!--<h3>{{ profile.mobile }}</h3>-->
-        <img src="/blog/media/{{ profile.photo }}/" alt="{{ profile.user }} photo">
-        <img src="/blog/media/{{ profile.cover }}/" alt="{{ profile.user }} photo">
-        <h3>{{ profile.photo }}</h3>
-        <h3>{{ profile.cover }}</h3>
-        <h3>{{ profile.bio }}</h3>
-        <h3>{{ profile.location }}</h3>
-        <h3>{{ profile.date_naiss }}</h3>
-
-
-        <h3>{{ profile.pk }}</h3>
-
-        <h1>BLog List</h1>
-        <h1>{{ profile.blog_set.all|length }} Blogs </h1><br />
-        {% if profile.blog_set.all|length %}
-            {% for blog in profile.blog_set.all %}
-                {{ blog.theme }}<br />
-            {% empty %}
-                <h1>Aucun Blog</h1>
-            {% endfor %}
-        {% endif %}
-
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% endblock %}
 
 
 {% block javascript %}
