@@ -14,6 +14,7 @@ from blog.form import *
 
 # Create your views here.
 
+
 def archive(request):
     posts = BlogPost.objects.all()
     post_form = PostForm(request)
@@ -141,9 +142,15 @@ class CreateComment(generic.edit.CreateView):
 
 
 
+class FeedNews(generic.edit.CreateView):
+    model = BlogPost
+    fields = ['titre', 'text']
+    success_url = 'feed-news'
+    template_name = 'blog/feednews.html'
 
-
-
+    def form_valid(self, form):
+        # Ajouter les liens entre le post et un blog.
+        return super(FeedNews, self).form_valid(form)
 
 
 

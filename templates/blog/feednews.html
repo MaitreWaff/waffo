@@ -1,0 +1,154 @@
+{% extends 'blog/blog-home-base.html' %}
+{% load static %}
+{% load humanize %}
+
+
+{% block title %} News Feed {% endblock %}
+
+<!-- Blog Entries Column -->
+{% block blogentries %}
+
+
+    <div class="col-md-6">
+
+        <h1 class="my-4">Welcome To <small>Blog App</small></h1>
+
+
+
+{% if user.is_authenticated %}
+<form action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+</form>
+
+
+{% endif %}
+
+
+
+
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">Status:</h4>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-group inline">
+
+                        <textarea name="Post" id="1" cols="50" rows="5" placeholder="Write Your Status."></textarea>
+                    </div>
+
+                    <input type="submit" value="Post!">
+                </form>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+        {% for post in posts %}
+
+
+                <!-- Blog Post -->
+                <div class="card mb-4">
+                    {% if post.illustration %}
+                    <a href="{% url 'blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" alt="{{ post.titre|capfirst }}"></a>
+                    {% else %}
+                        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h4 class="card-title">{{ post.titre|capfirst }}</h4>
+                        <h6><small><small> - via &rarr; <a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
+                        <p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>
+                        <a href="{% url 'blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on {{ post.date_post }} by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.id %}">{{ post.blog.auteur|capfirst }}</a>
+                    </div>
+                </div>
+
+
+        {% empty %}
+
+                <!-- Blog Post -->
+                <div class="card mb-4">
+                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <div class="card-body">
+                        <h2 class="card-title">Nothing to show.</h2>
+                        <p class="card-text">Revenez prochainement.</p>
+                        <!--<a href="#" class="btn btn-primary">Read More &rarr;</a>-->
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on January 1, 2017 by <a href="#">W@luc</a>
+                    </div>
+                </div>
+
+
+
+        {% endfor %}
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+            <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
+            <li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>
+        </ul>
+
+        <a href="#" id="wawaluc">JQuery</a>
+
+    </div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+{% block javascript %}
+    <script type="text/javascript">
+		$(document).ready(function(){
+			$('.status').click(function() { $('.arrow').css("left", 0);});
+			$('.photos').click(function() { $('.arrow').css("left", 146);});
+		});
+	</script>
+
+<!--<script type="text/javascript" language="JavaScript">-->
+    <!--$(document).ready(function(){-->
+        <!--alert("Hello Waff!");-->
+    <!--})-->
+<!--</script>-->
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

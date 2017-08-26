@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    url(r'^feed-news/$', views.FeedNews.as_view(), name='feed-news'),
     url(r'^$', views.BlogPostListView.as_view(), name='blogpost-list'),
 
     url(r'^post/list/$', views.archive, name='archive'),
