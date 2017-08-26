@@ -147,7 +147,7 @@ class FeedNews(generic.edit.CreateView):
     # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
 
     fields = ['titre', 'text', 'blog']
-    success_url = 'feed-news'
+    success_url = '/blog/feed-news/'
     template_name = 'blog/feednews.html'
 
     def get_context_data(self, **kwargs):
