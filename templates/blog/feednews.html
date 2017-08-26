@@ -16,15 +16,10 @@
 
 
 {% if user.is_authenticated %}
-<form action="">
-    {% csrf_token %}
-    {{ form.as_p }}
-</form>
-
-
-{% endif %}
-
-
+<!--<form action="">-->
+    <!--{% csrf_token %}-->
+    <!---->
+<!--</form>-->
 
 
 
@@ -33,9 +28,13 @@
                 <h4 class="card-title">Status:</h4>
                 <form action="" method="post">
                     {% csrf_token %}
-                    <div class="form-group inline">
+                    <div class="form-group">
+                        {% for field in form %}
+                        <div class="fieldWrapper">
+                            {{ field.label_tag }}{{ field }}
+                        </div>
 
-                        <textarea name="Post" id="1" cols="50" rows="5" placeholder="Write Your Status."></textarea>
+                        {% endfor %}
                     </div>
 
                     <input type="submit" value="Post!">
@@ -44,6 +43,30 @@
 
 
         </div>
+
+
+
+        <!--<div class="card mb-4">-->
+            <!--<div class="card-body">-->
+                <!--<h4 class="card-title">Status:</h4>-->
+                <!--<form action="" method="post">-->
+                    <!--{% csrf_token %}-->
+                    <!--<div class="form-group inline">-->
+
+                        <!--<textarea name="Post" id="1" cols="50" rows="5" placeholder="Write Your Status."></textarea>-->
+                    <!--</div>-->
+
+                    <!--<input type="submit" value="Post!">-->
+                <!--</form>-->
+            <!--</div>-->
+
+
+        <!--</div>-->
+
+
+
+{% endif %}
+
 
 
 
@@ -118,10 +141,10 @@
 
 {% block javascript %}
     <script type="text/javascript">
-		$(document).ready(function(){
-			$('.status').click(function() { $('.arrow').css("left", 0);});
-			$('.photos').click(function() { $('.arrow').css("left", 146);});
-		});
+		<!--$(document).ready(function(){-->
+			<!--$('.status').click(function() { $('.arrow').css("left", 0);});-->
+			<!--$('.photos').click(function() { $('.arrow').css("left", 146);});-->
+		<!--});-->
 	</script>
 
 <!--<script type="text/javascript" language="JavaScript">-->

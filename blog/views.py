@@ -1,7 +1,7 @@
 from django.views import generic
 from django.utils import timezone
 
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, get_object_or_404
 
 from django.template import RequestContext
 
@@ -144,9 +144,30 @@ class CreateComment(generic.edit.CreateView):
 
 class FeedNews(generic.edit.CreateView):
     model = BlogPost
-    fields = ['titre', 'text']
+    # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
+
+    fields = ['titre', 'text', 'blog']
     success_url = 'feed-news'
     template_name = 'blog/feednews.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FeedNews, self).get_context_data(**kwargs)
+        context['posts'] = BlogPost.objects.all() #
+        return context
+
+    def get_user_blogs(self):
+        return Blog.objects.filter(auteur=self.request.user)
+        # return get_object_or_404(Blog, auteur=self.request.user)
+
+    def get_form(self, form_class):
+        form = super(generic.CreateView, self).get_form(form_class)
+        form.fields['blog'].queryset = self.get_user_blogs()
+        return form
+    #
+    # def get_initial(self):
+    #     initial_dict = {'posts': BlogPost.objects.all()}
+    #     # initial_dict = {'blog': self.request.session.get('blogs')}
+    #     return initial_dict
 
     def form_valid(self, form):
         # Ajouter les liens entre le post et un blog.
