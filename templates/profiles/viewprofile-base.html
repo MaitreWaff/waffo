@@ -39,6 +39,9 @@
 
 <div class="mainbody container-fluid">
     <div class="row">
+
+
+
         <div class="navbar-wrapper">
             <div class="container-fluid">
                 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -82,20 +85,25 @@
                                             <div class="navbar-content">
                                                 <div class="row">
                                                     <div class="col-md-5">
-                                                        <img src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
+                                                        <img src="{% if user.is_authenticated %}{% if user.profile.photo %}/blog/media/{{ user.profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}{% else %}{% endif %}" alt="Alternate Text" class="img-responsive" width="120px" height="120px" />
                                                         <p class="text-center small">
                                                             <a href="./3X6zm">Change Photo</a></p>
                                                     </div>
                                                     <div class="col-md-7">
-                                                        <span>{{ profile.user|capfirst }}</span>
-                                                        <p class="text-muted small">
-                                                            {{ profile.user.email }}</p>
-                                                        <div class="divider">
-                                                        </div>
-                                                        <a href="./56ExR" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
-                                                        <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
+                                                        {% if user.is_authenticated %}
+                                                            <span>{{ user|capfirst }}</span>
+                                                            <p class="text-muted small">
+                                                                {{ profile.user.email }}</p>
+                                                            <div class="divider">
+                                                            </div>
+                                                            <a href="./56ExR" class="btn btn-default btn-xs"><i class="fa fa-user-o" aria-hidden="true"></i> Profile</a>
+                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-address-card-o" aria-hidden="true"></i> Contacts</a>
+                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-cogs" aria-hidden="true"></i> Settings</a>
+                                                            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-question-circle-o" aria-hidden="true"></i> Help!</a>
+                                                        {% else %}
+                                                        <!--No User-->
+                                                        {% endif %}
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,6 +129,10 @@
             </div>
         </div>
         <div style="padding-top:50px;"> </div>
+
+
+
+
         <div class="col-lg-2 col-md-2 hidden-sm hidden-xs">
             <div class="panel panel-default">
                 <div class="panel-body">

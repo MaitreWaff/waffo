@@ -9,18 +9,20 @@ from django.template import loader, Context
 from django.http import HttpResponse
 
 from blog.models import *
+from blog.form import *
 #Blog, BlogPost, BlogSection, SectionSection
 
 # Create your views here.
 
 def archive(request):
     posts = BlogPost.objects.all()
+    post_form = PostForm(request)
     # t = loader.get_template("blog/archive.html")
     # c = Context({ 'posts': posts })
     # return HttpResponse(t.render(c))
 
     context = RequestContext(request)
-    context_dict = {'posts': posts}
+    context_dict = {'posts': posts, 'postform': post_form}
 
     return render_to_response('blog/blog-home.html', context_dict, context)
 
@@ -51,7 +53,7 @@ class BlogPostDetailView(generic.detail.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostDetailView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now() #
+        # context['now'] = timezone.now() #
         return context
 
 class BlogPostListView(generic.list.ListView):
@@ -62,7 +64,7 @@ class BlogPostListView(generic.list.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
-        context['now'] = timezone.now() #
+        # context['now'] = timezone.now() #
         return context
 
 class BlogDetailView(generic.DetailView):
