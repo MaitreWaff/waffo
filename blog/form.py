@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import BlogPost
+from .models import Blog, BlogPost
 
 # Formulaires du Blog
 #
@@ -17,3 +17,11 @@ class PostForm(forms.ModelForm):
 #
 # class PostForm(forms.Form):
 #     status = forms.TextInput()
+
+
+class BlogForm(forms.ModelForm):
+
+    class Meta:
+        model = Blog
+        exclude = ('auteur', 'illustration', 'date_blog', 'slug')
+

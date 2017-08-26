@@ -6,7 +6,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
 
 from django.template import loader, Context
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from blog.models import *
 from blog.form import *
@@ -172,6 +172,61 @@ class FeedNews(generic.edit.CreateView):
     def form_valid(self, form):
         # Ajouter les liens entre le post et un blog.
         return super(FeedNews, self).form_valid(form)
+
+
+
+class CreateBlog(generic.edit.CreateView):
+    form_class = BlogForm
+    model = Blog
+
+    # fields = ['theme']
+    fields = ['auteur', 'theme']
+    success_url = '/blog/list/'
+    template_name = 'blog/blog-list.html'
+
+    def get_user(self):
+        return Profile.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateBlog, self).get_context_data(**kwargs)
+        context['all_blogs'] = Blog.objects.order_by('-date_blog')
+        return context
+
+    def get_form(self, form_class):
+        form = super(generic.CreateView, self).get_form(form_class)
+        # form.fields['auteur'].queryset = self.get_user()
+        return form
+
+
+    def form_valid(self, form):
+        # obj = form.save(commit=False)
+        # obj.auteur = self.request.user.profile
+        # obj.save()
+        # form['auteur'] = self.request.user.profile
+
+        # self.object = form.save(commit=False)
+        # self.object.auteur = self.request.user.profile
+        # self.object.save()
+        form.instance.auteur = Profile.objects.get(user=self.request.user)
+
+        return super(CreateBlog, self).form_valid(form)
+        # return HttpResponseRedirect(self.get_success_url())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
