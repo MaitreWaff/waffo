@@ -140,7 +140,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # Add this to tell Django where to redirect after
 # successful login
 
-LOGIN_REDIRECT_URL = '/blog/actualite/'
+LOGIN_REDIRECT_URL = '/blog/feed-news/'
 
 ROOT_URLCONF = 'waffo.urls'
 
