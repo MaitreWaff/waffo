@@ -12,11 +12,11 @@
             <div class="col-lg-6">
 
                 <!-- Title -->
-                <h1 class="mt-4">Post Title: {{ post.titre }}</h1>
+                <h1 class="mt-4">Post Title: {{ post.titre|capfirst }}</h1>
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{ post.blog.auteur }}</a>
+                    by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.id %}">{{ post.blog.auteur|capfirst }}</a>
                 </p>
 
                 <hr>
@@ -38,12 +38,12 @@
 
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>-->
 
-                <blockquote class="blockquote">
-                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer class="blockquote-footer">Someone famous in
-                        <cite title="Source Title">Source Title</cite>
-                    </footer>
-                </blockquote>
+                <!--<blockquote class="blockquote">-->
+                    <!--<p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>-->
+                    <!--<footer class="blockquote-footer">Someone famous in-->
+                        <!--<cite title="Source Title">Source Title</cite>-->
+                    <!--</footer>-->
+                <!--</blockquote>-->
 
                 <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>-->
 
@@ -68,33 +68,33 @@
                 {% if post.postcomments.all|length %}
                     <!--<strong>Il y a commentaire pour ce post.</strong>-->
 
-                {% for commentaire in post.postcomments.all %}
+                    {% for commentaire in post.postcomments.all %}
 
-                    <!-- Single Comment -->
-                    <div class="media mb-4">
-                        <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ commentaire.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="{{ commentaire.auteur|capfirst}}"></a>
-                        <div class="media-body">
-                            <h5 class="mt-0"><a href="#">{{ commentaire.auteur|capfirst }}</a></h5> {{ commentaire.commentaire|linebreaks }}
-                            {% if commentaire.replycomments.all %}
-                                <!--<strong>Il y a reponse a ca aussi ... :P</strong>-->
+                        <!-- Single Comment -->
+                        <div class="media mb-4">
+                            <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ commentaire.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="{{ commentaire.auteur|capfirst}}"></a>
+                            <div class="media-body">
+                                <h5 class="mt-0"><a href="#">{{ commentaire.auteur|capfirst }}</a></h5> {{ commentaire.commentaire|linebreaks }}
+                                {% if commentaire.replycomments.all %}
+                                    <!--<strong>Il y a reponse a ca aussi ... :P</strong>-->
 
-                            {% for reply in commentaire.replycomments.all %}
-                                <div class="media mt-4">
-                                    <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ reply.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt=""></a>
-                                    <div class="media-body">
-                                        <h5 class="mt-0"><a href="#">{{ reply.auteur|capfirst }}</a></h5>{{ reply.commentaire|linebreaks }}
+                                {% for reply in commentaire.replycomments.all %}
+                                    <div class="media mt-4">
+                                        <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ reply.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt=""></a>
+                                        <div class="media-body">
+                                            <h5 class="mt-0"><a href="#">{{ reply.auteur|capfirst }}</a></h5>{{ reply.commentaire|linebreaks }}
+                                        </div>
                                     </div>
-                                </div>
 
 
-                            {% endfor %}
+                                {% endfor %}
 
-                            {% endif %}
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
 
 
-                {% endfor %}
+                    {% endfor %}
                 {% endif %}
 
 

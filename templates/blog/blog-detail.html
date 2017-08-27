@@ -2,7 +2,7 @@
 
 {% block title %} BLOG Content {% endblock %}
 
-{% block hrefbrandnavbar %}{% url 'create-post' blog.id %}{% endblock%}
+{% block hrefbrandnavbar %}{% url 'blog:create-post' blog.id %}{% endblock%}
 
 {% block blogentries %}
     <!-- Blog Entries Column -->
@@ -12,11 +12,11 @@
             <div class="col-lg-6">
 
                 <!-- Title -->
-                <h1 class="mt-4">Post Title: {{ blog.theme }}</h1>
+                <h5 class="mt-4">Blog Theme: {{ blog.theme }}</h5>
                 <h6 class="mt-2">{{ blog.posts.all|length }} Post on this Blog.</h6>
 
 
-                <a href="{% url 'blog-detail' blog.slug %}">
+                <a href="{% url 'blog:blog-detail' blog.slug %}">
 
                 <!-- Preview Image -->
                     {% if blog.illustration %}
@@ -31,7 +31,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{ blog.auteur }}</a>
+                    by <a href="{% url 'profile:viewuserprofile' blog.auteur.id %}">{{ blog.auteur|capfirst }}</a>
                 </p>
 
                 <hr>
@@ -62,7 +62,7 @@
 
                             <!--Card image-->
                             <div class="view overlay hm-white-slight">
-                                <a href="{% url 'blogpost-details' post.slug %}">
+                                <a href="{% url 'blog:blogpost-details' post.slug %}">
                                     {% if post.illustration %}
                                         <img src="/blog/media/{{ post.illustration }}/" class="img-fluid">
                                     {% else %}
@@ -71,7 +71,7 @@
                                 </a>
 
 
-                                <a href="{% url 'blogpost-details' post.slug %}">
+                                <a href="{% url 'blog:blogpost-details' post.slug %}">
                                     <div class="mask">Read Post &rarr;</div>
                                 </a>
                             </div>

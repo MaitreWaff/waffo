@@ -39,13 +39,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'feed-news' %}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{% url 'blog:feed-news' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'blog-list' %}">Blogs</a>
+                    <a class="nav-link" href="{% url 'blog:blog-list' %}">Blogs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Categories</a>
@@ -54,7 +54,7 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'feed-news' %}">Feed</a>
+                    <a class="nav-link" href="{% url 'blog:feed-news' %}">Feed</a>
                 </li>
                 {% if user.is_authenticated %}
                     <li class="nav-item">

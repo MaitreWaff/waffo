@@ -2,7 +2,7 @@
 
 {% block title %} Blog News Feed {% endblock %}
 
-{% block hrefbrandnavbar %}{% url 'create-blog' %}{% endblock%}
+{% block hrefbrandnavbar %}{% url 'blog:create-blog' %}{% endblock%}
 
 <!-- Blog Entries Column -->
 {% block blogentries %}
@@ -60,7 +60,7 @@
                     <!-- Blog Post -->
             <div class="update">
                     <div class="card mb-2" id="{{ blog.id }}">
-                        <a href="{% url 'blog-detail' blog.slug %}">
+                        <a href="{% url 'blog:blog-detail' blog.slug %}">
                             {% if blog.illustration %}
                                 <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" alt="Card image cap">
 
@@ -72,7 +72,7 @@
                         <div class="card-body">
                             <h2 class="card-title">{{ blog.theme|title }}</h2>
                             <p class="card-text"> blog.slug|title </p>
-                            <a href="{% url 'blogpost-details' blog.slug %}" class="btn btn-info">View On Wall &rarr;</a>
+                            <a href="{% url 'blog:blogpost-details' blog.slug %}" class="btn btn-info">View On Wall &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.id %}">{{ blog.auteur|title }}</a>

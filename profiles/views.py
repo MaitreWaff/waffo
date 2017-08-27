@@ -216,7 +216,7 @@ def profile(request):
 def viewuserprofile(request, pk):
     prof = Profile.objects.get(pk=pk)
 
-    # print prof
+    # blogs = Blog
 
     context_dict    = {'profile': prof}
 
@@ -225,8 +225,9 @@ def viewuserprofile(request, pk):
 
 
 
-
-
+class UserProfile(generic.edit.CreateView):
+    # model =
+    pass
 
 
 

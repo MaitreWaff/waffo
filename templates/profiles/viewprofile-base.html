@@ -65,19 +65,19 @@
                                 <li><a href="#"><i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i></a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{% url 'actu' %}">Home</a></li>
-                                <li><a href="./ORqmj">About</a></li>
-                                <li><a href="{% url 'blog-list' %}">Blog</a></li>
-                                <li><a href="./ORqmj">Categories</a></li>
+                                <li><a href="{% url 'blog:feed-news' %}">Home</a></li>
+                                <li><a href="#">About</a></li>
+                                <li><a href="{% url 'blog:blog-list' %}">Blog</a></li>
+                                <li><a href="#">Categories</a></li>
                                 <li><a href="#">Contacts</a></li>
-                                <li><a href="{% url 'actu' %}">Feed</a></li>
+                                <li><a href="{% url 'blog:feed-news' %}">Feed</a></li>
 
                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
                                         <img src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% else %}https://lut.im/7JCpw12uUT/mY0Mb78SvSIcjvkf.png{% endif %}" class="img-responsive img-circle" title="{{ profile.user|title }}" alt="{{ profile.user|title }} photo" width="30px" height="30px">
                                     </span>
                                     <span class="user-name">
-                                        {{ profile.user }}
+                                        {{ profile.user|capfirst }}
                                     </span>
                                     <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
