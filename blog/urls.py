@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^feed-news/$', login_required(views.FeedNews.as_view()), name='feed-news'),
     url(r'^$', views.BlogPostListView.as_view(), name='blogpost-list'),
-    url(r'^list/$', views.CreateBlog.as_view(), name='blog-list'),
+    url(r'^list/$', login_required(views.CreateBlog.as_view()), name='blog-list'),
     url(r'^post/details/(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(),name='blogpost-details'),
 
     url(r'^details/(?P<slug>[-\w]+)/$', views.BlogDetailView.as_view(), name='blog-detail'),

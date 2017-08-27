@@ -22,7 +22,7 @@
                     <!-- Blog Post -->
             <div class="update">
                     <div class="card mb-4" id="{{ post.id }}">
-                        <a href="{% url 'blog-detail' post.id %}">
+                        <a href="{% url 'blog:blog-detail' post.id %}">
                             {% if post.illustration %}
                                 <img class="card-img-top" src="/blog/media/{{ post.illustration }}/" alt="Card image cap">
 
@@ -35,7 +35,7 @@
                             <h2 class="card-title">{{ post.titre|capfirst }}</h2>
                             <h6><small><small> - via &rarr; <a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
                             <p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>
-                            <a href="{% url 'blog-detail' post.id %}" class="btn btn-info">View On Wall &rarr;</a>
+                            <a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-info">View On Wall &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{ post.date_post }} by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.id %}">{{ post.blog.auteur|capfirst }}</a>
