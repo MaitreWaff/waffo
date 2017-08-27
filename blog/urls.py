@@ -20,14 +20,16 @@ urlpatterns = patterns('',
     url(r'^list/$', views.CreateBlog.as_view(), name='blog-list'),
     url(r'^post/details/(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(),name='blogpost-details'),
 
+    url(r'^details/(?P<slug>[-\w]+)/$', views.BlogDetailView.as_view(), name='blog-detail'),
     url(r'^post/list/$', views.archive, name='archive'),
+
+
     # url(r'^(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(), name='blogpost-detail'),
     # url(r'^list/$', views.BlogPostDetailView.as_view(), name='blogpost-list'),
     url(r'^create/$', views.CreateBlog.as_view(), name='create-blog'),
 
     # url(r'^post/blog/bloglist/$', views.BlogListView.as_view(), name='blog-list'),
 
-    url(r'^details/(?P<slug>[-\w]+)/$', views.BlogDetailView.as_view(), name='blog-detail'),
     # url(r'^post/blog/details/(?P<slug>[-\w]+)/$', views.BlogDetailView.as_view(), name='blog-detail'),
     # url(r'^post/blog/details/(?P<pk>\d+)/create/post/$', views.CreatePost.as_view(), name='blog-detail'),
     url(r'^details/post/create/(?P<blog_id>\d+)/$', views.CreatePost.as_view(), name='create-post'),
