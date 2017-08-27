@@ -90,7 +90,7 @@
 
                     <div class="card-body">
                         <h4 class="card-title">{{ post.titre|capfirst }}</h4>
-                        <h6><small><small> - via &rarr; <a href="#"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
+                        <h6><small><small> - via &rarr; <a href="{% url 'blog-detail' post.blog.slug %}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
                         <p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>
                         <a href="{% url 'blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
                     </div>

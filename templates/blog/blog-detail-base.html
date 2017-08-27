@@ -62,7 +62,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                    <a class="nav-link" href="{% url 'logout' %}?next=/blog/feed-news/">Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
@@ -83,7 +83,7 @@
             {% endblock %}
 
             <!-- Sidebar Widgets Column -->
-            <div class="col-md-4">
+            <div class="col-md-3">
 
                 <!-- Search Widget -->
                 <div class="card my-4">
@@ -99,7 +99,7 @@
                 </div>
 
                 <!-- Categories Widget -->
-                <div class="card my-4">
+                <div class="card my-3">
                     <h5 class="card-header">Top Categories</h5>
                     <div class="card-body">
                         <div class="row">
@@ -122,7 +122,7 @@
                 </div>
 
                 <!-- Side Widget -->
-                <div class="card my-4">
+                <div class="card my-3">
                     <h5 class="card-header">Related</h5>
                     <div class="card-body">
                         You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!

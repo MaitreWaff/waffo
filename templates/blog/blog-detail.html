@@ -9,7 +9,7 @@
 
 
             <!-- Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-lg-6">
 
                 <!-- Title -->
                 <h1 class="mt-4">Post Title: {{ blog.theme }}</h1>
@@ -142,6 +142,12 @@
                         </form>
                     </div>
                 </div>
+
+
+                {% if blog.postcomments.all|length %}
+                    <strong>Il y a commentaire dans ce blog</strong>
+                {% endif %}
+
 
                 <!-- Single Comment -->
                 <div class="media mb-4">

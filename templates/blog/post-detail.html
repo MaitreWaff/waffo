@@ -9,7 +9,7 @@
 
 
             <!-- Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-lg-6">
 
                 <!-- Title -->
                 <h1 class="mt-4">Post Title: {{ post.titre }}</h1>
@@ -64,36 +64,55 @@
                     </div>
                 </div>
 
-                <!-- Single Comment -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                    </div>
-                </div>
 
-                <!-- Comment with nested comments -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                {% if post.postcomments.all|length %}
+                    <!--<strong>Il y a commentaire pour ce post.</strong>-->
 
-                        <div class="media mt-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
+                {% for commentaire in post.postcomments.all %}
+
+                    <!-- Single Comment -->
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ commentaire.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="{{ commentaire.auteur|capfirst}}">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ commentaire.auteur|capfirst }}</h5> {{ commentaire.commentaire|linebreaks }}
+                            {% if commentaire.replycomments.all %}
+                                <!--<strong>Il y a reponse a ca aussi ... :P</strong>-->
+
+                            {% for reply in commentaire.replycomments.all %}
+                                <div class="media mt-4">
+                                    <img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ reply.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ reply.auteur|capfirst }}</h5>{{ reply.commentaire|linebreaks }}
+                                    </div>
+                                </div>
+
+
+                            {% endfor %}
+
+                            {% endif %}
                         </div>
-
-                        <div class="media mt-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-
                     </div>
-                </div>
+
+
+                {% endfor %}
+                {% endif %}
+
+
+                <!--&lt;!&ndash; Comment with nested comments &ndash;&gt;-->
+                <!--<div class="media mb-4">-->
+                    <!--<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">-->
+                    <!--<div class="media-body">-->
+                        <!--<h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
+
+                        <!--<div class="media mt-4">-->
+                            <!--<img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">-->
+                            <!--<div class="media-body">-->
+                                <!--<h5 class="mt-0">Commenter Name</h5> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                <!--</div>-->
 
             </div>
 
@@ -110,12 +129,12 @@
 
 
 
-{% block javascript %}
-<script type="text/javascript" language="JavaScript">
-    $(document).ready(function(){
-        alert("Hello Waff!");
-    })
-</script>
+    {% block javascript %}
+    <script type="text/javascript" language="JavaScript">
+        $(document).ready(function(){
+            alert("Hello Waff!");
+        })
+    </script>
 {% endblock %}
 
 
