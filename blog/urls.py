@@ -3,6 +3,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 # admin.autodiscover()
+from django.contrib.auth.decorators import login_required
+
 from blog import views
 
 #import django.views.defaults
@@ -15,7 +17,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-    url(r'^feed-news/$', views.FeedNews.as_view(), name='feed-news'),
+    url(r'^feed-news/$', login_required(views.FeedNews.as_view()), name='feed-news'),
     url(r'^$', views.BlogPostListView.as_view(), name='blogpost-list'),
     url(r'^list/$', views.CreateBlog.as_view(), name='blog-list'),
     url(r'^post/details/(?P<slug>[-\w]+)/$', views.BlogPostDetailView.as_view(),name='blogpost-details'),

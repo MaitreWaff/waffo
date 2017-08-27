@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.utils import timezone
 
@@ -141,7 +142,7 @@ class CreateComment(generic.edit.CreateView):
         return super(CreateComment, self).form_valid(form)
 
 
-
+# @login_required
 class FeedNews(generic.edit.CreateView):
     model = BlogPost
     # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
