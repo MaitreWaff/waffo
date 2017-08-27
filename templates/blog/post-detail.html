@@ -72,17 +72,17 @@
 
                     <!-- Single Comment -->
                     <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ commentaire.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="{{ commentaire.auteur|capfirst}}">
+                        <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ commentaire.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="{{ commentaire.auteur|capfirst}}"></a>
                         <div class="media-body">
-                            <h5 class="mt-0">{{ commentaire.auteur|capfirst }}</h5> {{ commentaire.commentaire|linebreaks }}
+                            <h5 class="mt-0"><a href="#">{{ commentaire.auteur|capfirst }}</a></h5> {{ commentaire.commentaire|linebreaks }}
                             {% if commentaire.replycomments.all %}
                                 <!--<strong>Il y a reponse a ca aussi ... :P</strong>-->
 
                             {% for reply in commentaire.replycomments.all %}
                                 <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ reply.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt="">
+                                    <a href="#"><img class="d-flex mr-3 rounded-circle" src="{% if commentaire.auteur.photo %} /blog/media/{{ reply.auteur.photo }}/ {% else %}http://placehold.it/50x50{% endif %}" height="50" width="50" alt=""></a>
                                     <div class="media-body">
-                                        <h5 class="mt-0">{{ reply.auteur|capfirst }}</h5>{{ reply.commentaire|linebreaks }}
+                                        <h5 class="mt-0"><a href="#">{{ reply.auteur|capfirst }}</a></h5>{{ reply.commentaire|linebreaks }}
                                     </div>
                                 </div>
 
