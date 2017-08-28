@@ -3,6 +3,7 @@ from django.views import generic
 from django.utils import timezone
 
 from django.shortcuts import render, render_to_response, get_object_or_404
+from django.core import serializers
 
 from django.template import RequestContext
 
@@ -215,7 +216,11 @@ class CreateBlog(generic.edit.CreateView):
 
 
 
-
+def feednews_update(request, id):
+    response = HttpResponse()
+    response['Content-Type'] = 'text/javascript'
+    response.write(serializers.serialize("json", BlogPost.objects.filter(pk__gt=id)))
+    return response
 
 
 
