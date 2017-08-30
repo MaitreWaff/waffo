@@ -19,9 +19,14 @@ function feednewsupdate(){
         });
 }
 
+function test(){
+    alert("Hey Waff!");
+}
+
 $(document).ready(function(){
     setInterval("feednewsupdate()", 6000);
 //    alert("Waff");
+//    setInterval("test()", 6000)
 })
 
 

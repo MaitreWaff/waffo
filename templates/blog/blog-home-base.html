@@ -195,14 +195,15 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <!--<script src="{% static 'assets/js/jquery.min.js' %}"></script>-->
+    <script src="{% static 'assets/js/jquery-3.1.1.js' %}"></script>
     <script src="{% static 'assets/js/popper.min.js' %}"></script>
     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
 
     {% block javascript %}
-    <!--<script type="text/javascript" src="{% static 'assets/js/blog-feed-news.js' %}"></script>-->
-    {% endblock %}
 
+    {% endblock %}
+<!--<script type="text/javascript" src="{% static 'assets/js/blog-feed-news.js' %}"></script>-->
 </body>
 
 </html>
