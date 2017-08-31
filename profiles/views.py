@@ -213,8 +213,8 @@ def profile(request):
 
 
 @login_required
-def viewuserprofile(request, pk):
-    prof = Profile.objects.get(pk=pk)
+def viewuserprofile(request, slug):
+    prof = Profile.objects.get(slug=slug)
 
     # blogs = Blog
 

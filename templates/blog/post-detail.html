@@ -16,7 +16,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.id %}">{{ post.blog.auteur|capfirst }}</a>
+                    by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.slug %}">{{ post.blog.auteur|capfirst }}</a>
                 </p>
 
                 <hr>

@@ -219,7 +219,7 @@ class CreateBlog(generic.edit.CreateView):
 def feednews_update(request, id):
     response = HttpResponse()
     response['Content-Type'] = 'text/javascript'
-    response.write(serializers.serialize("json", BlogPost.objects.filter(pk__gt=id)))
+    response.write(serializers.serialize("json", BlogPost.objects.filter(pk__gt=id), indent=2, use_natural_keys=True))
     return response
 
 
