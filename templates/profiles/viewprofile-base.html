@@ -22,7 +22,9 @@
 
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">-->
     <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
 
 
@@ -346,7 +348,7 @@
                                     <div class="panel-body">
                                         <div class="pull-left">
                                             <a href="#">
-                                                <img class="media-object img-circle" src="/blog/media/{{ profile.photo }}/" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
+                                                <img class="media-object img-circle" src="{% if profile.photo %}/blog/media/{{ profile.photo }}/{% endif %}" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                                             </a>
                                         </div>
                                         <h4><a href="#" style="text-decoration:none;"><strong>{{ profile.user|capfirst }}</strong></a> – <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date_post|naturaltime }}</i></a></small></small></h4>
