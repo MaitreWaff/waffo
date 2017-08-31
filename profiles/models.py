@@ -53,8 +53,9 @@ class Profile(models.Model):
     #     if not self.slug:
     #         self.slug = slugify(self.user.username)
 
-    def natural_key(self):
-        return (self.pk, self.user.username, self.slug, self.joined_on)
+    #
+    # def natural_key(self):
+    #     return (self.pk, self.user.username, self.slug, self.joined_on)
 
     class Meta:
         ordering = ('-joined_on',)
@@ -64,6 +65,7 @@ class Profile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         prof = Profile.objects.create(user=instance)
+        # Added for slug field.
         prof.slug = slugify(prof.user.username)
         prof.save()
 

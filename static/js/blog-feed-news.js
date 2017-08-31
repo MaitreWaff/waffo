@@ -6,7 +6,7 @@ function feednewsupdate(){
                 jQuery.each(data, function(){
 
                 update_holder.prepend('<div class="card mb-4 update" id="' + this.pk + '">'
-                +'<img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">'
+                +'<img class="card-img-top" src="/blog/media/' + this.fields.illustration +'/" alt="Card image cap">'
 
 
 
@@ -15,7 +15,7 @@ function feednewsupdate(){
                 +'<div class="card-body">'
                     + '<h2 class="card-title">' + this.fields.titre + '</h2>'
                     + '<p class="card-text">' + this.fields.text + '</p>'
-                    + '<a href="#" class="btn btn-primary">Read More &rarr;</a>'
+                    + '<a href="/blog/post/details/' + this.fields.slug + '/" class="btn btn-primary">Read More &rarr;</a>'
                 +'</div>'
 
 
@@ -24,7 +24,7 @@ function feednewsupdate(){
 
 
                 +'<div class="card-footer text-muted">'
-                    + 'Posted on ' + this.fields.date_post + ' by <a href="/profile/' + this.fields.blog.auteur.id + '/">' + this.fields.blog.auteur + '</a>'
+                    + 'Posted on ' + this.fields.date_post + ' by <a href="/profile/' + this.fields.blog[2] + '/">' + this.fields.blog[1] + '</a>'
                 +'</div>'
 
 
@@ -49,7 +49,7 @@ function test(){
 }
 
 $(document).ready(function(){
-    setInterval("feednewsupdate()", 600);
+    setInterval("feednewsupdate()", 6000);
 //    alert("Waff");
 //    setInterval("test()", 6000)
 })
