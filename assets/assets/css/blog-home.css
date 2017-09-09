@@ -22,12 +22,10 @@ body {
 
 
 
-
-
-# for jQuery testing purpose.
+/* for jQuery testing purpose. */
 
 .zebraHover{
-    background-color: #FFFACD;
-    color: red;
+    background-color: #808080;
+    color: #80aaff;
 }
 

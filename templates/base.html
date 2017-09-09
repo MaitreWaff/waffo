@@ -1,16 +1,5 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-
-</head>
-<body>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
 
 <html lang="en">
   <head>
@@ -31,35 +20,31 @@
 
   <body>
 
-	<nav class="navbar navbar-default">
-	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Apps</a>
-	    </div>
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Watch</a></li>
-	      <li><a href="#">Change</a></li>
-	    </ul>
-	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-	    </ul>
-	  </div>
-	</nav>
-
-
-
+  {% include 'base/navbar.html' %}
 
 	<div class="container-fluid">
-	<div class="row">
-	<div class="col-xs-5"><p>Desktop Apps</p></div>
-	<div class="col-xs-5"><p>Post Actu</p><p>Large Feed-News</p></div>
-<!-- 	<div class="col-xs-2"><p>Trois</p></div>
-	<div class="col-xs-2"><p>Four</p></div>
-	<div class="col-xs-2"><p>Five</p></div> -->
-	<div class="col-xs-2"><p>Blog Actu</p><p>Small Feed-News</p></div>
-	</div>
+		<div class="row">
+			<div class="col-xs-5">
+				<p>Desktop Apps</p>
+
+				{% block apps %}No Desktop Apps{% endblock apps %}
+
+			</div>
+			<div class="col-xs-5">
+				<p>Post Actu</p><p>Large Feed-News</p>
+				{% block wide-fn %}No Post{% endblock wide-fn %}
+
+
+			</div>
+			<!-- 	<div class="col-xs-2"><p>Trois</p></div>
+			<div class="col-xs-2"><p>Four</p></div>
+			<div class="col-xs-2"><p>Five</p></div> -->
+			<div class="col-xs-2">
+				<p>Blog Actu</p><p>Small Feed-News</p>
+				{% block small-fn %}No Blog{% endblock small-fn %}
+
+			</div>
+		</div>
 	</div>
 
 
