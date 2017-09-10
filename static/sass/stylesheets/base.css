@@ -1,16 +1,20 @@
 /* line 1, ../sass/base.sass */
 .container-fluid {
-  background-image: url("https://unsplash.it/2000/1500/?random");
+  background-color: #87CEFA;
 }
 /* line 4, ../sass/base.sass */
 .container-fluid #postfeed {
-  background-image: url("https://unsplash.it/1000/500/?random");
+  background-color: #B0E0E6;
+  padding: 10px;
 }
-/* line 8, ../sass/base.sass */
+/* line 9, ../sass/base.sass */
 .container-fluid #blogfeed {
-  background-image: url("https://unsplash.it/1000/500/?random");
+  background-color: #AFEEEE;
+  padding: 10px;
 }
-/* line 12, ../sass/base.sass */
+/* line 14, ../sass/base.sass */
 .container-fluid .update {
-  background-image: url("https://unsplash.it/750/300/?random");
+  background-color: #C0C0C0;
+  border: 1px solid black;
+  margin: 5px 5px 5px 5px;
 }
