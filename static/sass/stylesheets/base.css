@@ -2,3 +2,15 @@
 .container-fluid {
   background-image: url("https://unsplash.it/2000/1500/?random");
 }
+/* line 4, ../sass/base.sass */
+.container-fluid #postfeed {
+  background-image: url("https://unsplash.it/1000/500/?random");
+}
+/* line 8, ../sass/base.sass */
+.container-fluid #blogfeed {
+  background-image: url("https://unsplash.it/1000/500/?random");
+}
+/* line 12, ../sass/base.sass */
+.container-fluid .update {
+  background-image: url("https://unsplash.it/750/300/?random");
+}
