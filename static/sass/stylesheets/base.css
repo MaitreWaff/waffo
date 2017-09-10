@@ -18,3 +18,7 @@
   border: 1px solid black;
   margin: 5px 5px 5px 5px;
 }
+/* line 19, ../sass/base.sass */
+.container-fluid .update img {
+  margin: 10px 10px 10px 10px;
+}

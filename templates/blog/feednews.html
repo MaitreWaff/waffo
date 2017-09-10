@@ -46,7 +46,7 @@
 
                             <input type="submit" value="Post!">
                             <button id="button">Like</button>
-                            <input type="text" id="datepicker">
+                            <input type="text" name="datepicker" id="datepicker">
                         </form>
                     </div>
 
@@ -244,10 +244,10 @@
                     <div class="card mb-2" id="{{ blog.id }}">
                         <a href="{# url 'blog:blog-detail' blog.slug #}">
                             {% if blog.illustration %}
-                                <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="150" height="100" alt="Card image cap">
+                                <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="200" height="100" alt="Card image cap">
 
                             {% else %}
-                                <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+                                <img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">
 
                             {% endif %}
                         </a>
@@ -266,7 +266,7 @@
                 <div class="update">
                     <!-- Blog Post -->
                     <div class="card mb-2">
-                        <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+                        <img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">
                         <div class="card-body">
                             <h2 class="card-title">Aucun blog Actuellement.</h2>
                             <p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-post' %}">ici</a>.</p>
