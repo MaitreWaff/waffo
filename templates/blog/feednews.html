@@ -1,4 +1,5 @@
-{% extends 'blog/blog-home-base.html' %}
+{% extends 'base.html' %}
+{# extends 'blog-home-base.html' #}
 {% load static %}
 {% load humanize %}
 
@@ -6,10 +7,11 @@
 {% block title %} News Feed {% endblock %}
 
 <!-- Blog Entries Column -->
-{% block blogentries %}
+{# block blogentries #}
+{% block wide-fn %}
 
-
-    <div class="col-md-6">
+<div class="row">
+    <div class="col-xs-11">
 
         <!--<h1 class="my-4">Welcome To <small>Blog App</small></h1>-->
         <br />
@@ -18,13 +20,6 @@
         </div>
 
         <!--<i id="icon" class="fa fa-wikipedia-w" style="text-shadow: rgb(48, 117, 165) 0px 0px 0px, rgb(48, 118, 167) 1px 1px 0px, rgb(49, 120, 169) 2px 2px 0px, rgb(49, 121, 171) 3px 3px 0px, rgb(50, 123, 173) 4px 4px 0px, rgb(51, 124, 175) 5px 5px 0px, rgb(51, 125, 177) 6px 6px 0px, rgb(52, 127, 179) 7px 7px 0px, rgb(52, 128, 181) 8px 8px 0px, rgb(53, 130, 183) 9px 9px 0px, rgb(53, 131, 185) 10px 10px 0px, rgb(54, 133, 187) 11px 11px 0px, rgb(55, 134, 189) 12px 12px 0px, rgb(55, 136, 191) 13px 13px 0px, rgb(56, 137, 193) 14px 14px 0px, rgb(56, 138, 195) 15px 15px 0px, rgb(57, 140, 197) 16px 16px 0px, rgb(58, 141, 199) 17px 17px 0px, rgb(58, 143, 201) 18px 18px 0px, rgb(59, 144, 203) 19px 19px 0px, rgb(59, 146, 205) 20px 20px 0px, rgb(60, 147, 207) 21px 21px 0px, rgb(60, 148, 209) 22px 22px 0px, rgb(61, 150, 211) 23px 23px 0px, rgb(62, 151, 213) 24px 24px 0px, rgb(62, 153, 215) 25px 25px 0px, rgb(63, 154, 217) 26px 26px 0px, rgb(63, 156, 219) 27px 27px 0px, rgb(64, 157, 221) 28px 28px 0px, rgb(65, 158, 223) 29px 29px 0px, rgb(65, 160, 225) 30px 30px 0px, rgb(66, 161, 227) 31px 31px 0px, rgb(66, 163, 229) 32px 32px 0px, rgb(67, 164, 231) 33px 33px 0px, rgb(67, 166, 233) 34px 34px 0px; font-size: 80px; color: rgb(97, 155, 194); height: 150px; width: 150px; line-height: 150px; border-radius: 0%; text-align: center; background-color: rgb(68, 167, 235);"></i> -->
-
-
-
-
-
-
-
 
 
 
@@ -103,9 +98,9 @@
                 <!-- Blog Post -->
                 <div class="card mb-4 update" id="{{ post.id }}">
                     {% if post.illustration %}
-                    <a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" alt="{{ post.titre|capfirst }}"></a>
+                    <a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" width="600" height="300" alt="{{ post.titre|capfirst }}"></a>
                     {% else %}
-                        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                        <img class="card-img-top" src="http://placehold.it/600x300" alt="Card image cap">
                     {% endif %}
 
                     <div class="card-body">
@@ -124,7 +119,7 @@
 
                 <!-- Blog Post -->
                 <div class="card mb-4 update" id="0">
-                    <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
+                    <img class="card-img-top" src="http://placehold.it/600x300" alt="Card image cap">
                     <div class="card-body">
                         <h2 class="card-title">Nothing to show.</h2>
                         <p class="card-text">Revenez prochainement.</p>
@@ -140,10 +135,13 @@
         {% endfor %}
 
         <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-            <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
-            <li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>
-        </ul>
+        <!--<ul class="pagination justify-content-center mb-4">-->
+            <!--<li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>-->
+            <!--<li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>-->
+        <!--</ul>-->
+
+        <hr />
+        <br />
 
         <!--<a href="#" id="wawaluc">JQuery</a>-->
 
@@ -155,18 +153,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
 </div>
 
-
+</div>
 
 
 

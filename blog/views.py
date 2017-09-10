@@ -150,8 +150,8 @@ class FeedNews(generic.edit.CreateView):
 
     fields = ['titre', 'text', 'blog']
     success_url = '/blog/feed-news/'
-    template_name = 'base.html'
-    # template_name = 'blog/feednews.html'
+    # template_name = 'base.html'
+    template_name = 'blog/feednews.html'
 
     def get_context_data(self, **kwargs):
         context = super(FeedNews, self).get_context_data(**kwargs)
