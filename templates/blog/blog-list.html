@@ -14,38 +14,38 @@
         </div>
 
 
-{% if user.is_authenticated %}
-<!--<form action="">-->
-    <!--{% csrf_token %}-->
-    <!---->
-<!--</form>-->
+    {% if user.is_authenticated %}
+    <!--<form action="">-->
+        <!--{% csrf_token %}-->
+        <!---->
+    <!--</form>-->
 
 
 
-        <div class="card mb-2">
-            <div class="card-body">
-                <h6 class="card-title">What's on your mind?</h6>
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        {% for field in form %}
-                        <div class="fieldWrapper">
-                            {{ field.label_tag }}{{ field }}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h6 class="card-title">What's on your mind?</h6>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {% for field in form %}
+                            <div class="fieldWrapper">
+                                {{ field.label_tag }}{{ field }}
+                            </div>
+
+                            {% endfor %}
                         </div>
 
-                        {% endfor %}
-                    </div>
+                        <input type="submit" value="Create Blog!">
+                    </form>
+                </div>
 
-                    <input type="submit" value="Create Blog!">
-                </form>
+
             </div>
 
 
-        </div>
 
-        
-
-{% endif %}
+    {% endif %}
 
 
 
@@ -121,7 +121,9 @@
                 <p>No blog yet</p>
             </div>
         {% endif %}
-</div>
+        </div>
+
+
         <!-- Pagination -->
         <ul class="pagination justify-content-center mb-4">
             <li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>
@@ -130,6 +132,8 @@
 
 
     </div>
+
+
 {% endblock %}
 
 

@@ -8,6 +8,8 @@
 
 <!-- Blog Entries Column -->
 {# block blogentries #}
+
+
 {% block wide-fn %}
 
 <div class="row">
@@ -100,7 +102,7 @@
                     {% if post.illustration %}
                     <a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" width="600" height="300" alt="{{ post.titre|capfirst }}"></a>
                     {% else %}
-                        <img class="card-img-top" src="http://placehold.it/600x300" alt="Card image cap">
+                        <img class="card-img-top" src="https://unsplash.it/600/300/?random" alt="Card image cap">
                     {% endif %}
 
                     <div class="card-body">
@@ -179,6 +181,141 @@
 
 
 
+
+
+{% block small-fn %}
+
+<div class="row">
+
+    <div class="col-xs-12">
+        <br />
+        <div class="card mb-1">
+            <center><h6 class="my-4">Create Your <strong>Blog(s)</strong> Here</h6></center>
+        </div>
+
+
+    {% if user.is_authenticated %}
+    <!--<form action="">-->
+        <!--{% csrf_token %}-->
+        <!---->
+    <!--</form>-->
+
+
+
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h6 class="card-title">What's on your mind?</h6>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {% for field in form %}
+                            <div class="fieldWrapper">
+                                {{ field.label_tag }}{{ field }}
+                            </div>
+
+                            {% endfor %}
+                        </div>
+
+                        <input type="submit" value="Create Blog!">
+                    </form>
+                </div>
+
+
+            </div>
+
+
+
+    {% endif %}
+
+
+
+
+
+        <div id="blog-update-holder">
+        {% if blogs %}
+
+            {% for blog in blogs %}
+
+
+                    <!-- Blog Post -->
+            <div class="update">
+                    <div class="card mb-2" id="{{ blog.id }}">
+                        <a href="{% url 'blog:blog-detail' blog.slug %}">
+                            {% if blog.illustration %}
+                                <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="150" height="100" alt="Card image cap">
+
+                            {% else %}
+                                <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+
+                            {% endif %}
+                        </a>
+                        <div class="card-body">
+                            <h2 class="card-title">{{ blog.theme|title }}</h2>
+                            <p class="card-text"> Posts Inside ==> blog.slug|title </p>
+                            <a href="{% url 'blog:blog-detail' blog.slug %}" class="btn btn-info">View On Wall &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
+                        </div>
+                    </div>
+
+            </div>
+            {% empty %}
+                <div class="update">
+                    <!-- Blog Post -->
+                    <div class="card mb-2">
+                        <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+                        <div class="card-body">
+                            <h2 class="card-title">Aucun blog Actuellement.</h2>
+                            <p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-post' %}">ici</a>.</p>
+                            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on January 1, 2017 by <a href="#">W@luc</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="update">
+                <!-- Blog Post -->
+                <div class="card mb-2" id="0">
+                    <a href="#">
+                        <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+                    </a>
+                    <div class="card-body">
+                        <h2 class="card-title"> blog.auteur|title </h2>
+                        <p class="card-text"> blog.theme|title </p>
+                        <a href="#" class="btn btn-info">View On Wall &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Posted on blog.date_blog by <a href="#"> blog.auteur|title </a>
+                    </div>
+
+
+                </div>
+                <p>No blog yet</p>
+            </div>
+        {% endif %}
+        </div>
+
+
+        <!-- Pagination -->
+        <!--<ul class="pagination justify-content-center mb-4">-->
+            <!--<li class="page-item"><a class="page-link" href="#">&larr; Older</a></li>-->
+            <!--<li class="page-item disabled"><a class="page-link" href="#">Newer &rarr;</a></li>-->
+        <!--</ul>-->
+
+
+    </div>
+
+</div>
+
+{% endblock %}
 
 
 
