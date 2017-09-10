@@ -157,6 +157,7 @@ class FeedNews(generic.edit.CreateView):
         context = super(FeedNews, self).get_context_data(**kwargs)
         context['posts'] = BlogPost.objects.all()
         context['blogs'] = Blog.objects.all()
+        context['blog_form'] = BlogForm()
         return context
 
     def get_user_blogs(self):

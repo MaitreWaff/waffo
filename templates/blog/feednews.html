@@ -208,7 +208,7 @@
                     <form action="" method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            {% for field in form %}
+                            {% for field in blog_form %}
                             <div class="fieldWrapper">
                                 {{ field.label_tag }}{{ field }}
                             </div>
@@ -240,7 +240,7 @@
                     <!-- Blog Post -->
             <div class="update">
                     <div class="card mb-2" id="{{ blog.id }}">
-                        <a href="{% url 'blog:blog-detail' blog.slug %}">
+                        <a href="{# url 'blog:blog-detail' blog.slug #}">
                             {% if blog.illustration %}
                                 <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="150" height="100" alt="Card image cap">
 
@@ -252,7 +252,7 @@
                         <div class="card-body">
                             <h2 class="card-title">{{ blog.theme|title }}</h2>
                             <p class="card-text"> Posts Inside ==> blog.slug|title </p>
-                            <a href="{% url 'blog:blog-detail' blog.slug %}" class="btn btn-info">View On Wall &rarr;</a>
+                            <a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
