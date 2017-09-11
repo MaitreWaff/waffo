@@ -2,14 +2,14 @@
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="stylesheets/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!--<link href="stylesheets/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
 
     <!-- Custom styles for this template -->
-    <link href="stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+    <!--<link href="stylesheets/sticky-footer-navbar.css" rel="stylesheet">-->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="stylesheets/ie-emulation-modes-warning.js"></script>
+    <!--<script src="stylesheets/ie-emulation-modes-warning.js"></script>-->
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -27,11 +27,11 @@
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="{% static 'assets/css/bootstrap-3.2.0.min.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+	<!--<link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">-->
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="{% static 'assets/css/bootstrap-theme.min.css' %}">
+	<!--<link rel="stylesheet" href="{% static 'assets/css/bootstrap-theme.min.css' %}">-->
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">-->
 
 
@@ -43,9 +43,74 @@
   <link href="static/sass/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="static/sass/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="{% static 'assets/sass/stylesheets/base.css' %}">
+
   <!--<link rel="stylesheet" type="text/css" href="static/sass/stylesheets/base.css">-->
+
   <link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery-ui.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery-ui.theme.css' %}">
+  <!--<link rel="stylesheet" type="text/css" href="{% static 'assets/css/jquery-ui.theme.css' %}">-->
   <!--[if IE]>
       <link href="static/sass/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <![endif]-->
+
+
+
+
+
+
+
+
+	<style>
+	body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	#dialog-link span.ui-icon {
+		margin: 0 5px 0 0;
+		position: absolute;
+		left: .2em;
+		top: 50%;
+		margin-top: -8px;
+	}
+	#icons {
+		margin: 0;
+		padding: 0;
+	}
+	#icons li {
+		margin: 2px;
+		position: relative;
+		padding: 4px 0;
+		cursor: pointer;
+		float: left;
+		list-style: none;
+	}
+	#icons span.ui-icon {
+		float: left;
+		margin: 0 4px;
+	}
+	.fakewindowcontain .ui-widget-overlay {
+		position: absolute;
+	}
+	select {
+		width: 200px;
+	}
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
