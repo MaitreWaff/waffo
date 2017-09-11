@@ -1,51 +1,24 @@
-/* line 2, ../sass/base.sass */
-.box-shadow-example {
-  background-color: #EEEEEE;
+/* line 1, ../sass/base.sass */
+.container-fluid {
+  background-color: #87CEFA;
 }
 /* line 4, ../sass/base.sass */
-.box-shadow-example #box-shadow-default {
-  background-color: white;
+.container-fluid #postfeed {
+  background-color: #B0E0E6;
+  padding: 10px;
 }
-/* line 6, ../sass/base.sass */
-.box-shadow-example #box-shadow-custom {
-  background-color: red;
+/* line 9, ../sass/base.sass */
+.container-fluid #blogfeed {
+  background-color: #AFEEEE;
+  padding: 10px;
 }
-/* line 8, ../sass/base.sass */
-.box-shadow-example #box-shadow-custom-multiple {
-  background-color: yellow;
+/* line 14, ../sass/base.sass */
+.container-fluid .update {
+  background-color: #C0C0C0;
+  border: 1px solid black;
+  margin: 5px 5px 5px 5px;
 }
-
-/* line 11, ../sass/base.sass */
-.container-fluid {
-  min-height: 100%;
-}
-/* line 12, ../sass/base.sass */
-.container-fluid .col-xs-2 {
-  display: grid;
-  height: 100px;
-  color: white;
-  text-align: center;
-  font-family: arial;
-  font-size: 30px;
-}
-/* line 21, ../sass/base.sass */
-.container-fluid .col-xs-2 p {
-  background-image: url("https://unsplash.it/1500/1000/?random");
-}
-/* line 24, ../sass/base.sass */
-.container-fluid .col-xs-5 {
-  height: 100px;
-  color: blue;
-  text-align: center;
-  font-family: arial;
-  font-size: 50px;
-}
-/* line 31, ../sass/base.sass */
-.container-fluid .col-xs-5 p {
-  background-image: url("https://unsplash.it/1500/1000/?random");
-}
-
-/* line 36, ../sass/base.sass */
-.navbar-fixed-bottom {
-  max-height: 10px;
+/* line 19, ../sass/base.sass */
+.container-fluid .update img {
+  margin: 10px 10px 10px 10px;
 }

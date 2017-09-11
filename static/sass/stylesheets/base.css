@@ -22,3 +22,7 @@
 .container-fluid .update img {
   margin: 10px 10px 10px 10px;
 }
+/* line 22, ../sass/base.sass */
+.container-fluid .card {
+  border: 1px solid black;
+}
