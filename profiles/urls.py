@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url #, patterns
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
@@ -9,7 +9,8 @@ from profiles import views
 
 # handler404 = 'path.to.views.custom404'
 
-urlpatterns = patterns('',
+# urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
@@ -26,7 +27,8 @@ urlpatterns = patterns('',
     # url(r'^logout/$', auth_views.logout, {'template_name': 'registration/logged_out.html'}, name='logout'),
 
     # url(r'^about/$', views.about, name='about'),
-)
+# )
+]
 #from django.views.generic import *
 from waff.form import LoginForm
 

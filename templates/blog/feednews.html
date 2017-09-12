@@ -574,7 +574,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					{% if post.illustration %}
-					<a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" width="500" height="300" alt="{{ post.titre|capfirst }}"></a>
+					<a href="{% url 'blog:blogpost-details' post.slug %}"><img class="img-fluid" src="/blog/media/{{ post.illustration }}/" width="500" height="300" alt="{{ post.titre|capfirst }}"></a>
 					{% else %}
 						<img class="card-img-top" src="https://unsplash.it/500/300/?random" alt="Card image cap">
 					{% endif %}

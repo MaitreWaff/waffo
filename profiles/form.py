@@ -19,7 +19,7 @@ class UserForm(forms.ModelForm):
 class ProfileForm(UserCreationForm):
     class Meta:
         model = Profile
-        # exclude = ('photo',)
+        exclude = ('photo',)
         # fields  = ('url', 'location', 'company')
 
 
@@ -66,7 +66,8 @@ class UpdateProfileForm(UserCreationForm):
 
     class Meta:
         model   = Profile
-        fields  = ('username', 'email', 'password1', 'password2')
+        fields  = ('user', 'email', 'password1', 'password2')
+        # fields  = ('username', 'email', 'password1', 'password2')
 
 
 

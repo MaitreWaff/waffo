@@ -11,6 +11,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
 
+        fields = ('titre', 'text',)
+
         # exclude = ('illustration', 'date_post', 'slug')
 
     def __init__(self, *args, **kwargs):

@@ -66,6 +66,7 @@ def create_user_profile(sender, instance, created, **kwargs):
     if created:
         prof = Profile.objects.create(user=instance)
         # Added for slug field.
+        # prof.slug = slugify(prof.user.user)
         prof.slug = slugify(prof.user.username)
         prof.save()
 

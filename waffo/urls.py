@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url #, patterns
 
 from django.contrib import admin
 admin.autodiscover()
@@ -9,15 +9,23 @@ from django.contrib.auth import views as auth_views
 # from profiles import views as profile_views
 from profiles import views as profile_views
 
-urlpatterns = patterns('',
+# urlpatterns = patterns('',
+urlpatterns = [
     # Examples:
     # url(r'^$', 'waffo.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     # registration.backends.default.urls
-    url(r'^$', 'django.contrib.auth.views.login'),
-    url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
-    url(r'^account/logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    url(r'^account/register/$', profile_views.signup, name='register'),
+
+    # My old login URLs
+    # url(r'^$', 'django.contrib.auth.views.login'),
+    # url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
+    # url(r'^account/logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    # url(r'^account/register/$', profile_views.signup, name='register'),
+    # End my old login URLs
+
+    # allauth url.
+    url(r'^accounts/', include('allauth.urls')),
+    # End allauth url
 
     url(r'^admin/', include(admin.site.urls), name='admin'),
     url(r'^home/$', profile_views.userhome), # Home => UserHome
@@ -42,5 +50,6 @@ urlpatterns = patterns('',
     # url(r'^signup/', profile_views.signup, name='signup'),
     # url(r'^waffo/', include('waff.urls')),
     # url(r'', include('django.contrib.auth.urls')),
-)
+# )
+]
 
