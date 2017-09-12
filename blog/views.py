@@ -186,7 +186,8 @@ class CreateBlog(generic.edit.CreateView):
 
     # fields = ['theme']
     fields = ['auteur', 'theme']
-    success_url = '/blog/list/'
+    success_url = '/blog/feed-news/'
+    # success_url = '/blog/list/'
     template_name = 'blog/blog-list.html'
 
     def get_user(self):

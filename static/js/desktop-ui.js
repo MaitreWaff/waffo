@@ -125,4 +125,5 @@ $(document).ready(function(){
             $( this ).removeClass( "ui-state-hover" );
         }
     );
+    alert("Hey Desktop-UI is working!");
 });
