@@ -736,36 +736,42 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Panel title</h3>
+			<h3 class="panel-title">What's on your mind?</h3>
 		</div>
-		<div class="panel-body">
-			Panel content
-		</div>
-		<div class="panel-footer">
-			Panel footer
-		</div>
+		<form action="" method="post">
+			<div class="panel-body">
+				{% csrf_token %}
+
+
+
+				<div class="form-group">
+					{% for field in blog_form %}
+					<div class="fieldWrapper">
+						{{ field.label_tag }}{{ field }}
+					</div>
+
+					{% endfor %}
+				</div>
+
+
+
+				<!--Panel content-->
+			</div>
+			<div class="panel-footer">
+				<!--Panel footer-->
+				<input type="submit" value="Create Blog!">
+			</div>
+		</form>
 	</div>
 
-                <div class="card mb-2">
-                    <div class="card-body">
-                        <h6 class="card-title">What's on your mind?</h6>
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {% for field in blog_form %}
-                                <div class="fieldWrapper">
-                                    {{ field.label_tag }}{{ field }}
-                                </div>
+                <!--<div class="card mb-2">-->
+                    <!--<div class="card-body">-->
+                        <!--<h6 class="card-title">What's on your mind?</h6>-->
 
-                                {% endfor %}
-                            </div>
-
-                            <input type="submit" value="Create Blog!">
-                        </form>
-                    </div>
+                    <!--</div>-->
 
 
-                </div>
+                <!--</div>-->
 
 
 

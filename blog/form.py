@@ -6,6 +6,8 @@ from .models import Blog, BlogPost
 #
 class PostForm(forms.ModelForm):
 
+    # text = forms.CharField(widget=forms.Textarea(attrs={'cols': 280, 'rows': 4}))
+
     class Meta:
         model = BlogPost
 
@@ -21,7 +23,7 @@ class PostForm(forms.ModelForm):
 
 class BlogForm(forms.ModelForm):
 
-    theme = forms.CharField(widget=forms.Textarea(attrs={'cols': 30, 'rows': 5}))
+    theme = forms.CharField(widget=forms.Textarea(attrs={'cols': 20, 'rows': 3}))
     # theme = forms.Textarea(widget=forms.TextInput(attrs={'size':3}))
 
     class Meta:
