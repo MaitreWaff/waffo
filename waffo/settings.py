@@ -27,20 +27,39 @@ SECRET_KEY = '14=(=$_xasqw$24ay_p(h7-pu*j@-8ev6lm2gxbbszg93v^i$9'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
-TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
-
-TEMPLATE_DIRS = (
-    TEMPLATE_PATH,
-)
+# TEMPLATE_DEBUG = True
+#
+# TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+#
+# TEMPLATE_DIRS = (
+#     TEMPLATE_PATH,
+# )
 
 ALLOWED_HOSTS = []
 
 
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': ['templates',],
+        'APP_DIRS': True,
+        # 'TEMPLATE_DEBUG': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+            'debug': True,
+        },
+    },
+]
+
+
 # Application definition
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'blog',
     'profiles',
     'waff',
@@ -131,9 +150,21 @@ INSTALLED_APPS = (
     # 'allauth.socialaccount.providers.windowslive',
     # 'allauth.socialaccount.providers.xing',
 
-)
+]
+#
+# INSTALLED_APPS = (
+# )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = [
+    #
+    # 'django.contrib.sessions.middleware.SessionMiddleware',
+    # 'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.contrib.auth.middleware.AuthenticationMiddleware',
+    # 'django.contrib.messages.middleware.MessageMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -141,7 +172,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-)
+]
+#
+# MIDDLEWARE_CLASSES = (
+# )
 
 ROOT_URLCONF = 'waffo.urls'
 
@@ -208,7 +242,8 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
-LOGIN_URL='/account/login/'
+LOGIN_URL='/accounts/login/'
+# LOGIN_URL='/account/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Add this to tell Django where to redirect after
