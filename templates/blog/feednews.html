@@ -467,38 +467,59 @@
 
         {% if user.is_authenticated %}
 
-	<div class="ui-widget">
-		<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
-			<!--<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>-->
-			<!--<strong>Hey!</strong> Sample ui-state-highlight style.</p>-->
-			<center><h6 class="my-4">Create Your <strong>Blog Post(s)</strong> Here</h6></center>
-		</div>
-	</div>
-	<br>
+			<div class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+					<!--<p><span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>-->
+					<!--<strong>Hey!</strong> Sample ui-state-highlight style.</p>-->
+					<center><h6 class="my-4">Create Your <strong>Blog Post(s)</strong> Here</h6></center>
+				</div>
+			</div>
+			<br>
 
 
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h6 class="card-title">What's on your mind?</h6>
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {% for field in form %}
-                                <div class="fieldWrapper">
-                                    {{ field.label_tag }}{{ field }}
-                                </div>
 
-                                {% endfor %}
-                            </div>
-
-                            <input type="submit" value="Post!">
-                            <button id="button">Like</button>
-                            <input type="text" name="datepicker" id="datepicker">
-                        </form>
-                    </div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h6 class="panel-title">What's on your mind?</h6>
+				</div>
+				<form action="" method="post">
+					<div class="panel-body">
+						<!--Panel content-->
 
 
-                </div>
+								{% csrf_token %}
+								<div class="form-group">
+									{% for field in form %}
+									<div class="fieldWrapper">
+										{{ field.label_tag }}{{ field }}
+									</div>
+
+									{% endfor %}
+								</div>
+
+					</div>
+					<div class="panel-footer">
+						<!--Panel footer-->
+
+								<input type="submit" value="Post!">
+								<button id="button">Like</button>
+								<!--<input type="text" name="datepicker" id="datepicker">-->
+
+					</div>
+				</form>
+			</div>
+
+
+
+
+                <!--<div class="card mb-4">-->
+                    <!--<div class="card-body">-->
+                        <!--<h6 class="card-title">What's on your mind?</h6>-->
+
+                    <!--</div>-->
+
+
+                <!--</div>-->
 
 
 
@@ -547,39 +568,90 @@
 
 
                 <!-- Blog Post -->
-                <div class="card mb-4 update" id="{{ post.id }}">
-                    {% if post.illustration %}
-                    <a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" width="600" height="300" alt="{{ post.titre|capfirst }}"></a>
-                    {% else %}
-                        <img class="card-img-top" src="https://unsplash.it/600/300/?random" alt="Card image cap">
-                    {% endif %}
 
-                    <div class="card-body">
-                        <h4 class="card-title">{{ post.titre|capfirst }}</h4>
-                        <h6><small><small> - via &rarr; <a href="{% url 'blog:blog-detail' post.blog.slug %}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>
-                        <p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>
-                        <a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on {{ post.date_post }} by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.slug %}">{{ post.blog.auteur|capfirst }}</a>
-                    </div>
-                </div>
+		<div class="update" id="{{ post.id }}">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					{% if post.illustration %}
+					<a href="{% url 'blog:blogpost-details' post.slug %}"><img class="card-img-top" src="/blog/media/{{ post.illustration }}/" width="500" height="300" alt="{{ post.titre|capfirst }}"></a>
+					{% else %}
+						<img class="card-img-top" src="https://unsplash.it/500/300/?random" alt="Card image cap">
+					{% endif %}
+
+					<h3 class="panel-title">{{ post.titre|capfirst }}</h3>
+					<h4><small><small> - via &rarr; <a href="{% url 'blog:blog-detail' post.blog.slug %}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h4>
+				</div>
+
+				<div class="panel-body">
+					<!--Panel content-->
+					<p>{{ post.text|linebreaks|truncatewords:100 }}</p>
+					<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
+				</div>
+				<div class="panel-footer">
+					<!--Panel footer-->
+
+											<!--<input type="submit" value="Post!">-->
+											<button><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like</button>
+											<button><i class="fa fa-commenting-o" aria-hidden="true"></i> Comment</button>
+											<button><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
+					<!--Posted on {{ post.date_post }} by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.slug %}">{{ post.blog.auteur|capfirst }}</a>-->
+				</div>
+
+			</div>
+
+
+		</div>
+
+
+                <!--<div class="card mb-4 update" id="{{ post.id }}">-->
+
+                    <!--<div class="card-body">-->
+                        <!--<h4 class="card-title">{{ post.titre|capfirst }}</h4>-->
+                        <!--<h6><small><small> - via &rarr; <a href="{% url 'blog:blog-detail' post.blog.slug %}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h6>-->
+                        <!--<p class="card-text">{{ post.text|linebreaks|truncatewords:100 }}</p>-->
+                        <!--<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>-->
+                    <!--</div>-->
+                    <!--<div class="card-footer text-muted">-->
+                        <!--Posted on {{ post.date_post }} by <a href="{% url 'profile:viewuserprofile' post.blog.auteur.slug %}">{{ post.blog.auteur|capfirst }}</a>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
         {% empty %}
 
-                <!-- Blog Post -->
-                <div class="card mb-4 update" id="0">
-                    <img class="card-img-top" src="http://placehold.it/600x300" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title">Nothing to show.</h2>
-                        <p class="card-text">Revenez prochainement.</p>
-                        <!--<a href="#" class="btn btn-primary">Read More &rarr;</a>-->
-                    </div>
-                    <div class="card-footer text-muted">
-                        Posted on January 1, 2017 by <a href="#">W@luc</a>
-                    </div>
-                </div>
+
+							<!-- Blog Post -->
+			<div class="update" id="0">
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap">
+						<h3 class="panel-title">Nothing to show.</h3>
+					</div>
+					<div class="panel-body">
+						Creez Un Blog!
+					</div>
+					<div class="panel-footer">
+						Copyright 2017
+					</div>
+				</div>
+
+
+
+			</div>
+
+					<!--<div class="card mb-4 update" id="0">-->
+						<!--<img class="card-img-top" src="http://placehold.it/600x300" alt="Card image cap">-->
+						<!--<div class="card-body">-->
+							<!--<h2 class="card-title">Nothing to show.</h2>-->
+							<!--<p class="card-text">Revenez prochainement.</p>-->
+							<!--&lt;!&ndash;<a href="#" class="btn btn-primary">Read More &rarr;</a>&ndash;&gt;-->
+						<!--</div>-->
+						<!--<div class="card-footer text-muted">-->
+							<!--Posted on January 1, 2017 by <a href="#">W@luc</a>-->
+						<!--</div>-->
+                	<!--</div>-->
 
 
 
@@ -662,7 +734,17 @@
 	</div>
 	<br>
 
-
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Panel title</h3>
+		</div>
+		<div class="panel-body">
+			Panel content
+		</div>
+		<div class="panel-footer">
+			Panel footer
+		</div>
+	</div>
 
                 <div class="card mb-2">
                     <div class="card-body">
@@ -694,6 +776,7 @@
 
 
         <div id="blog-update-holder">
+
         {% if blogs %}
 
             {% for blog in blogs %}
@@ -701,42 +784,108 @@
 
                     <!-- Blog Post -->
             <div class="update">
-                    <div class="card mb-2" id="{{ blog.id }}">
-                        <a href="{# url 'blog:blog-detail' blog.slug #}">
-                            {% if blog.illustration %}
-                                <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="200" height="100" alt="Card image cap">
 
-                            {% else %}
-                                <img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">
 
-                            {% endif %}
-                        </a>
-                        <div class="card-body">
-                            <h2 class="card-title">{{ blog.theme|title }}</h2>
-                            <p class="card-text"> Posts Inside ==> blog.slug|title </p>
-                            <a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
-                        </div>
-                    </div>
+
+
+
+
+
+
+			<div class="panel panel-default" id="{{ blog.id }}">
+			  <div class="panel-heading">
+
+				  <a href="{# url 'blog:blog-detail' blog.slug #}">
+						{% if blog.illustration %}
+							<img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="150" height="100" alt="Card image cap">
+
+						{% else %}
+							<img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+
+						{% endif %}
+					</a>
+				  <h3 class="panel-title">
+					  <!--Panel title -->
+					  {{ blog.theme|title }}</h3>
+			  </div>
+			  <div class="panel-body">
+				<!--Panel content-->
+				  <p class="card-text"> Posts Inside ==> blog.slug|title </p>
+				<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>
+			  </div>
+				<div class="panel-footer">
+					<!--Panel footer-->
+				Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
+				</div>
+			</div>
+
+
+
+
+
+
+                    <!--<div class="panel panel-default" id="{{ blog.id }}">-->
+                        <!--<a href="{# url 'blog:blog-detail' blog.slug #}">-->
+                            <!--{% if blog.illustration %}-->
+                                <!--<img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" width="200" height="100" alt="Card image cap">-->
+
+                            <!--{% else %}-->
+                                <!--<img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">-->
+
+                            <!--{% endif %}-->
+                        <!--</a>-->
+                        <!--<div class="panel-heading">-->
+                            <!--<h2 class="card-title">{{ blog.theme|title }}</h2>-->
+                            <!--<p class="card-text"> Posts Inside ==> blog.slug|title </p>-->
+                            <!--<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>-->
+                        <!--</div>-->
+                        <!--<div class="card-footer text-muted">-->
+                            <!--Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+
 
             </div>
             {% empty %}
-                <div class="update">
+
+
+
+
+
+
+				<div class="update">
                     <!-- Blog Post -->
-                    <div class="card mb-2">
-                        <img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">
-                        <div class="card-body">
-                            <h2 class="card-title">Aucun blog Actuellement.</h2>
-                            <p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-post' %}">ici</a>.</p>
-                            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Posted on January 1, 2017 by <a href="#">W@luc</a>
-                        </div>
-                    </div>
-                </div>
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+						  <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+						<h3 class="panel-title">Aucun blog Actuellement.</h3>
+					  </div>
+					  <div class="panel-body">
+						Panel content
+						  <p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-post' %}">ici</a>.</p>
+					  </div>
+						<div class="panel-footer">Copyright 2017</div>
+					</div>
+
+				</div>
+
+
+
+
+                <!--<div class="update">-->
+                    <!--<div class="card mb-2">-->
+                        <!--<img class="card-img-top" src="https://unsplash.it/200/100/?random" alt="Card image cap">-->
+                        <!--<div class="card-body">-->
+                            <!--<h2 class="card-title">Aucun blog Actuellement.</h2>-->
+                            <!--<p class="card-text">Revenez prochainement ou alors creez votre propre blog <a href="{% url 'create-post' %}">ici</a>.</p>-->
+                            <!--<a href="#" class="btn btn-primary">Read More &rarr;</a>-->
+                        <!--</div>-->
+                        <!--<div class="card-footer text-muted">-->
+                            <!--Posted on January 1, 2017 by <a href="#">W@luc</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
 
 
             {% endfor %}

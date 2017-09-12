@@ -23,24 +23,22 @@
   {% include 'base/navbar.html' %}
 
 	<div class="container-fluid">
-		<div class="row justify-content-md-center">
-			<div class="col col-xs-5">
+		<div class="row justify-content-around">
+			<div class="col col-xs-5 flex-first">
 				<p>Desktop Apps</p>
 
 				{% block apps %}No Desktop Apps{% endblock apps %}
 
 			</div>
-			<div class="col col-xs-5">
-				<p>Post Actu</p><p>Large Feed-News</p>
+			<div class="col col-xs-5 flex-unordered">
+				<!--<p>Post Actu</p><p>Large Feed-News</p>-->
 				{% block wide-fn %}No Post{% endblock wide-fn %}
 
 
 			</div>
-			<!-- 	<div class="col-xs-2"><p>Trois</p></div>
-			<div class="col-xs-2"><p>Four</p></div>
-			<div class="col-xs-2"><p>Five</p></div> -->
-			<div class="col col-xs-2">
-				<p>Blog Actu</p><p>Small Feed-News</p>
+
+			<div class="col col-xs-2 flex-last">
+				<!--<p>Blog Actu</p><p>Small Feed-News</p>-->
 				{% block small-fn %}No Blog{% endblock small-fn %}
 
 			</div>
