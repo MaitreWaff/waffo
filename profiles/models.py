@@ -69,7 +69,7 @@ def create_user_profile(sender, instance, created, **kwargs):
         # prof.slug = slugify(prof.user.user)
         prof.slug = slugify(prof.user.username)
         prof.save()
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
+#
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
