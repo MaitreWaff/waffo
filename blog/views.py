@@ -165,7 +165,9 @@ class FeedNews(generic.edit.CreateView):
         # return get_object_or_404(Blog, auteur=self.request.user)
 
     def get_form(self, form_class):
-        form = super(generic.CreateView, self).get_form(form_class)
+        # form = super(generic.CreateView, self).get_form(form_class)
+        form = super(generic.edit.CreateView, self).get_form(form_class)
+        # form = super(FeedNews, self).get_form(form_class)
         form.fields['blog'].queryset = self.get_user_blogs()
         return form
     #
@@ -191,7 +193,7 @@ class CreateBlog(generic.edit.CreateView):
     template_name = 'blog/blog-list.html'
 
     def get_user(self):
-        return Profile.objects.filter(user=self.request.user)
+        return UserProfileModel.objects.filter(user=self.request.user)
 
     def get_context_data(self, **kwargs):
         context = super(CreateBlog, self).get_context_data(**kwargs)
@@ -213,7 +215,7 @@ class CreateBlog(generic.edit.CreateView):
         # self.object = form.save(commit=False)
         # self.object.auteur = self.request.user.profile
         # self.object.save()
-        form.instance.auteur = Profile.objects.get(user=self.request.user)
+        form.instance.auteur = UserProfileModel.objects.get(user=self.request.user)
 
         return super(CreateBlog, self).form_valid(form)
         # return HttpResponseRedirect(self.get_success_url())
