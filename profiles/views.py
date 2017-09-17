@@ -45,7 +45,7 @@ class RegisterUserView(generic.CreateView):
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated():
-            return HttpResponseRedirect('home')
+            return HttpResponseRedirect('/blog/feed-news/')
 
         return super(RegisterUserView, self).dispatch(request, *args, **kwargs)
 
@@ -54,7 +54,7 @@ class RegisterUserView(generic.CreateView):
         user.set_password(form.cleaned_data['password'])
         user.save()
         UserProfileModel.objects.create(user=user, slug=slugify(user.username))
-        return HttpResponseRedirect('home')
+        return HttpResponseRedirect('/blog/feed-news/')
 
 
 
