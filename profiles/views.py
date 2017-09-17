@@ -238,7 +238,7 @@ def profile(request):
 
 @login_required
 def viewuserprofile(request, slug):
-    prof = Profile.objects.get(slug=slug)
+    prof = UserProfileModel.objects.get(slug=slug)
 
     # blogs = Blog
 
