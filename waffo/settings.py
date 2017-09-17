@@ -242,8 +242,8 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
-LOGIN_URL='/accounts/login/'
-# LOGIN_URL='/account/login/'
+# LOGIN_URL='/accounts/login/'
+LOGIN_URL='/account/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Add this to tell Django where to redirect after

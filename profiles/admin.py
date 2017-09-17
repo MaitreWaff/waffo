@@ -1,9 +1,9 @@
 from django.contrib import admin
-from profiles.models import Profile
+from profiles.models import *
 
 # Register your models here.
 
 class ProfileAdmin(admin.ModelAdmin):
     pass
 
-admin.site.register(Profile)
+admin.site.register(UserProfileModel)

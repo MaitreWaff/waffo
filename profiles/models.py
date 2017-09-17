@@ -28,7 +28,8 @@ def get_upload_cover_file_name(instance, filename):
 
 # Create your models here.
 
-class Profile(models.Model):
+# class Profile(models.Model):
+class UserProfileModel(models.Model):
     user        = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile      = models.IntegerField(unique=True, blank=True, null=True, help_text="Telephone Mobile.")
     photo       = models.FileField(upload_to=get_upload_photo_file_name, blank=True)
@@ -37,11 +38,11 @@ class Profile(models.Model):
     bio         = models.TextField(max_length=TF_BIO_MAX_L, blank=True)
     location    = models.CharField(max_length=CF_LOC_MAX, blank=True)
     date_naiss  = models.DateField(null=True, blank=True)
-    joined_on   = models.DateTimeField('Joined On', auto_now_add=True, editable=False)
+    # joined_on   = models.DateTimeField('Joined On', auto_now_add=True, editable=False)
     slug        = models.SlugField(blank=True, max_length=MAX_L_SLUG)
 
     def __unicode__(self):
-        return "%s" % self.user
+        return "%s" % self.user.username
 
     def get_absolute_url(self):
         return ('viewuserprofile',(), {'slug':self.slug})
@@ -58,18 +59,20 @@ class Profile(models.Model):
     #     return (self.pk, self.user.username, self.slug, self.joined_on)
 
     class Meta:
-        ordering = ('-joined_on',)
-        unique_together = (('user', 'date_naiss', 'sexe', 'joined_on', 'slug'))
-
-@receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        prof = Profile.objects.create(user=instance)
-        # Added for slug field.
-        # prof.slug = slugify(prof.user.user)
-        prof.slug = slugify(prof.user.username)
-        prof.save()
+        ordering            = ('user',)
+        unique_together     = (('user', 'date_naiss', 'sexe', 'slug'))
+        verbose_name        = 'Profile'
+        verbose_name_plural = 'Profiles'
 #
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         prof = Profile.objects.create(user=instance)
+#         # Added for slug field.
+#         # prof.slug = slugify(prof.user.user)
+#         prof.slug = slugify(prof.user.username)
+#         prof.save()
+# #
 # @receiver(post_save, sender=User)
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()

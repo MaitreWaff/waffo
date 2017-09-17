@@ -12,6 +12,7 @@ from django.views import generic
 from waffo import settings
 
 from profiles.form import *
+from profiles.models import *
 #ProfileForm, UserForm, SignUpForm, SignInForm
 
 # Create your views here.
@@ -34,6 +35,29 @@ from profiles.form import *
 #     else:
 #         form    = SignUpForm()
 #         return render(request, 'profiles/signup.html', {'form': form})
+
+
+# refactorisation code.
+class RegisterUserView(generic.CreateView):
+    form_class = RegisterUserform
+    template_name = 'profiles/signup.html'
+    # template_name = 'registration/registration_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated():
+            return HttpResponseRedirect('home')
+
+        return super(RegisterUserView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_password(form.cleaned_data['password'])
+        user.save()
+        UserProfileModel.objects.create(user=user, slug=slugify(user.username))
+        return HttpResponseRedirect('home')
+
+
+
 
 
 def signup(request):
@@ -287,6 +311,9 @@ def userregister(request):
 
 def userregister_success(request):
     pass
+
+
+
 
 
 
