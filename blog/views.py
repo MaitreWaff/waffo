@@ -152,24 +152,24 @@ class FeedNews(generic.edit.CreateView):
     success_url = '/blog/feed-news/'
     # template_name = 'base.html'
     template_name = 'blog/feednews.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(FeedNews, self).get_context_data(**kwargs)
-        context['posts'] = BlogPost.objects.all()
-        context['blogs'] = Blog.objects.all()
-        context['blog_form'] = BlogForm()
-        return context
-
-    def get_user_blogs(self):
-        return Blog.objects.filter(auteur=self.request.user)
-        # return get_object_or_404(Blog, auteur=self.request.user)
-
-    def get_form(self, form_class):
-        # form = super(generic.CreateView, self).get_form(form_class)
-        form = super(generic.edit.CreateView, self).get_form(form_class)
-        # form = super(FeedNews, self).get_form(form_class)
-        form.fields['blog'].queryset = self.get_user_blogs()
-        return form
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(FeedNews, self).get_context_data(**kwargs)
+    #     context['posts'] = BlogPost.objects.all()
+    #     context['blogs'] = Blog.objects.all()
+    #     context['blog_form'] = BlogForm()
+    #     return context
+    #
+    # def get_user_blogs(self):
+    #     return Blog.objects.filter(auteur=self.request.user)
+    #     # return get_object_or_404(Blog, auteur=self.request.user)
+    #
+    # def get_form(self, form_class):
+    #     # form = super(generic.CreateView, self).get_form(form_class)
+    #     form = super(generic.edit.CreateView, self).get_form(form_class)
+    #     # form = super(FeedNews, self).get_form(form_class)
+    #     form.fields['blog'].queryset = self.get_user_blogs()
+    #     return form
     #
     # def get_initial(self):
     #     initial_dict = {'posts': BlogPost.objects.all()}
@@ -183,27 +183,28 @@ class FeedNews(generic.edit.CreateView):
 
 
 class CreateBlog(generic.edit.CreateView):
-    form_class = BlogForm
     model = Blog
+    form_class = BlogForm
+    # fields = ['auteur', 'theme']
 
     # fields = ['theme']
-    fields = ['auteur', 'theme']
     success_url = '/blog/feed-news/'
     # success_url = '/blog/list/'
     template_name = 'blog/blog-list.html'
 
-    def get_user(self):
-        return UserProfileModel.objects.filter(user=self.request.user)
-
-    def get_context_data(self, **kwargs):
-        context = super(CreateBlog, self).get_context_data(**kwargs)
-        context['all_blogs'] = Blog.objects.order_by('-date_blog')
-        return context
-
-    def get_form(self, form_class):
-        form = super(generic.CreateView, self).get_form(form_class)
-        # form.fields['auteur'].queryset = self.get_user()
-        return form
+    #
+    # def get_user(self):
+    #     return UserProfileModel.objects.filter(user=self.request.user)
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(CreateBlog, self).get_context_data(**kwargs)
+    #     context['all_blogs'] = Blog.objects.order_by('-date_blog')
+    #     return context
+    #
+    # def get_form(self, form_class):
+    #     form = super(generic.CreateView, self).get_form(form_class)
+    #     # form.fields['auteur'].queryset = self.get_user()
+    #     return form
 
 
     def form_valid(self, form):
