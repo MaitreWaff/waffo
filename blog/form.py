@@ -4,6 +4,8 @@ from .models import Blog, BlogPost
 
 # Formulaires du Blog
 #
+
+
 class PostForm(forms.ModelForm):
 
     # text = forms.CharField(widget=forms.Textarea(attrs={'cols': 280, 'rows': 4}))
@@ -31,4 +33,15 @@ class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
         exclude = ('auteur', 'illustration', 'date_blog', 'slug')
+
+
+class CreateBlogForm(forms.ModelForm):
+
+    class Meta:
+        model   = Blog
+        fields  = ['theme',]
+
+    def __init__(self, auteur, *args, **kwargs):
+        super(CreateBlogForm, self).__init__(self, *args, **kwargs)
+        self.fields['auteur'] = auteur
 

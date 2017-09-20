@@ -76,6 +76,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     # 'bootstrap3',
     # 'django_forms_bootstrap',
+    'widget_tweaks',
 
     # django-allauth Social Authentication from djangopackage.org
     'allauth',
@@ -188,7 +189,7 @@ WSGI_APPLICATION = 'waffo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'django11.database.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'blog.database.sqlite3'),
     }
 }
 
@@ -242,6 +243,7 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+
 # LOGIN_URL='/accounts/login/'
 LOGIN_URL='/account/login/'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

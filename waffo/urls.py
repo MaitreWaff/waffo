@@ -11,6 +11,7 @@ from django.conf.urls import *
 from django.contrib.auth import views as auth_views
 # from profiles import views as profile_views
 from profiles import views as profile_views
+from blog.views import desktop, Desktop
 
 # urlpatterns = patterns('',
 urlpatterns = [
@@ -20,6 +21,7 @@ urlpatterns = [
     # registration.backends.default.urls
 
     # My old login URLs
+    url(r'^$', Desktop.as_view(), name='desktop'),
     # url(r'^$', 'django.contrib.auth.views.login'),
     url(r'^account/login/$', login, name='login'),
     # url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
