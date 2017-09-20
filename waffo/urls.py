@@ -21,7 +21,8 @@ urlpatterns = [
     # registration.backends.default.urls
 
     # My old login URLs
-    url(r'^$', Desktop.as_view(), name='desktop'),
+    url(r'^$', desktop, name='desktop'),
+    # url(r'^$', Desktop.as_view(), name='desktop'),
     # url(r'^$', 'django.contrib.auth.views.login'),
     url(r'^account/login/$', login, name='login'),
     # url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),

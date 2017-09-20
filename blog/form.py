@@ -6,6 +6,13 @@ from .models import Blog, BlogPost
 #
 
 class DesktopBlogForm(forms.ModelForm):
+    theme = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'rows': 5, 'cols': 20, 'placeholder': "What's in your mind?"}
+        ),
+        max_length=4000,
+        help_text='Create Something Usefull.'
+    )
 
     class Meta:
         model = Blog
@@ -15,7 +22,11 @@ class DesktopPostForm(forms.ModelForm):
 
     class Meta:
         model = BlogPost
-        fields = ['titre', 'illustration', 'text']
+        fields = ['titre', 'text', 'illustration', 'blog']
+
+    def __init__(self, user, *args, **kwargs):
+        super(DesktopPostForm, self).__init__(*args, **kwargs)
+        self.fields['blog'].queryset = Blog.objects.all()
 
 class PostForm(forms.ModelForm):
 

@@ -67,9 +67,24 @@ class Desktop(generic.edit.CreateView):
 
 
 
-
+@login_required
 def desktop(request):
-    return HttpResponse('Hey guys!')
+    context_dict = dict()
+    blogs = Blog.objects.all()
+    posts = BlogPost.objects.all()
+    context_dict['blogs'] = blogs
+    context_dict['posts'] = posts
+    if request.method == 'POST':
+        context_dict['blog_form'] = DesktopBlogForm(request.POST)
+        context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel, request.POST)
+
+
+    else:
+        context_dict['blog_form'] = DesktopBlogForm()
+        context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel)
+
+
+    return render(request, 'blog/desktop.html', context_dict)
 
 
 

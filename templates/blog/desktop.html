@@ -38,30 +38,15 @@
 
 
 
-				<form action="" method="post">
+				<form action="" method="post" enctype="multipart/form-data" novalidate>
 					{% csrf_token %}
-					<div class="panel-body">
-						<!--Panel content-->
+                    <div class="panel-body">{% include 'includes/post_form.html' with form=post_form %}</div>
 
-
-
-								<div class="form-group">
-									{% for field in form %}
-									<div class="fieldWrapper">
-										{{ field.label_tag }}{{ field }}
-									</div>
-
-									{% empty %}
-										<p>No Form</p>
-									{% endfor %}
-								</div>
-
-					</div>
 					<div class="panel-footer">
 						<!--Panel footer-->
 
-								<input type="submit" value="Post!">
-								<button id="button">Like</button>
+								<input type="submit" class="btn btn-success" value="Post!">
+								<!--<button id="button">Like</button>-->
 								<!--<input type="text" name="datepicker" id="datepicker">-->
 
 					</div>
@@ -131,24 +116,24 @@
 
 
 							 <p>Blog Post</p>
-			<!--<div class="update" id="0">-->
+			<div class="update" id="0">
 
-				<!--<div class="panel panel-default">-->
-					<!--<div class="panel-heading">-->
-						<!--<img class="card-img-top" src="http://placehold.it/500x300" alt="Card image cap">-->
-						<!--<h3 class="panel-title">Nothing to show.</h3>-->
-					<!--</div>-->
-					<!--<div class="panel-body">-->
-						<!--Creez Un Blog!-->
-					<!--</div>-->
-					<!--<div class="panel-footer">-->
-						<!--Copyright 2017-->
-					<!--</div>-->
-				<!--</div>-->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="post-image"><img class="card-img-top" src="http://placehold.it/400x300" alt="Card image cap"></div>
+						<h3 class="panel-title">Nothing to show.</h3>
+					</div>
+					<div class="panel-body">
+						Creez Un Blog!
+					</div>
+					<div class="panel-footer">
+						Copyright 2017
+					</div>
+				</div>
 
 
 
-			<!--</div>-->
+			</div>
 
 
 
@@ -217,28 +202,17 @@
 				<div class="panel-heading">
 					<h3 class="panel-title">What's on your mind?</h3>
 				</div>
-				<form action="/blog/list/" method="post" enctype="multipart/form-data">
-					<div class="panel-body">
-						{% csrf_token %}
+				<form action="/blog/list/" method="post" enctype="multipart/form-data" novalidate>
+					{% csrf_token %}
+                    <div class="panel-body">
+                        {% include 'includes/blog_form.html' with form=blog_form %}
+                        <!--Panel content-->
 
+                    </div>
 
-
-						<div class="form-group">
-							{% for field in blog_form %}
-							<div class="fieldWrapper">
-								{{ field.label_tag }}{{ field }}
-							</div>
-
-							{% endfor %}
-						</div>
-
-
-
-						<!--Panel content-->
-					</div>
 					<div class="panel-footer">
 						<!--Panel footer-->
-						<input type="submit" value="Create Blog!">
+						<input type="submit" class="btn btn-info" value="Create Blog!">
 					</div>
 				</form>
 			</div>
