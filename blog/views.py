@@ -17,6 +17,57 @@ from blog.form import *
 # Create your views here.
 
 
+
+# @login_required
+class Desktop(generic.edit.CreateView):
+    model = BlogPost
+    # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
+
+    fields = ['titre', 'text', 'blog']
+    success_url = '/blog/feed-news/'
+    # template_name = 'base.html'
+    template_name = 'blog/feednews.html'
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super(FeedNews, self).get_context_data(**kwargs)
+    #     context['posts'] = BlogPost.objects.all()
+    #     context['blogs'] = Blog.objects.all()
+    #     context['blog_form'] = BlogForm()
+    #     return context
+    #
+    # def get_user_blogs(self):
+    #     return Blog.objects.filter(auteur=self.request.user)
+    #     # return get_object_or_404(Blog, auteur=self.request.user)
+    #
+    # def get_form(self, form_class):
+    #     # form = super(generic.CreateView, self).get_form(form_class)
+    #     form = super(generic.edit.CreateView, self).get_form(form_class)
+    #     # form = super(FeedNews, self).get_form(form_class)
+    #     form.fields['blog'].queryset = self.get_user_blogs()
+    #     return form
+    #
+    # def get_initial(self):
+    #     initial_dict = {'posts': BlogPost.objects.all()}
+    #     # initial_dict = {'blog': self.request.session.get('blogs')}
+    #     return initial_dict
+
+    def form_valid(self, form):
+        # Ajouter les liens entre le post et un blog.
+        return super(Desktop, self).form_valid(form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def desktop(request):
     return HttpResponse('Hey guys!')
 
@@ -158,45 +209,6 @@ class CreateComment(generic.edit.CreateView):
 
 # @login_required
 class FeedNews(generic.edit.CreateView):
-    model = BlogPost
-    # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
-
-    fields = ['titre', 'text', 'blog']
-    success_url = '/blog/feed-news/'
-    # template_name = 'base.html'
-    template_name = 'blog/feednews.html'
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(FeedNews, self).get_context_data(**kwargs)
-    #     context['posts'] = BlogPost.objects.all()
-    #     context['blogs'] = Blog.objects.all()
-    #     context['blog_form'] = BlogForm()
-    #     return context
-    #
-    # def get_user_blogs(self):
-    #     return Blog.objects.filter(auteur=self.request.user)
-    #     # return get_object_or_404(Blog, auteur=self.request.user)
-    #
-    # def get_form(self, form_class):
-    #     # form = super(generic.CreateView, self).get_form(form_class)
-    #     form = super(generic.edit.CreateView, self).get_form(form_class)
-    #     # form = super(FeedNews, self).get_form(form_class)
-    #     form.fields['blog'].queryset = self.get_user_blogs()
-    #     return form
-    #
-    # def get_initial(self):
-    #     initial_dict = {'posts': BlogPost.objects.all()}
-    #     # initial_dict = {'blog': self.request.session.get('blogs')}
-    #     return initial_dict
-
-    def form_valid(self, form):
-        # Ajouter les liens entre le post et un blog.
-        return super(FeedNews, self).form_valid(form)
-
-
-
-# @login_required
-class Desktop(generic.edit.CreateView):
     model = BlogPost
     # queryset = BlogPost.objects.filter(blogs.auteur=self.request.user)
 

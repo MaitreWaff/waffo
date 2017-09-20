@@ -5,6 +5,17 @@ from .models import Blog, BlogPost
 # Formulaires du Blog
 #
 
+class DesktopBlogForm(forms.ModelForm):
+
+    class Meta:
+        model = Blog
+        fields = ['theme', 'illustration']
+
+class DesktopPostForm(forms.ModelForm):
+
+    class Meta:
+        model = BlogPost
+        fields = ['titre', 'illustration', 'text']
 
 class PostForm(forms.ModelForm):
 
