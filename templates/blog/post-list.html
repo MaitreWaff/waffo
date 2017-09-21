@@ -12,12 +12,32 @@
 {# block blogentries #}
 {% block desktop %}
 
+
 <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
+
+
+			<div class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+
+					<center><h6 class="my-4">Create Your <strong>Post(s)</strong> Here</h6></center>
+				</div>
+			</div>
+			<br>
+
+
+
+
         <form action="">
-            {% include 'includes/post_form.html' %}
+            {% csrf_token %}
+            <!--<p>Ici git un form.</p>-->
+
+            {{ form }}
+
         </form>
+
+
     </div>
     <div class="col-lg-3"></div>
 </div>

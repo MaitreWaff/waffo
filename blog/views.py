@@ -148,7 +148,7 @@ class BlogPostListView(generic.list.ListView):
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
         # context['now'] = timezone.now() #
-        context['blog_form'] = DesktopPostForm()
+        context['form'] = DesktopPostForm()
         return context
 
 class BlogDetailView(generic.DetailView):

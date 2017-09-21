@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block desktop %}
+
+<div class="container-fluid">
+
+
+<div class="row">
+
+    <div class="col-lg-3">
+        {% block apps %}<p>Desktop Apps</p>No Desktop Apps{% endblock apps %}
+    </div>
+
+
+    <div class="col-lg-6">
+        {% block widefn %}No Post{% endblock widefn %}
+        <form action="">
+            {% include 'includes/blog_form.html' %}
+            <input type="submit" class="btn btn-info" value="Blog">
+        </form>
+    </div>
+    <div class="col-lg-3">
+        {% block smallfn %}No Blog{% endblock smallfn %}
+    </div>
+</div>
+
+
+
+</div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+
+
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <!--<p>Post Actu</p><p>Large Feed-News</p>-->
+
+
+
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <!--<p>Blog Actu</p><p>Small Feed-News</p>-->
+
+
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
