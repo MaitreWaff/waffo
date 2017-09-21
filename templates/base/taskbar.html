@@ -65,7 +65,13 @@
 
           		</li>
 	      		<!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
-	      		<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+	      		<li>
+                    {% if user.is_authenticated %}
+                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+                    {% else %}
+                        <a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                    {% endif %}
+                </li>
 	      		<!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
 	    	</ul>
         </div><!--/.nav-collapse -->

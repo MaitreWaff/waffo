@@ -22,26 +22,33 @@ urlpatterns = [
 
     # My old login URLs
     url(r'^$', desktop, name='desktop'),
+    url(r'^account/login/$', login, name='login'),
+    url(r'^account/logout/$', logout, name='logout'),
+    url(r'^account/register/$', view=profile_views.RegisterUserView.as_view(), name='register'),
+
+    url(r'^admin/', include(admin.site.urls), name='admin'),
+    url(r'^home/$', profile_views.userhome),  # Home => UserHome
+
+    url(r'^blog/', include('blog.urls', namespace='blog')),
+    url(r'^profile/', include('profiles.urls', namespace='profile')),
+    url(r'^register/success/$', profile_views.userregister_success),
+
+
+
+
     # url(r'^$', Desktop.as_view(), name='desktop'),
     # url(r'^$', 'django.contrib.auth.views.login'),
-    url(r'^account/login/$', login, name='login'),
+
     # url(r'^account/login/$', 'django.contrib.auth.views.login', name='login'),
     # url(r'^account/logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    url(r'^account/logout/$', logout, name='logout'),
+
     # url(r'^account/register/$', profile_views.signup, name='register'),
-    url(r'^account/register/$', view=profile_views.RegisterUserView.as_view(), name='register'),
+
     # End my old login URLs
 
     # allauth url.
     # url(r'^accounts/', include('allauth.urls')),
     # End allauth url
-
-    url(r'^admin/', include(admin.site.urls), name='admin'),
-    url(r'^home/$', profile_views.userhome), # Home => UserHome
-
-    url(r'^blog/', include('blog.urls', namespace='blog')),
-    url(r'^profile/', include('profiles.urls', namespace='profile')),
-    url(r'^register/success/$', profile_views.userregister_success),
 
     # url(r'^signup/', profile_views.signup, name='signup'),
     # url(r'^account/', include('registration.backends.simple.urls')),
