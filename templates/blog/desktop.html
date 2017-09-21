@@ -114,13 +114,12 @@
 
         {% empty %}
 
-
-							 <p>Blog Post</p>
+			<p>Blog Post</p>
 			<div class="update" id="0">
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<div class="post-image"><img class="card-img-top" src="https://unsplash.it/400/300/?random" alt="Card image cap"></div>
+						<div class="post-image"><img class="card-img-top img-responsive" src="https://unsplash.it/400/300/?random" alt="Card image cap"></div>
 						<h3 class="panel-title">Nothing to show.</h3>
 					</div>
 					<div class="panel-body">
@@ -131,11 +130,7 @@
 					</div>
 				</div>
 
-
-
 			</div>
-
-
 
         {% endfor %}
 
@@ -282,7 +277,9 @@
                     <!-- Blog Post -->
 					<div class="panel panel-default">
 					  <div class="panel-heading">
-						  <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+						  <div class="image-wrapper">
+							  <img class="img-responsive" src="https://unsplash.it/200/100/?random" alt="Card image cap">
+						  </div>
 						<h3 class="panel-title">Aucun blog Actuellement.</h3>
 					  </div>
 					  <div class="panel-body">
@@ -305,7 +302,7 @@
                 <!-- Blog Post -->
                 <div class="card mb-2" id="0">
                     <a href="#">
-                        <img class="card-img-top" src="https://unsplash.it/150/100/?random" alt="Card image cap">
+                        <img class="img-responsive" src="https://unsplash.it/200/100/?random" alt="Card image cap">
                     </a>
                     <div class="card-body">
                         <h2 class="card-title"> blog.auteur|title </h2>
