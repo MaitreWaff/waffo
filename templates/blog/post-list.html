@@ -1,4 +1,5 @@
-{% extends 'blog/blog-home-base.html' %}
+{% extends 'desktop.html' %}
+{# extends 'blog/blog-home-base.html' #}
 {% load static %}
 {% load humanize %}
 
@@ -8,7 +9,8 @@
 {% block hrefbrandnavbar %}{# url 'create-blog' #}{% endblock%}
 
 <!-- Blog Entries Column -->
-{% block blogentries %}
+{# block blogentries #}
+{% block desktop %}
 
     <div class="col-md-6">
 
