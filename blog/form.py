@@ -22,7 +22,7 @@ class DesktopPostForm(forms.ModelForm):
 
     class Meta:
         model = BlogPost
-        fields = ['titre', 'text', 'illustration', 'blog']
+        fields = ['titre', 'text', 'illustration', 'blog'] #
 
     def __init__(self, user, *args, **kwargs):
         super(DesktopPostForm, self).__init__(*args, **kwargs)

@@ -148,7 +148,7 @@ class BlogPostListView(generic.list.ListView):
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
         # context['now'] = timezone.now() #
-        context['form'] = DesktopPostForm()
+        context['form'] = DesktopPostForm #() #User.objects.first())
         return context
 
 class BlogDetailView(generic.DetailView):
@@ -266,7 +266,7 @@ class FeedNews(generic.edit.CreateView):
 class CreateBlog(generic.edit.CreateView):
     model = Blog
     # form_class = BlogForm
-    form_class = DesktopBlogForm
+    form_class = DesktopBlogForm #() #User.objects.first()) # TODO: Get User in request.
     # fields = ['auteur', 'theme']
 
     # fields = ['theme']
@@ -275,17 +275,17 @@ class CreateBlog(generic.edit.CreateView):
     # success_url = '/blog/list/'
     template_name = 'blog/blog-list.html'
 
-    #
-    # def get_user(self):
-    #     return UserProfileModel.objects.filter(user=self.request.user)
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(CreateBlog, self).get_context_data(**kwargs)
-    #     context['all_blogs'] = Blog.objects.order_by('-date_blog')
-    #     return context
+
+    def get_user(self):
+        return UserProfileModel.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateBlog, self).get_context_data(**kwargs)
+        context['all_blogs'] = Blog.objects.order_by('-date_blog')
+        return context
     #
     # def get_form(self, form_class):
-    #     form = super(generic.CreateView, self).get_form(form_class)
+    #     form = super(CreateBlog, self).get_form(form_class)
     #     # form.fields['auteur'].queryset = self.get_user()
     #     return form
 

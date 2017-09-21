@@ -33,7 +33,9 @@
             {% csrf_token %}
             <!--<p>Ici git un form.</p>-->
 
-            {{ form }}
+            {% include 'includes/post_form.html' %}
+
+            <input type="submit" class="btn btn-info" value="Post">
 
         </form>
 
