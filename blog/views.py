@@ -148,6 +148,7 @@ class BlogPostListView(generic.list.ListView):
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
         # context['now'] = timezone.now() #
+        context['blog_form'] = DesktopPostForm()
         return context
 
 class BlogDetailView(generic.DetailView):
@@ -264,11 +265,13 @@ class FeedNews(generic.edit.CreateView):
 
 class CreateBlog(generic.edit.CreateView):
     model = Blog
-    form_class = BlogForm
+    # form_class = BlogForm
+    form_class = DesktopBlogForm
     # fields = ['auteur', 'theme']
 
     # fields = ['theme']
-    success_url = '/blog/feed-news/'
+    # success_url = '/blog/feed-news/'
+    success_url = 'desktop'
     # success_url = '/blog/list/'
     template_name = 'blog/blog-list.html'
 
