@@ -84,7 +84,8 @@ def desktop(request):
         context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel)
 
 
-    return render(request, 'blog/desktop.html', context_dict)
+    # return render(request, 'blog/desktop.html', context_dict)
+    return render(request, 'desktop.html', context_dict)
 
 
 

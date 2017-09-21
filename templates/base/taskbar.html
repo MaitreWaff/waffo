@@ -16,7 +16,7 @@
                 <li class="dropdown-header">Blog Actions</li>
                 <li><a href="#"><i class="fa fa-telegram" aria-hidden="true"></i> New Blog</a></li>
                 <li><a href="#">Update</a></li>
-                <li><a href=""><i class="fa fa-stack-overflow" aria-hidden="true"></i> List All Blogs</a></li>
+                <li><a href="{% url 'blog:blog-list' %}"><i class="fa fa-stack-overflow" aria-hidden="true"></i> List All Blogs</a></li>
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Post Actions</li>
                 <li><a href="#"><i class="fa fa-telegram" aria-hidden="true"></i> New Post</a></li>
@@ -30,7 +30,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+            <li class="active"><a href="{% url 'desktop' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
             <li><a href=""><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
             <li><a href=""><i class="fa fa-phone" aria-hidden="true"></i> Contact</a></li>
             <li><a href=""><i class="fa fa-files-o" aria-hidden="true"></i> Blogs</a></li>
