@@ -1,15 +1,15 @@
 /* line 1, ../sass/base.sass */
 .container-fluid {
-  background-color: #87CEFA;
+  /*background-color: #EDE6E6 */
 }
 /* line 4, ../sass/base.sass */
 .container-fluid #postfeed {
-  background-color: #B0E0E6;
+  background-color: #F6EEEE;
   padding: 10px;
 }
 /* line 9, ../sass/base.sass */
 .container-fluid #blogfeed {
-  background-color: #AFEEEE;
+  background-color: #F6EEEE;
   padding: 10px;
 }
 /* line 14, ../sass/base.sass */
@@ -25,4 +25,8 @@
 /* line 22, ../sass/base.sass */
 .container-fluid .card {
   border: 1px solid black;
+}
+/* line 25, ../sass/base.sass */
+.container-fluid nav.navbar {
+  background-color: #1E0101;
 }

@@ -83,9 +83,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						{% if post.illustration %}
-						<a href="{# url 'blog:blogpost-details' post.slug #}"><img class="img-fluid" src="/blog/media/{{ post.illustration }}/" width="500" height="300" alt="{{ post.titre|capfirst }}"></a>
+						<a href="{# url 'blog:blogpost-details' post.slug #}"><img class="img-fluid" src="/blog/media/{{ post.illustration }}/" width="400" height="300" alt="{{ post.titre|capfirst }}"></a>
 						{% else %}
-							<img class="card-img-top" src="https://unsplash.it/500/300/?random" alt="Card image cap">
+							<img class="card-img-top" src="https://unsplash.it/400/300/?random" alt="Card image cap">
 						{% endif %}
 
 						<h3 class="panel-title">{{ post.titre|capfirst }}</h3>
@@ -255,12 +255,12 @@
 			  </div>
 			  <div class="panel-body">
 				<!--Panel content-->
-				  <p class="card-text"> Posts Inside ==> blog.slug|title </p>
+				  <p class="card-text">  Inside ==> [{{ blog.posts.count }} Post(s)] </p>
 				<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>
 			  </div>
 				<div class="panel-footer">
 					<!--Panel footer-->
-				Posted on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
+				Created on {{ blog.date_blog }} by <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur|title }}</a>
 				</div>
 			</div>
 
