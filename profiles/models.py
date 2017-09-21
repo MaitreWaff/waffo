@@ -20,10 +20,10 @@ SEXE_CHOICES    = (
             )
 
 # Retourne le Nom De l'Image telechargee.
-def get_upload_photo_file_name(instance, filename):
+def get_upload_profile_photo_file_name(instance, filename):
     return "uploaded_files/profiles/members/%s_%s" % (str(time()).replace('.', '_'), filename)
 
-def get_upload_cover_file_name(instance, filename):
+def get_upload_profile_cover_file_name(instance, filename):
     return "uploaded_files/profiles/covers/%s_%s" % (str(time()).replace('.', '_'), filename)
 
 # Create your models here.
@@ -32,13 +32,13 @@ def get_upload_cover_file_name(instance, filename):
 class UserProfileModel(models.Model):
     user        = models.OneToOneField(User, on_delete=models.CASCADE)
     mobile      = models.IntegerField(unique=True, blank=True, null=True, help_text="Telephone Mobile.")
-    photo       = models.FileField(upload_to=get_upload_photo_file_name, blank=True)
-    cover       = models.FileField(upload_to=get_upload_cover_file_name, blank=True)
+    photo       = models.FileField(upload_to=get_upload_profile_photo_file_name, blank=True)
+    cover       = models.FileField(upload_to=get_upload_profile_cover_file_name, blank=True)
     sexe        = models.IntegerField(choices=SEXE_CHOICES, default=2, help_text="Male or Female?")
     bio         = models.TextField(max_length=TF_BIO_MAX_L, blank=True)
     location    = models.CharField(max_length=CF_LOC_MAX, blank=True)
     date_naiss  = models.DateField(null=True, blank=True)
-    # joined_on   = models.DateTimeField('Joined On', auto_now_add=True, editable=False)
+    updated_on  = models.DateTimeField('Joined On', auto_now_add=True, editable=False)
     slug        = models.SlugField(blank=True, max_length=MAX_L_SLUG)
 
     def __unicode__(self):

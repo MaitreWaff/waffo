@@ -189,7 +189,7 @@ WSGI_APPLICATION = 'waffo.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'blog.database.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.blog.sqlite3'),
     }
 }
 
