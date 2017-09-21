@@ -12,9 +12,27 @@
 	      <!--<li><a href="#"><i class="fa fa-money" aria-hidden="true"></i> Change</a></li>-->
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> Sign Up</a></li>
+
+			{% if user.is_authenticated %}
+
+			<li>
+				<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Profile</a>
+			</li>
+			{% else %}
+				<li>
+					<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Sign Up</a>
+				</li>
+				<!--<li>-->
+					<!--<a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>-->
+				<!--</li>-->
+
+			{% endif %}
+
 	      <!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
-	      <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li>
+	      <!--<li>-->
+			<!---->
+			<!--&lt;!&ndash;<a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>&ndash;&gt;-->
+		  <!--</li>-->
 	      <!--<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>-->
 	    </ul>
 	  </div>

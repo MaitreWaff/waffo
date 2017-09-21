@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+
+
+            {% block apps %}<p>Desktop Apps</p>No Desktop Apps{% endblock apps %}
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            <!--<p>Post Actu</p><p>Large Feed-News</p>-->
+            {% block widefn %}No Post{% endblock widefn %}
+
+
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+            <!--<p>Blog Actu</p><p>Small Feed-News</p>-->
+            {% block smallfn %}No Blog{% endblock smallfn %}
+
+        </div>
+    </div>
+</div>

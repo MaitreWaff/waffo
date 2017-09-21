@@ -23,7 +23,7 @@ urlpatterns = [
     # My old login URLs
     url(r'^$', desktop, name='desktop'),
     url(r'^account/login/$', login, name='login'),
-    url(r'^account/logout/$', logout, name='logout'),
+    url(r'^account/logout/$', logout, {'next_page': '/'}, name='logout'),
     url(r'^account/register/$', view=profile_views.RegisterUserView.as_view(), name='register'),
 
     url(r'^admin/', include(admin.site.urls), name='admin'),
