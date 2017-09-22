@@ -5,10 +5,10 @@ from blog.models import Blog, BlogPost, BlogSection, SectionSection, CommentBlog
 # Register your models here.
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('auteur', 'theme')
+    list_display = ['auteur', 'theme', 'date_blog', 'illustration']
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('titre','date_post')
+    list_display = ['titre', 'blog', 'text', 'date_post']
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)

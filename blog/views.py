@@ -78,9 +78,30 @@ def desktop(request):
     context_dict['blogs'] = blogs
     context_dict['posts'] = posts
     if request.method == 'POST':
+
+        blog_form = DesktopBlogForm(request.POST)
+        post_form = DesktopPostForm(request.user, request.POST)
+
+        if blog_form.is_valid():
+            print "New Blog"
+            new_blog = blog_form.save(commit=False)
+            print new_blog.slug
+            new_blog.save()
+        elif post_form.is_valid():
+            print "New Post"
+            new_post = post_form.save(commit=False)
+            new_post.auteur = request.user.userprofilemodel
+            print new_post
+            new_post.save()
+            print new_post
+        else:
+            print "Nothing clean."
+
         context_dict['blog_form'] = DesktopBlogForm(request.POST)
         context_dict['post_form'] = DesktopPostForm(request.user, request.POST)
         # context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel, request.POST)
+
+
 
         print "Object Created!!!!"
 

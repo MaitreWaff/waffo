@@ -199,7 +199,7 @@
 					<h3 class="panel-title">What's on your mind?</h3>
 				</div>
 				<!--<form action="/blog/list/" method="post" enctype="multipart/form-data" novalidate>-->
-				<form action="/blog/list/" method="post" enctype="multipart/form-data" novalidate>
+				<form action="" method="post" enctype="multipart/form-data" novalidate>
 					{% csrf_token %}
                     <div class="panel-body">
                         {% include 'includes/blog_form.html' with form=blog_form %}
