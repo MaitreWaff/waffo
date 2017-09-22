@@ -58,8 +58,11 @@ class Desktop(generic.edit.CreateView):
 
 
 
+@login_required
+def waluc(request):
+    context_dict = dict()
 
-
+    return render(request, 'blog/blog-list.html', context_dict)
 
 
 
