@@ -99,6 +99,8 @@ def desktop(request):
             context_dict['post_form'] = DesktopPostForm(request.user)
             return render(request, 'blog/desktop.html', context_dict)
         else:
+            context_dict['blog_form'] = DesktopBlogForm(request.POST, request.FILES)
+            context_dict['post_form'] = DesktopPostForm(request.user, request.POST, request.FILES)
             print "Nothing clean."
 
         # context_dict['blog_form'] = DesktopBlogForm(request.POST, request.FILES)
@@ -107,7 +109,7 @@ def desktop(request):
 
 
 
-        print "Object Created!!!!"
+        # print "Object Created!!!!"
 
 
     else:
