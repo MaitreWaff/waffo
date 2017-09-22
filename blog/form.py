@@ -1,6 +1,8 @@
 from django import forms
 
+from profiles.models import UserProfileModel
 from .models import Blog, BlogPost
+
 
 # Formulaires du Blog
 #
@@ -18,6 +20,10 @@ class DesktopBlogForm(forms.ModelForm):
         model = Blog
         fields = ['theme', 'illustration']
 
+    # def __init__(self, *args, **kwargs):
+    #     super(DesktopBlogForm, self).__init__(*args, **kwargs)
+    #     self.fields['auteur'] = UserProfileModel.objects.first()
+
 class DesktopPostForm(forms.ModelForm):
 
     class Meta:
@@ -26,7 +32,8 @@ class DesktopPostForm(forms.ModelForm):
 
     def __init__(self, user, *args, **kwargs):
         super(DesktopPostForm, self).__init__(*args, **kwargs)
-        self.fields['blog'].queryset = Blog.objects.all()
+        # self.fields['blog'].queryset = Blog.objects.all()
+        self.fields['blog'].queryset = Blog.objects.filter(auteur=user.userprofilemodel)
 
 class PostForm(forms.ModelForm):
 

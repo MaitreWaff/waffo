@@ -79,12 +79,16 @@ def desktop(request):
     context_dict['posts'] = posts
     if request.method == 'POST':
         context_dict['blog_form'] = DesktopBlogForm(request.POST)
-        context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel, request.POST)
+        context_dict['post_form'] = DesktopPostForm(request.user, request.POST)
+        # context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel, request.POST)
+
+        print "Object Created!!!!"
 
 
     else:
         context_dict['blog_form'] = DesktopBlogForm()
-        context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel)
+        context_dict['post_form'] = DesktopPostForm(request.user)
+        # context_dict['post_form'] = DesktopPostForm(request.user.userprofilemodel)
 
 
     return render(request, 'blog/desktop.html', context_dict)
@@ -195,14 +199,66 @@ def getPost(blogid):
 
 
 # Create vues
+#
+# class CreateBlog(generic.edit.CreateView):
+#     model = Blog
+#     form_class = DesktopBlogForm
+#     # fields = ['theme']
+#     success_url = '/'
+#
+#     def form_valid(self, form):
+#         form.instance.auteur = self.request.user.userprofilemodel
+#         return super(CreateBlog, self).form_valid(form)
+
+
+
 
 class CreateBlog(generic.edit.CreateView):
     model = Blog
-    fields = ['theme']
+    # form_class = BlogForm
+    form_class = DesktopBlogForm #() #User.objects.first()) # TODO: Get User in request.
+    # fields = ['auteur', 'theme']
+
+    # fields = ['theme']
+    # success_url = '/blog/feed-news/'
+    # success_url = 'desktop'
+    success_url = '/'
+    # success_url = '/blog/list/'
+    template_name = 'blog/blog-list.html'
+
+
+    def get_user(self):
+        return UserProfileModel.objects.filter(user=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateBlog, self).get_context_data(**kwargs)
+        context['all_blogs'] = Blog.objects.order_by('-date_blog')
+        return context
+    #
+    # Not required to work.
+    # def get_form(self, form_class):
+    #     form = super(CreateBlog, self).get_form(form_class)
+    #     # form.fields['auteur'].queryset = self.get_user()
+    #     return form
+
 
     def form_valid(self, form):
-        form.instance.auteur = self.request.user.profile
+        # obj = form.save(commit=False)
+        # obj.auteur = self.request.user.profile
+        # obj.save()
+        # form['auteur'] = self.request.user.profile
+
+        # self.object = form.save(commit=False)
+        # self.object.auteur = self.request.user.profile
+        # self.object.save()
+        # return HttpResponseRedirect(self.get_success_url())
+
+        # 2 statements.
+        form.instance.auteur = UserProfileModel.objects.get(user=self.request.user)
         return super(CreateBlog, self).form_valid(form)
+
+
+
 
 
 class CreatePost(generic.edit.CreateView):
@@ -263,51 +319,6 @@ class FeedNews(generic.edit.CreateView):
     def form_valid(self, form):
         # Ajouter les liens entre le post et un blog.
         return super(FeedNews, self).form_valid(form)
-
-
-
-class CreateBlog(generic.edit.CreateView):
-    model = Blog
-    # form_class = BlogForm
-    form_class = DesktopBlogForm #() #User.objects.first()) # TODO: Get User in request.
-    # fields = ['auteur', 'theme']
-
-    # fields = ['theme']
-    # success_url = '/blog/feed-news/'
-    success_url = 'desktop'
-    # success_url = '/blog/list/'
-    template_name = 'blog/blog-list.html'
-
-
-    def get_user(self):
-        return UserProfileModel.objects.filter(user=self.request.user)
-
-    def get_context_data(self, **kwargs):
-        context = super(CreateBlog, self).get_context_data(**kwargs)
-        context['all_blogs'] = Blog.objects.order_by('-date_blog')
-        return context
-    #
-    # def get_form(self, form_class):
-    #     form = super(CreateBlog, self).get_form(form_class)
-    #     # form.fields['auteur'].queryset = self.get_user()
-    #     return form
-
-
-    def form_valid(self, form):
-        # obj = form.save(commit=False)
-        # obj.auteur = self.request.user.profile
-        # obj.save()
-        # form['auteur'] = self.request.user.profile
-
-        # self.object = form.save(commit=False)
-        # self.object.auteur = self.request.user.profile
-        # self.object.save()
-        form.instance.auteur = UserProfileModel.objects.get(user=self.request.user)
-
-        return super(CreateBlog, self).form_valid(form)
-        # return HttpResponseRedirect(self.get_success_url())
-
-
 
 def feednews_update(request, id):
     response = HttpResponse()
