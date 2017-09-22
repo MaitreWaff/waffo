@@ -25,6 +25,11 @@ class DesktopBlogForm(forms.ModelForm):
     #     self.fields['auteur'] = UserProfileModel.objects.first()
 
 class DesktopPostForm(forms.ModelForm):
+    # titre = forms.CharField(
+    #     widget=forms.Textarea(
+    #         attrs={'rows': 1, 'placeholder': "Head Lines."}
+    #     ),
+    # )
     text = forms.CharField(
         widget=forms.Textarea(
             attrs={'rows': 5, 'cols': 20, 'placeholder': "What's in your mind?"}
