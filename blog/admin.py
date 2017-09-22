@@ -8,7 +8,7 @@ class BlogAdmin(admin.ModelAdmin):
     list_display = ['auteur', 'theme', 'date_blog', 'illustration']
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ['titre', 'blog', 'text', 'date_post']
+    list_display = ['titre', 'illustration', 'blog', 'text', 'date_post']
 
 admin.site.register(Blog, BlogAdmin)
 admin.site.register(BlogPost, BlogPostAdmin)

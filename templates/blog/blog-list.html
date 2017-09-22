@@ -1,4 +1,5 @@
 {% extends 'desktop.html' %}
+{% load static %}
 {# extends 'blog/blog-home-base.html' #}
 
 {% block title %} Blog News Feed {% endblock %}
@@ -27,7 +28,7 @@
 			<div class="ui-widget">
 				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 
-					<center><h6 class="my-4"><strong>Blog List</strong></h6></center>
+					<center><h6 class="my-4">Recents <strong>Blog</strong> List</h6></center>
 				</div>
 			</div>
 			<br>
@@ -47,33 +48,41 @@
             </thead>
             <tbody>
 
+
+
+
+
+        {% for blog in all_blogs %}
+
+                <tr>
+                    <td>
+                        <a href=""><img src="/blog/media/{{ blog.illustration }}/" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
+
+                    </td>
+                    <td>
+                        <a href="">{{ blog.auteur }}</a>
+                    </td>
+                    <td>
+                        <a href="">{{ blog.theme }}</a>
+                    </td>
+                    <td>
+                        {{ blog.date_blog }}
+                    </td>
+                </tr>
+
+        {% endfor %}
+
+
+
+
+
+
+
+
+
             </tbody>
 
         </table>
-        {% for blog in all_blogs %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="row">
-                <div class="col-sm-12">
-
-                    {{ blog.theme }}
-                </div>
-            </div>
-             <hr>
-
-        {% endfor %}
 
     </div>
     <div class="col-lg-3"></div>
