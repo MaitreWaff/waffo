@@ -84,9 +84,9 @@ def desktop(request):
 
         if blog_form.is_valid():
             print "New Blog"
-            new_blog = blog_form.save(commit=False)
-            print new_blog.slug
-            new_blog.save()
+            # new_blog = blog_form.save(commit=False)
+            # print new_blog.slug
+            # new_blog.save()
         elif post_form.is_valid():
             print "New Post"
             new_post = post_form.save(commit=False)
@@ -236,16 +236,18 @@ def getPost(blogid):
 
 class CreateBlog(generic.edit.CreateView):
     model = Blog
-    # form_class = BlogForm
-    form_class = DesktopBlogForm #() #User.objects.first()) # TODO: Get User in request.
-    # fields = ['auteur', 'theme']
+    form_class = DesktopBlogForm  # () #User.objects.first()) # TODO: Get User in request.
+    success_url = '/'
+    template_name = 'blog/blog-list.html'
 
+    # fields = ['auteur', 'theme']
+    # form_class = BlogForm
     # fields = ['theme']
     # success_url = '/blog/feed-news/'
     # success_url = 'desktop'
-    success_url = '/'
+
     # success_url = '/blog/list/'
-    template_name = 'blog/blog-list.html'
+
 
 
     def get_user(self):

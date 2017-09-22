@@ -20,9 +20,71 @@
             {% include 'includes/blog_form.html' %}
             <input type="submit" class="btn btn-info" value="Blog">
         </form>
+        <hr />
+        {% if all_blogs %}
+
+
+			<div class="ui-widget">
+				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
+
+					<center><h6 class="my-4"><strong>Blog List</strong></h6></center>
+				</div>
+			</div>
+			<br>
+
+
+
+
+        {% endif %}
+        <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Illustration</th>
+                <th>Auteur</th>
+                <th>Theme</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+
+        </table>
+        {% for blog in all_blogs %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+
+                    {{ blog.theme }}
+                </div>
+            </div>
+             <hr>
+
+        {% endfor %}
+
     </div>
     <div class="col-lg-3"></div>
 </div>
+
+
+
+
+
+
+
 
     <!--<div class="col-md-6">-->
         <!--<br />-->

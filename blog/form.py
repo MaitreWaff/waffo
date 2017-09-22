@@ -13,7 +13,7 @@ class DesktopBlogForm(forms.ModelForm):
             attrs={'rows': 5, 'cols': 20, 'placeholder': "What's in your mind?"}
         ),
         max_length=4000,
-        help_text='Create Something Usefull.'
+        help_text='Create Usefull Blogs.'
     )
 
     class Meta:
@@ -25,6 +25,13 @@ class DesktopBlogForm(forms.ModelForm):
     #     self.fields['auteur'] = UserProfileModel.objects.first()
 
 class DesktopPostForm(forms.ModelForm):
+    text = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'rows': 5, 'cols': 20, 'placeholder': "What's in your mind?"}
+        ),
+        max_length=4000,
+        help_text='Post something on your Blogs.'
+    )
 
     class Meta:
         model = BlogPost

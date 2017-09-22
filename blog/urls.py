@@ -36,7 +36,8 @@ urlpatterns = [
 
     # url(r'^post/blog/details/(?P<slug>[-\w]+)/$', views.BlogDetailView.as_view(), name='blog-detail'),
     # url(r'^post/blog/details/(?P<pk>\d+)/create/post/$', views.CreatePost.as_view(), name='blog-detail'),
-    url(r'^details/post/create/(?P<blog_id>\d+)/$', views.CreatePost.as_view(), name='create-post'),
+    url(r'^(?P<blog_id>\d+)/post/create/$', views.CreatePost.as_view(), name='create-post'),
+    # url(r'^details/post/create/(?P<blog_id>\d+)/$', views.CreatePost.as_view(), name='create-post'),
     url(r'^post/create/comment/(?P<postid>\d+)/$', views.CreateComment.as_view(), name='create-post-comment'),
     # url(r'^list/$', views.BlogListView.as_view(), name='blog-list'),
     url(r'^actualite/$', views.home, name='actu'),
