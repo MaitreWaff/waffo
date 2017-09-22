@@ -97,7 +97,7 @@
 					<div class="panel-body">
 						<!--Panel content-->
 						<p>{{ post.text|linebreaks|truncatewords:100 }}</p>
-						<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-info">Read Post &rarr;</a>
+						<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-success">Read Post &rarr;</a>
 					</div>
 					<div class="panel-footer">
 						<!--Panel footer-->
@@ -252,14 +252,16 @@
 
 						{% endif %}
 					</a>
-				  <h3 class="panel-title">
+				  <h4 class="panel-title">
 					  <!--Panel title -->
-					  {{ blog.theme|title }}</h3>
+					  {{ blog.theme|title }}
+				  </h4>
+					[{{ blog.posts.count }} Post(s)]
 			  </div>
 			  <div class="panel-body">
 				<!--Panel content-->
-				  <p class="card-text">  Inside ==> [{{ blog.posts.count }} Post(s)] </p>
-				<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">View On Wall &rarr;</a>
+				  <p class="card-text"> {% if blog.auteur.profile.photo %}Yes{% endif %}  Inside ==></p>
+				<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">Read Blog &rarr;</a>
 			  </div>
 				<div class="panel-footer">
 					<!--Panel footer-->

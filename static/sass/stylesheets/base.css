@@ -1,33 +1,34 @@
 /* line 1, ../sass/base.sass */
 .container-fluid {
   /*background-color: #EDE6E6 */
+  /*background-color: #EFF7F7 */
 }
-/* line 4, ../sass/base.sass */
+/* line 5, ../sass/base.sass */
 .container-fluid #postfeed {
-  background-color: #CCEFFA;
+  background-color: #D4E5E6;
   /*#F6EEEE */
   padding: 10px;
 }
-/* line 10, ../sass/base.sass */
+/* line 11, ../sass/base.sass */
 .container-fluid #blogfeed {
-  background-color: #F8F4F4;
+  background-color: #D3F5F6;
   padding: 10px;
 }
-/* line 15, ../sass/base.sass */
+/* line 16, ../sass/base.sass */
 .container-fluid .update {
   background-color: #C0C0C0;
   border: 1px solid black;
   margin: 5px 5px 5px 5px;
 }
-/* line 20, ../sass/base.sass */
+/* line 21, ../sass/base.sass */
 .container-fluid .update img {
   margin: 10px 10px 10px 10px;
 }
-/* line 23, ../sass/base.sass */
+/* line 24, ../sass/base.sass */
 .container-fluid .card {
   border: 1px solid black;
 }
-/* line 26, ../sass/base.sass */
+/* line 27, ../sass/base.sass */
 .container-fluid nav.navbar {
   background-color: #1E0101;
 }

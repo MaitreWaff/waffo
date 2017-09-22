@@ -30,7 +30,7 @@ def get_upload_profile_cover_file_name(instance, filename):
 
 # class Profile(models.Model):
 class UserProfileModel(models.Model):
-    user        = models.OneToOneField(User, on_delete=models.CASCADE)
+    user        = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     mobile      = models.IntegerField(unique=True, blank=True, null=True, help_text="Telephone Mobile.")
     photo       = models.FileField(upload_to=get_upload_profile_photo_file_name, blank=True)
     cover       = models.FileField(upload_to=get_upload_profile_cover_file_name, blank=True)

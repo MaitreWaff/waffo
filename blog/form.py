@@ -45,7 +45,8 @@ class DesktopPostForm(forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super(DesktopPostForm, self).__init__(*args, **kwargs)
         # self.fields['blog'].queryset = Blog.objects.all()
-        self.fields['blog'].queryset = Blog.objects.filter(auteur=user.userprofilemodel)
+        # self.fields['blog'].queryset = Blog.objects.filter(auteur=user.userprofilemodel)
+        self.fields['blog'].queryset = Blog.objects.filter(auteur=user.profile)
 
 class PostForm(forms.ModelForm):
 
