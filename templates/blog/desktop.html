@@ -16,8 +16,6 @@
 <div class="row justify-content-md-center">
     <div class="col-xs-12" id="postfeed">
 
-
-
         {% if user.is_authenticated %}
 
 			<div class="ui-widget">
@@ -28,15 +26,10 @@
 			</div>
 			<br>
 
-
-
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h6 class="panel-title">What's on your mind?</h6>
 				</div>
-
-
-
 
 				<form action="" method="post" enctype="multipart/form-data" novalidate>
 				<!--<form action="/blog/list/" method="post" enctype="multipart/form-data" novalidate>-->
@@ -47,101 +40,88 @@
 
 					<div class="panel-footer">
 						<!--Panel footer-->
-
-								<input type="submit" class="btn btn-success" value="Post!">
-								<!--<button id="button">Like</button>-->
-								<!--<input type="text" name="datepicker" id="datepicker">-->
-
+						<input type="submit" class="btn btn-success" value="Post!">
+						<!--<button id="button">Like</button>-->
+						<!--<input type="text" name="datepicker" id="datepicker">-->
 					</div>
 				</form>
 
-
-
-
 			</div>
-
-
-
 
         {% endif %}
 
+		<div id="post-update-holder">
 
 
 
+			{% for post in posts %}
 
 
+					<!-- Blog Post -->
 
-    <div id="post-update-holder">
+				<div class="update" id="{{ post.id }}">
 
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<a href="{% url 'blog:blogpost-details' post.slug %}">
+								{% if post.illustration %}
+									<img class="img-fluid" src="/blog/media/{{ post.illustration }}/" width="400" height="300" alt="{{ post.titre|capfirst }}">
+								{% else %}
+									<img class="card-img-top" src="https://unsplash.it/400/300/?random" alt="Card image cap">
+								{% endif %}
+							</a>
+							<h3 class="panel-title">{{ post.titre|capfirst }}</h3>
+							<h4><small><small> - via &rarr; <a href="{# url 'blog:blog-detail' post.blog.slug #}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h4>
+						</div>
 
+						<div class="panel-body">
+							<!--Panel content-->
+							<p>{{ post.text|linebreaks|truncatewords:100 }}</p>
+							<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-success">Read Post &rarr;</a>
+						</div>
+						<div class="panel-footer">
+							<!--Panel footer-->
 
-        {% for post in posts %}
+							<!--<input type="submit" value="Post!">-->
+							<button><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like</button>
+							<button><i class="fa fa-commenting-o" aria-hidden="true"></i> Comment</button>
+							<button><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
 
-
-                <!-- Blog Post -->
-
-			<div class="update" id="{{ post.id }}">
-
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						{% if post.illustration %}
-						<a href="{# url 'blog:blogpost-details' post.slug #}"><img class="img-fluid" src="/blog/media/{{ post.illustration }}/" width="400" height="300" alt="{{ post.titre|capfirst }}"></a>
-						{% else %}
-							<img class="card-img-top" src="https://unsplash.it/400/300/?random" alt="Card image cap">
-						{% endif %}
-
-						<h3 class="panel-title">{{ post.titre|capfirst }}</h3>
-						<h4><small><small> - via &rarr; <a href="{# url 'blog:blog-detail' post.blog.slug #}"><i class="fa fa-files-o" aria-hidden="true"></i> Blog: <strong>{{ post.blog.theme|capfirst }}</strong></a> {{ post.date_post|naturaltime }}</small></small></h4>
-					</div>
-
-					<div class="panel-body">
-						<!--Panel content-->
-						<p>{{ post.text|linebreaks|truncatewords:100 }}</p>
-						<a href="{% url 'blog:blogpost-details' post.slug %}" class="btn btn-success">Read Post &rarr;</a>
-					</div>
-					<div class="panel-footer">
-						<!--Panel footer-->
-
-						<!--<input type="submit" value="Post!">-->
-						<button><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> Like</button>
-						<button><i class="fa fa-commenting-o" aria-hidden="true"></i> Comment</button>
-						<button><i class="fa fa-share-alt" aria-hidden="true"></i> Share</button>
+						</div>
 
 					</div>
+
 
 				</div>
 
 
-			</div>
+			{% empty %}
 
+				<p>Blog Post</p>
+				<div class="update" id="0">
 
-        {% empty %}
-
-			<p>Blog Post</p>
-			<div class="update" id="0">
-
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="post-image"><img class="card-img-top img-responsive" src="https://unsplash.it/400/300/?random" alt="Card image cap"></div>
-						<h3 class="panel-title">Nothing to show.</h3>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="post-image"><img class="card-img-top img-responsive" src="https://unsplash.it/400/300/?random" alt="Card image cap"></div>
+							<h3 class="panel-title">Nothing to show.</h3>
+						</div>
+						<div class="panel-body">
+							Creez Un Blog!
+						</div>
+						<div class="panel-footer">
+							Copyright 2017
+						</div>
 					</div>
-					<div class="panel-body">
-						Creez Un Blog!
-					</div>
-					<div class="panel-footer">
-						Copyright 2017
-					</div>
+
 				</div>
 
-			</div>
+			{% endfor %}
 
-        {% endfor %}
-
-        <hr />
-        <br />
+			<hr />
+			<br />
 
 
-    </div>
+		</div>
 
 
 

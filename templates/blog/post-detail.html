@@ -1,18 +1,28 @@
-{% extends 'blog/blog-detail-base.html' %}
+{% extends 'desktop.html' %}
+{# extends 'blog/blog-detail-base.html' #}
 
 {% block title %} POST Content {% endblock %}
 
 {% block hrefbrandnavbar %}{% endblock%}
 
-{% block blogentries %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{# url 'home' #}">Desktop</a></li>
+  <li class="breadcrumb-item"><a href="{# url 'board_topics' board.pk #}"> {{ post.blog.theme }} </a></li>
+  <li class="breadcrumb-item active">Post details</li>
+{% endblock %}
+
+
+
+{# block blogentries #}
+{% block widefn %}
     <!-- Blog Entries Column -->
 
 
             <!-- Post Content Column -->
-            <div class="col-lg-6">
+            <div class="col-md-12">
 
                 <!-- Title -->
-                <h5 class="mt-4">Post Title: {{ post.titre|capfirst }}</h5>
+                <h5 class="mt-4">Headline: {{ post.titre|capfirst }}</h5>
 
                 <!-- Author -->
                 <p class="lead">
@@ -27,7 +37,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="/blog/media/{{ post.illustration }}/" alt="">
+                <img class="img-fluid rounded" src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/400/400/?random{% endif %}" alt="" height="300" width="450">
 
                 <hr>
 
@@ -95,6 +105,8 @@
 
 
                     {% endfor %}
+                {% else %}
+                    <p>No comment yet...</p>
                 {% endif %}
 
 
@@ -117,24 +129,29 @@
             </div>
 
 
+<br />
+<br />
+<br />
+<hr />
+<br />
+<br />
 
 
 
 
-
-{% endblock %}
-
+{% endblock widefn %}
 
 
+{% block smallfn %}{% endblock smallfn %}
 
 
 
-    {% block javascript %}
-    <script type="text/javascript" language="JavaScript">
-        $(document).ready(function(){
-            alert("Hello Waff!");
-        })
-    </script>
+{% block javascript %}
+    <!--<script type="text/javascript" language="JavaScript">-->
+        <!--$(document).ready(function(){-->
+            <!--alert("Hello Waff!");-->
+        <!--})-->
+    <!--</script>-->
 {% endblock %}
 
 

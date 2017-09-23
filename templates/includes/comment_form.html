@@ -7,7 +7,7 @@
         {% if field.errors %}
             {% render_field field class="form-control is-invalid" %}
             {% for error in field.errors %}
-                <div class="invalid-feed-back>
+                <div class="invalid-feed-back">
                     {{ error }}
                 </div>
             {% endfor %}

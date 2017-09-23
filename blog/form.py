@@ -1,12 +1,12 @@
 from django import forms
 
 from profiles.models import UserProfileModel
-from .models import Blog, BlogPost
+from .models import Blog, BlogPost, CommentBlogPost
 
 
 # Formulaires du Blog
 #
-
+# New forms.
 class DesktopBlogForm(forms.ModelForm):
     theme = forms.CharField(
         widget=forms.Textarea(
@@ -48,6 +48,28 @@ class DesktopPostForm(forms.ModelForm):
         # self.fields['blog'].queryset = Blog.objects.filter(auteur=user.userprofilemodel)
         self.fields['blog'].queryset = Blog.objects.filter(auteur=user.profile)
 
+class DesktopCommentForm(forms.ModelForm):
+    commentaire = forms.CharField(
+        widget=forms.Textarea(
+            attrs={'rows': 5, 'cols': 20, 'placeholder': "Leave a comment."}
+        ),
+        max_length=4000,
+        help_text='Here You can reply to this.'
+    )
+    class Meta:
+        model = CommentBlogPost
+        fields = ['commentaire', 'blogpost']
+
+
+
+
+
+
+
+
+
+
+# old forms.
 class PostForm(forms.ModelForm):
 
     # text = forms.CharField(widget=forms.Textarea(attrs={'cols': 280, 'rows': 4}))
