@@ -143,24 +143,24 @@ def archive(request):
     context_dict = {'posts': posts, 'postform': post_form}
 
     return render_to_response('blog/blog-home.html', context_dict, context)
+#
+# def blogs(request):
+#     bloglist = Blog.objects.all()
+#
+#     context = RequestContext(request)
+#     context_dict = {'blogslist': bloglist}
+#
+#     return render_to_response('blog/blogslist.html', context_dict, context)
 
-def blogs(request):
-    bloglist = Blog.objects.all()
-
-    context = RequestContext(request)
-    context_dict = {'blogslist': bloglist}
-
-    return render_to_response('blog/blogslist.html', context_dict, context)
-
-
-def home(request):
-    blogpostslist = BlogPost.objects.all()
-
-    context = RequestContext(request)
-    context_dict = {'posts': blogpostslist}
-
-    return render_to_response('blog/blog-home.html', context_dict, context)
-
+#
+# def home(request):
+#     blogpostslist = BlogPost.objects.all()
+#
+#     context = RequestContext(request)
+#     context_dict = {'posts': blogpostslist}
+#
+#     return render_to_response('blog/blog-home.html', context_dict, context)
+#
 
 # Vues generiques d'Affichage.
 class BlogPostDetailView(generic.detail.DetailView):
