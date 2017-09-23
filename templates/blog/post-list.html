@@ -17,7 +17,18 @@
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
 
+        <form action="{# url 'blog:create-post' #}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!--<p>Ici git un form.</p>-->
 
+            {% include 'includes/post_form.html' with form=post_form %}
+
+            <input type="submit" class="btn btn-info" value="Post">
+
+        </form>
+
+
+        {% if all_blog_posts %}
 			<div class="ui-widget">
 				<div class="ui-state-highlight ui-corner-all" style="margin-top: 20px; padding: 0 .7em;">
 
@@ -25,19 +36,66 @@
 				</div>
 			</div>
 			<br>
+        {% endif %}
 
 
 
 
-        <form action="" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <p>Ici git un form.</p>
 
-            {% include 'includes/post_form.html' %}
 
-            <input type="submit" class="btn btn-info" value="Post">
+            <table class="table">
+            <thead class="thead-inverse">
+            <tr>
+                <th>Illustration</th>
+                <th>Auteur</th>
+                <th>Theme</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
 
-        </form>
+        {% for post in all_blog_posts %}
+
+                <tr>
+                    <td>
+
+                            <a href=""><img src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
+
+                            <!--<a href=""><img src="" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>-->
+
+
+                    </td>
+                    <td>
+                        <a href="">{{ post.blog.auteur }}</a>
+                    </td>
+                    <td>
+                        <a href="">{{ post.titre }}</a>
+                    </td>
+                    <td>
+                        {{ post.date_post }}
+                    </td>
+                </tr>
+
+        {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     </div>

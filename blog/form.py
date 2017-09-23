@@ -60,6 +60,10 @@ class DesktopCommentForm(forms.ModelForm):
         model = CommentBlogPost
         fields = ['commentaire',] # 'blogpost']
 
+    def __init__(self, post, *args, **kwargs):
+        super(DesktopCommentForm, self).__init__(*args, **kwargs)
+        # self.fields['blogpost'] = self.request.
+
 
 
 

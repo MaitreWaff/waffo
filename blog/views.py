@@ -57,13 +57,13 @@ class Desktop(generic.edit.CreateView):
 
 
 
-
-@login_required
-def waluc(request):
-    context_dict = dict()
-
-    return render(request, 'blog/blog-list.html', context_dict)
-
+#
+# @login_required
+# def waluc(request):
+#     context_dict = dict()
+#
+#     return render(request, 'blog/blog-list.html', context_dict)
+#
 
 
 
@@ -187,7 +187,7 @@ class BlogPostListView(generic.list.ListView):
     def get_context_data(self, **kwargs):
         context = super(BlogPostListView, self).get_context_data(**kwargs)
         # context['now'] = timezone.now() #
-        context['form'] = DesktopPostForm #() #User.objects.first())
+        context['post_form'] = DesktopPostForm(self.request.user) #() #User.objects.first())
         return context
 
 class BlogDetailView(generic.DetailView):
