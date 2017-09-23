@@ -232,18 +232,13 @@
 
 
 
-
-
-
-{% block activehome %}{% endblock activehome %}
-{% block activeabout %}{% endblock activeabout %}
-{% block activecontact %}{% endblock activecontact %}
-{% block activeblogs %}class="active"{% endblock activeblogs %}
-{% block activeposts %}{% endblock activeposts %}
-
-
-
-
+{% block taskbar %}
+    <li><a href="{% url 'desktop' %}"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+    <li><a href=""><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+    <li><a href=""><i class="fa fa-phone" aria-hidden="true"></i> Contact</a></li>
+    <li class="active"><a href="{% url 'blog:blog-list' %}"><i class="fa fa-files-o" aria-hidden="true"></i> Blogs</a></li>
+    <li><a href="{% url 'blog:blogpost-list' %}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Posts</a></li>
+{% endblock taskbar %}
 
 
 
