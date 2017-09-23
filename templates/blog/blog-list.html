@@ -64,10 +64,10 @@
 
                     </td>
                     <td>
-                        <a href="">{{ blog.auteur }}</a>
+                        <a href="{% url 'profile:viewuserprofile' blog.auteur.slug %}">{{ blog.auteur }}</a>
                     </td>
                     <td>
-                        <a href="">{{ blog.theme }}</a>
+                        <a href="{% url 'blog:blog-detail' blog.slug %}">{{ blog.theme }}</a>
                     </td>
                     <td>
                         {{ blog.date_blog }}

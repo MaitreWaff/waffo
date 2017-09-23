@@ -16,7 +16,7 @@
 			{% if user.is_authenticated %}
 
 			<li>
-				<a href="#">
+				<a href="{% url 'profile:viewuserprofile' user.profile.slug %}">
 					{% if user.profile.photo %}
 						<img	src="/blog/media/{{ user.profile.photo }}/" alt="" width="15" height="15">
 					{% else %}
