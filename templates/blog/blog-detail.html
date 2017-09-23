@@ -7,8 +7,8 @@
 
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'desktop' %}">Desktop</a></li>
-  <li class="breadcrumb-item"><a href="{% url 'blog:blog-detail' blog.slug %}"> {{ blog.theme }} </a></li>
-  <li class="breadcrumb-item active">Post details</li>
+  <li class="breadcrumb-item active"><a href="{% url 'blog:blog-detail' blog.slug %}"> {{ blog.theme }} </a></li>
+  <!--<li class="breadcrumb-item">Post details</li>-->
 {% endblock %}
 
 
@@ -22,7 +22,7 @@
             <div class="col-md-12">
 
                 <!-- Title -->
-                <h5 class="mt-4">Blog Theme: {{ blog.theme }}</h5>
+                <h5 class="mt-4">Blog Theme: {{ blog.theme }} ({{ blog.posts.count }})</h5>
                 <h6 class="mt-2">{{ blog.posts.all|length }} Post on this Blog.</h6>
 
 
@@ -63,16 +63,13 @@
 
 
                                                     <!--Card Wider-->
-                        <div class="card card-cascade wider">
+                        <div class="panel">
 
                             <!--Card image-->
                             <div class="view overlay hm-white-slight">
                                 <a href="{% url 'blog:blogpost-details' post.slug %}">
-                                    {% if post.illustration %}
-                                        <img src="/blog/media/{{ post.illustration }}/" class="img-fluid">
-                                    {% else %}
-                                        <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20%283%29.jpg" class="img-fluid">
-                                    {% endif %}
+                                    <img class="img-fluid rounded" src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/400/400/?random{% endif %}" alt="" height="300" width="450">
+
                                 </a>
 
 
@@ -136,14 +133,16 @@
                 <hr>
 
                 <!-- Comments Form -->
-                <div class="card my-4">
+                <div class="panel my-4">
                     <h5 class="card-header">Leave a Comment:</h5>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% include 'includes/comment_form.html' with form=comment_form %}
+                            <!--<div class="form-group">-->
+                                <!--<textarea class="form-control" rows="3"></textarea>-->
+                            <!--</div>-->
+                            <button type="submit" class="btn btn-info">Comment</button>
                         </form>
                     </div>
                 </div>
@@ -184,6 +183,16 @@
 
                     <!--</div>-->
                 <!--</div>-->
+
+
+        <br />
+        <br />
+        <br />
+        <hr />
+        <br />
+        <br />
+
+
 
             </div>
 

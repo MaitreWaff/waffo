@@ -8,7 +8,7 @@
 {% block breadcrumb %}
   <li class="breadcrumb-item"><a href="{% url 'desktop' %}">Desktop</a></li>
   <li class="breadcrumb-item"><a href="{% url 'blog:blog-detail' post.blog.slug %}"> {{ post.blog.theme }} </a></li>
-  <li class="breadcrumb-item active">Post details</li>
+  <li class="breadcrumb-item active">{{ post.titre }}</li>
 {% endblock %}
 
 

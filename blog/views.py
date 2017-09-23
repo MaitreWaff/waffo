@@ -200,7 +200,7 @@ class BlogDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogDetailView, self).get_context_data(**kwargs)
-        # context['blogid'] =
+        context['comment_form'] = DesktopCommentForm
         return context
 
 
