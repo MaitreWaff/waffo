@@ -171,8 +171,12 @@ class BlogPostDetailView(generic.detail.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(BlogPostDetailView, self).get_context_data(**kwargs)
-        # context['now'] = timezone.now() #
+        context['comment_form'] = DesktopCommentForm(self.request.POST) # timezone.now() #
         return context
+
+    def form_valid(self, form):
+        # form.instance.blog = self.objects.
+        pass
 
 class BlogPostListView(generic.list.ListView):
     model = BlogPost

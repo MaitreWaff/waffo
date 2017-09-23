@@ -58,7 +58,7 @@ class DesktopCommentForm(forms.ModelForm):
     )
     class Meta:
         model = CommentBlogPost
-        fields = ['commentaire', 'blogpost']
+        fields = ['commentaire',] # 'blogpost']
 
 
 
