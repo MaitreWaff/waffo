@@ -57,7 +57,7 @@
                 <tr>
                     <td>
 
-                            <a href=""><img src="{% if blog.illustration %}/blog/media/{{ blog.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
+                            <a href="{% url 'blog:blog-detail' blog.slug %}"><img src="{% if blog.illustration %}/blog/media/{{ blog.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
 
                             <!--<a href=""><img src="" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>-->
 

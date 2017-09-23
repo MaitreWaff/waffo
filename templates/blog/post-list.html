@@ -59,7 +59,7 @@
                 <tr>
                     <td>
 
-                            <a href=""><img src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
+                            <a href="{% url 'blog:blogpost-details' post.slug %}"><img src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
 
                             <!--<a href=""><img src="" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>-->
 
@@ -69,7 +69,7 @@
                         <a href="{% url 'profile:viewuserprofile' post.blog.auteur.slug %}">{{ post.blog.auteur }}</a>
                     </td>
                     <td>
-                        <a href="">{{ post.titre }}</a>
+                        <a href="{% url 'blog:blogpost-details' post.slug %}">{{ post.titre }}</a>
                     </td>
                     <td>
                         {{ post.date_post }}
