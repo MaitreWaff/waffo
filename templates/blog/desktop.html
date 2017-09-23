@@ -260,8 +260,8 @@
 			  </div>
 			  <div class="panel-body">
 				<!--Panel content-->
-				  <p class="card-text"> {% if blog.auteur.profile.photo %}Yes{% endif %}  Inside ==></p>
-				<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">Read Blog &rarr;</a>
+				  <div class="card-text">by <a href="#">{{ blog.auteur }} {% if blog.auteur.photo %}<img src="/blog/media/{{ blog.auteur.photo }}/" alt="" width="40" height="40">{% endif %}</a></div>
+				<!--<a href="{# url 'blog:blog-detail' blog.slug #}" class="btn btn-info">Read Blog &rarr;</a>-->
 			  </div>
 				<div class="panel-footer">
 					<!--Panel footer-->

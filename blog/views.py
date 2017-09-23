@@ -90,7 +90,8 @@ def desktop(request):
         elif post_form.is_valid():
             print "New Post"
             new_post = post_form.save(commit=False)
-            new_post.auteur = request.user.userprofilemodel
+            new_post.auteur = request.user.profile
+            # new_post.auteur = request.user.userprofilemodel
             print new_post
             new_post.save()
             print new_post

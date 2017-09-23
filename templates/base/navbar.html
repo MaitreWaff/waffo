@@ -16,7 +16,14 @@
 			{% if user.is_authenticated %}
 
 			<li>
-				<a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ user.username }} Profile</a>
+				<a href="#">
+					{% if user.profile.photo %}
+						<img	src="/blog/media/{{ user.profile.photo }}/" alt="" width="15" height="15">
+					{% else %}
+						<i class="fa fa-user" aria-hidden="true"></i>
+					{% endif %}
+					{{ user.username }} Profile
+				</a>
 			</li>
 			{% else %}
 				<li>
