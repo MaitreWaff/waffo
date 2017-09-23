@@ -1,15 +1,25 @@
-{% extends 'blog/blog-detail-base.html' %}
+{% extends 'desktop.html' %}
+{# extends 'blog/blog-detail-base.html' #}
 
 {% block title %} BLOG Content {% endblock %}
 
 {% block hrefbrandnavbar %}{% url 'blog:create-post' blog.id %}{% endblock%}
 
-{% block blogentries %}
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'desktop' %}">Desktop</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'blog:blog-detail' blog.slug %}"> {{ blog.theme }} </a></li>
+  <li class="breadcrumb-item active">Post details</li>
+{% endblock %}
+
+
+
+{# block blogentries #}
+{% block widefn %}
     <!-- Blog Entries Column -->
 
 
             <!-- Post Content Column -->
-            <div class="col-lg-6">
+            <div class="col-md-12">
 
                 <!-- Title -->
                 <h5 class="mt-4">Blog Theme: {{ blog.theme }}</h5>
@@ -19,13 +29,8 @@
                 <a href="{% url 'blog:blog-detail' blog.slug %}">
 
                 <!-- Preview Image -->
-                    {% if blog.illustration %}
-                        <img class="card-img-top" src="/blog/media/{{ blog.illustration }}/" alt="Card image cap">
+                <img class="img-fluid rounded" src="{% if blog.illustration %}/blog/media/{{ blog.illustration }}/{% else %}https://unsplash.it/400/400/?random{% endif %}" alt="" height="300" width="450">
 
-                    {% else %}
-                        <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-
-                    {% endif %}
                 </a>
                 <hr>
 
@@ -188,7 +193,7 @@
 
 
 
-{% endblock %}
+{% endblock widefn %}
 
 
 
@@ -196,11 +201,11 @@
 
 
 {% block javascript %}
-<script type="text/javascript" language="JavaScript">
-    $(document).ready(function(){
-        alert("Hello Waff!");
-    })
-</script>
+    <!--<script type="text/javascript" language="JavaScript">-->
+        <!--$(document).ready(function(){-->
+            <!--alert("Hello Waff!");-->
+        <!--})-->
+    <!--</script>-->
 {% endblock %}
 
 

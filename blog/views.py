@@ -197,11 +197,11 @@ class BlogDetailView(generic.DetailView):
 
     # def get_queryset(self):
     #     return Blog.objects.get_or_create(slug=self.kwargs['slug'])
-    #
-    # def get_context_data(self, **kwargs):
-    #     context = super(BlogDetailView, self).get_context_data(**kwargs)
-    #     context['blogid'] =
-    #     return context
+
+    def get_context_data(self, **kwargs):
+        context = super(BlogDetailView, self).get_context_data(**kwargs)
+        # context['blogid'] =
+        return context
 
 
 class BlogListView(generic.ListView):
