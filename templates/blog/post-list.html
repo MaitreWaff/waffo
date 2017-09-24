@@ -43,9 +43,10 @@
 
 
 
-            <table class="table">
+            <table class="table table-striped table-bordered table-hover">
             <thead class="thead-inverse">
             <tr>
+                <th>#</th>
                 <th>Illustration</th>
                 <th>Auteur</th>
                 <th>Post</th>
@@ -57,6 +58,7 @@
         {% for post in all_blog_posts %}
 
                 <tr>
+                    <th scope="row">1</th>
                     <td>
 
                             <a href="{% url 'blog:blogpost-details' post.slug %}"><img src="{% if post.illustration %}/blog/media/{{ post.illustration }}/{% else %}https://unsplash.it/50/50/?random{% endif %}" alt="{{ blog.theme }}" width="50" height="50" class="img-responsive"></a>
