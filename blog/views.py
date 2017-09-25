@@ -194,6 +194,24 @@ class BlogDetailView(generic.DetailView):
     model = Blog
     template_name = 'blog/blog-detail.html'
     context_object_name = 'blog'
+    #
+    # def post(self, request):
+    #     # blgid = blogid
+    #
+    #     print self.slug_url_kwarg
+    #
+    #     form = request.POST['comment_form']
+    #     if form.is_valid():
+    #         print "FOrm Ok!"
+    #     else:
+    #         print "NOt oK for form."
+    #
+    #
+    #
+    # def get(self, request, *args, **kwargs):
+    #     print self.slug_url_kwarg
+    #     return render_to_response('blog/blog-detail.html',{'slug': ''})
+    #     # render(request, 'blog/blog-detail.html', {'slug': 'hello-blog'})
 
     # def get_queryset(self):
     #     return Blog.objects.get_or_create(slug=self.kwargs['slug'])
